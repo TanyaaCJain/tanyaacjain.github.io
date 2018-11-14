@@ -1,0 +1,347 @@
+html,
+body {
+    color:#fbfbfb;
+    font-family: "Alice","Source Sans Pro","Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 16px;
+}
+
+a, .fa {
+  color: #9f2929;
+}
+
+header a{
+  color: #fbfbfb;
+}
+
+a:hover, .fa:hover {
+  color: #C34D4D;
+  text-decoration: none;
+}
+
+hr {
+  border-color: #9f2929;
+  width: 70%;
+}
+
+hr.no-left {
+  left: 0;
+  margin: 5px 0px 10px 0px;
+}
+
+hr.small {
+  width: 200px;
+}
+
+hr.pad {
+  padding-top: 50px;
+}
+
+h5 {
+  font-size: 19px;
+}
+
+h6 {
+  font-size: 17px;
+  color: #adadad;
+}
+
+.bold {
+  font-weight: bold;
+}
+.heading {
+  font-size: 28px;
+  font-family: "Prata";
+}
+
+.description, .ab {
+  width: 400px;
+  margin-left: 200px;
+}
+
+.full-height {
+  height: 100%;
+  width: 100%;
+  overflow-x: hidden;
+  position: relative;
+}
+
+.section-head {
+  font-size: 95px;
+  line-height: 95px;
+  font-family: "Prata";
+  color: #9f2929;
+  padding: 50px;
+}
+
+/*position*/
+
+.vhcenter {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.bottom-right {
+  position: absolute;
+  bottom: 50px;
+  right: 50px;
+}
+
+.top-50 {
+  top: 50px;
+}
+
+.no-padding {
+  padding: 0;
+}
+
+.top-pad-50 {
+  padding-top: 50px;
+}
+
+.no-margin {
+  margin:0;
+}
+
+/* Side Menu */
+
+#sidebar-wrapper {
+    z-index: 1000;
+    position: fixed;
+    right: 0;
+    width: 250px;
+    height: 100%;
+    transform: translateX(250px);
+    overflow-y: auto;
+    background: #222;
+    -webkit-transition: all 0.4s ease 0s;
+    -moz-transition: all 0.4s ease 0s;
+    -ms-transition: all 0.4s ease 0s;
+    -o-transition: all 0.4s ease 0s;
+    transition: all 0.4s ease 0s;
+}
+
+.sidebar-nav {
+    position: absolute;
+    top: 0;
+    width: 250px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.sidebar-nav li {
+    text-indent: 20px;
+    line-height: 40px;
+    color: #f1f1f1;
+}
+
+.sidebar-nav li a {
+    display: block;
+    text-decoration: none;
+    color: #999;
+}
+
+.sidebar-nav li a:hover {
+    text-decoration: none;
+    color: #fbfbfb;
+    background: rgba(255,255,255,0.2);
+}
+
+.sidebar-nav li a:active,
+.sidebar-nav li a:focus {
+    text-decoration: none;
+}
+
+.sidebar-nav > .sidebar-brand {
+    height: 55px;
+    font-size: 18px;
+    line-height: 55px;
+}
+
+.sidebar-nav > .sidebar-brand a {
+    color: #999;
+}
+
+.sidebar-nav > .sidebar-brand a:hover {
+    color: #fbfbfb;
+    background: none;
+}
+
+#menu-toggle {
+    z-index: 1;
+    position: fixed;
+    top: 0;
+    right: 0;
+}
+
+#sidebar-wrapper.active {
+    right: 250px;
+    width: 250px;
+    -webkit-transition: all 0.4s ease 0s;
+    -moz-transition: all 0.4s ease 0s;
+    -ms-transition: all 0.4s ease 0s;
+    -o-transition: all 0.4s ease 0s;
+    transition: all 0.4s ease 0s;
+}
+
+.toggle {
+    margin: 5px 5px 0 0;
+}
+
+/*Scrollbar*/
+body::-webkit-scrollbar {
+    width: 1em;
+}
+
+body::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: darkgrey;
+  outline: 1px solid slategrey;
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: #9f2929;
+}
+
+/* Landing page */
+    #head {
+      font-size: 25px;
+      padding-left: 30px;
+    }
+
+    #name{
+      font-family: 'Great Vibes';
+      top: 10px;
+      font-size: 35px;
+    }
+
+    .position-div {
+      position: absolute;
+      width: 686px;
+      height: 197px;
+    }
+
+    .outline {
+      position: absolute;
+      width: 686px;
+      height: 180px;
+
+      border: 3px solid #9F2929;
+      box-sizing: border-box;
+    }
+
+    /* PROGRAMMER & DESIGNER */
+    .text-qual {
+      position: absolute;
+      align-content: center;
+      text-align: left;
+
+      font-family: Prata;
+      font-style: normal;
+      font-weight: normal;
+      line-height: 42.61px;
+      font-size: 40px;
+      letter-spacing: 4.8px;
+
+      color: #fbfbfb;
+    }
+
+    /* 2017 */
+    .year {
+      position: absolute;
+      width: 51px;
+      z-index: 2;
+      left: 50px;
+
+      font-family: Roboto;
+      font-style: normal;
+      font-weight: bold;
+      line-height: 34px;
+      text-align: center;
+
+      background: #FF5252;
+      color: #fbfbfb;
+    }
+
+    /* DEL */
+    .place {
+      position: absolute;
+      width: 85px;
+      height: 63px;
+      right: 10px;
+      bottom: -40px;
+      z-index: 2;
+
+      font-family: PT Sans Caption;
+      font-style: normal;
+      font-weight: bold;
+      line-height: normal;
+      font-size: 20px;
+
+      color: #fbfbfb;
+    }
+
+/*
+
+#sign img{
+  -webkit-filter: drop-shadow(2px 2px 1px #222);
+  filter: drop-shadow(2px 2px 1px #222);
+  width: 150px;
+}
+
+/* About */
+  .about {
+      padding: 50px 0;
+      min-height:100%;
+  }
+
+/*Brand Identity*/
+/* div3 */
+    .brand {
+      width: 200px;
+      height: 200px;
+    }
+
+    .white{
+      background-color: white;
+    }
+
+    .brand-head {
+      width: inherit;
+      z-index: 2;
+      overflow: hidden;
+      text-align: right;
+    }
+
+/*div4 */
+    #Hind {
+      font-family: 'Hind';
+      text-align: center;
+    }
+
+    .logo img {
+      width: 80px;
+      height: 80px;
+    }
+
+/*Publication*/
+/*div5*/
+    .publication {
+      left: 20px;
+    }
+
+/* Footer */
+#to-top {
+  display: none;
+  position: fixed;
+  bottom: 5px;
+  right: 5px;
+}
+
+footer h4, footer p {
+  font-size: 22px;
+}
