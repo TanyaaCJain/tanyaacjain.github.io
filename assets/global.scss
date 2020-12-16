@@ -1,0 +1,31 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;400;600;700&display=swap');
+
+// Bootstrap mixins and functions
+@import "bootstrap/mixins";
+@import "bootstrap/functions";
+
+// Change variables here
+@import "neumorphism/variables";
+
+// Bootstrap
+@import "bootstrap/bootstrap";
+
+// Vendor
+@import "neumorphism/vendor";
+
+// mixins & functions
+@import "neumorphism/mixins";
+@import "neumorphism/functions";
+
+// Utilities
+@import "neumorphism/reboot";
+@import "neumorphism/utilities";
+
+// Layout
+@import "neumorphism/layout";
+
+// Components
+@import "neumorphism/components";
+
+// Boilerplate and additional css
+@import "boilerplate.scss";
