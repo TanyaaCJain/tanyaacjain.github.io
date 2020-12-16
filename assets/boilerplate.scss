@@ -1,0 +1,141 @@
+.header-full-height {
+  height: calc(100vh - 65px);
+}
+.full-page {
+  height: 100vh;
+  width: 100vw;
+}
+.atleast-full-page {
+  min-height: 100vh;
+  min-width: 100vw;
+}
+.full-height {
+  height: 100vh;
+}
+.full-width {
+  width: 100vw;
+}
+.vhcenter {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+.-top {
+  top: -20%;
+}
+.-right {
+  right: -30px;
+}
+.-right2 {
+  right: -50px;
+}
+.-bottom {
+  top: auto;
+  bottom: 0;
+}
+.-bottom2 {
+  top: auto;
+  bottom: 100px;
+}
+.-left {
+  right: auto;
+  left: -30px;
+}
+.-left2 {
+  right: auto;
+  left: -50px;
+}
+.-center {
+  width: 100vw;
+  text-align: center;
+}
+
+html, body {
+  font-family: 'zxcv', serif;
+}
+
+//d--
+.boilerplate-component-container {
+  display: grid;
+  justify-items: center;
+  grid-gap: 10px;
+  align-items: center;
+}
+.boilerplate-heading {
+    font-size: 18px;
+}
+.boilerplate-text-input {
+  .text-label {
+    padding: 5px 0;
+    font-size: 12px;
+  }
+  .text-input {
+    font-size: 14px;
+    min-width: 261px;
+    height: 38px;
+    padding: 0 5px;
+  }
+  .text-input::placeholder {
+    opacity: 0.6;
+    font-size: 12px;
+  }
+}
+.boilerplate-text {
+  text-align: center;
+} 
+.boilerplate-button {
+  min-width: 120px;
+  width: 230px;
+  // height: 50px;
+
+  .boilerplate-button-text {
+    width: inherit;
+    height: inherit;
+    padding: 0 20px;
+  }
+}
+.boilerplate-table {
+  table {
+    overflow-x: scroll;
+
+    tr {
+      padding: 0;
+      & > th {
+        padding: 5px 15px;
+      }
+      & > td {
+        text-align: center;
+        padding: 2px 8px;
+      }
+    }
+  }
+}
+.divider-text-container {
+  display: inline-flex;
+  .divider-line {
+    width: 50px;
+    line-height: 50px;
+  }
+  .divider-text {
+    line-height: 0px;
+    padding: 0 5px;
+  }
+}
+.anchor {
+  width: 230px;
+}
+.alert-danger {
+  color: #e6e7ee !important;
+  background-color: #94202d !important;
+  border-color: #9f1f2d;
+}
+.alert-success {
+  color: #e6e7ee !important;
+  background-color: #195e49 !important;
+  border-color: #296e58;
+}
