@@ -1,7 +1,0 @@
-/* Create a Parallax Effect */
-.bg2, .bg1, footer {
-    background-attachment: fixed;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-}

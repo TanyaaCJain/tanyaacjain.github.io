@@ -1,0 +1,69 @@
+@font-face {
+  font-family: zxcv;
+  src: url(../static/fonts/zxcv-Light.woff2)
+}
+
+@font-face {
+  font-family: zxcv;
+  font-style: italic;
+  src: url(../static/fonts/zxcv-LightItalic.woff2)
+}
+
+@font-face {
+  font-family: vnwf-cr;
+  src: url(../static/fonts/NeueWorld-CondensedRegular.otf)
+}
+@font-face {
+  font-family: vnwf-et;
+  src: url(../static/fonts/NeueWorld-ExtendedThin.otf)
+}
+@font-face {
+  font-family: vnwf-scu;
+  src: url(../static/fonts/NeueWorld-SemiCondensedUltrabold.otf)
+}
+@font-face {
+  font-family: vnwf-seb;
+  src: url(../static/fonts/NeueWorld-SemiExtendedBlack.otf)
+}
+@font-face {
+  font-family: vnwf-scl;
+  src: url(../static/fonts/NeueWorld-SuperCondensedLight.otf)
+}
+
+// ---------
+hr {
+  border: 0.5px solid;
+  margin: 30px 20px;
+}
+
+.polygon-rotate {
+  height: 120px;
+}
+
+body {
+  cursor: url(../static/img/circleGradient.png), auto;
+}
+
+.section-text {
+  font-family: 'EB Garamond', serif;
+
+  p {
+    padding-bottom: 10px;
+  }
+}
+
+a[href] {
+  color: #bb7a18;
+  text-decoration: none;
+  cursor: url(../static/img/rightArrow.png), auto;
+}
+
+.talk-cursor {
+  cursor: url(../static/img/studioMicrophone.png), auto;
+  // cursor:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg'  width='50' height='60' viewport='0 0 100 100' style='fill:black;font-size:30px;'><text y='50%'>🎙</text></svg>") 16 0,auto; /*!emojicursor.app*/
+}
+
+.newspaper-cursor {
+  cursor: url(../static/img/newspaper.png), auto;
+  // cursor:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg'  width='50' height='60' viewport='0 0 100 100' style='fill:black;font-size:30px;'><text y='50%'>🎙</text></svg>") 16 0,auto; /*!emojicursor.app*/
+}
