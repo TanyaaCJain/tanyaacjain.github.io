@@ -1,7 +1,12 @@
 <template>
   <div id="js-scroll" data-scroll-section class="gradient full-width">
-    <div class="vintage -center in-view" data-scroll data-scroll-speed="2" data-scroll-repeat>
-      <img src="../assets/img/vintage/vintage_telephone.png">
+    <div
+      class="vintage -center in-view"
+      data-scroll
+      data-scroll-speed="2"
+      data-scroll-repeat
+    >
+      <img src="../assets/img/vintage/vintage_telephone.png" />
     </div>
     <div class="gradient-row justify-center">
       <div

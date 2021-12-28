@@ -25,18 +25,18 @@ import horizontalStickyScroll from '~/mixins/horizontal_sticky_scroll.js'
 
 export default {
   mixins: [horizontalStickyScroll],
-  data () {
+  data() {
     return {
-      honors_list: []
+      honors_list: [],
     }
   },
-  created () {
+  created() {
     this.fetch_honors_data()
   },
   methods: {
-    fetch_honors_data () {
+    fetch_honors_data() {
       this.honors_list = this.$store.state.modules.honors.honors.list
-    }
-  }
+    },
+  },
 }
 </script>

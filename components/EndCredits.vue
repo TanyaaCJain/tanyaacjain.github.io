@@ -3,7 +3,7 @@
     <div class="end-credits">
       Made with
       <span class="fas fa-heart" />
-      <br>
+      <br />
       by Tanya Jain
     </div>
   </div>
@@ -12,7 +12,7 @@
 <style lang="scss">
 .end-credits {
   font-family: 'vnwf-cr', serif;
-  color:  rgb(223, 169, 20);
+  color: rgb(223, 169, 20);
   font-size: 16vw;
   padding: 40px 0;
   margin-bottom: 40px;

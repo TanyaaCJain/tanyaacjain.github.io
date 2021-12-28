@@ -15,22 +15,22 @@ export default {
   props: {
     id: {
       type: String,
-      default: ''
+      default: '',
     },
     text: {
       type: String,
-      default: ''
+      default: '',
     },
     link: {
       type: String,
-      default: ''
-    }
+      default: '',
+    },
   },
   methods: {
-    close () {
+    close() {
       this.id = false
-    }
-  }
+    },
+  },
 }
 </script>
 

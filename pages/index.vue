@@ -3,7 +3,7 @@
     <Header />
     <FindAnywhere />
     <About />
-    <hr data-scroll-section>
+    <hr data-scroll-section />
     <!-- <TestHonor /> -->
     <Press />
     <Honors />
@@ -21,8 +21,8 @@ import locomotive from '~/mixins/locomotive.js'
 export default {
   component: {
     Header,
-    About
+    About,
   },
-  mixins: [locomotive]
+  mixins: [locomotive],
 }
 </script>

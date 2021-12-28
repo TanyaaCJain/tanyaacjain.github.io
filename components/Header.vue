@@ -3,15 +3,11 @@
     <header class="header">
       <div class="overlay" />
       <div class="vhcenter position-div">
-        <div class="place">
-          NEW DELHI, INDIA
-        </div>
-        <div class="year">
-          2020
-        </div>
+        <div class="place">NEW DELHI, INDIA</div>
+        <div class="year">2020</div>
         <div class="outline vhcenter">
           <div class="text-qual vhcenter">
-            Software Developer Engineer<br>Designer<br>+ + +
+            Software Developer Engineer<br />Designer<br />+ + +
           </div>
         </div>
       </div>
@@ -20,7 +16,7 @@
 </template>
 
 <style scoped>
-.header{
+.header {
   display: table;
   position: relative;
   width: 100%;
@@ -43,7 +39,13 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(143, 114, 87, 0.61); /* Black background with opacity */
+  background-color: rgba(
+    143,
+    114,
+    87,
+    0.61
+  ); /* Black background with opacity */
+
   z-index: 2; /* Specify a stack order in case you're using a different order for other elements */
 }
 
@@ -53,7 +55,7 @@
   padding-left: 30px;
 }
 
-#name{
+#name {
   font-family: 'Great Vibes', serif;
   top: 10px;
   font-size: 35px;

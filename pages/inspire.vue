@@ -1,16 +1,21 @@
 <template>
   <div id="js-scroll" data-scroll-section class="about atleast-full-page">
     <!-- <div class="about atleast-full-page"> -->
-    <div class="honors-header">
-      Honors &amp; Awards &#127942;
-    </div>
-    <div class="space-holder" :style="`height:calc(${horizontalScrollWidth}px - 100vw + 100vh + 150)`">
+    <div class="honors-header">Honors &amp; Awards &#127942;</div>
+    <div
+      class="space-holder"
+      :style="`height:calc(${horizontalScrollWidth}px - 100vw + 100vh + 150)`"
+    >
       <div ref="sticky" class="sticky">
         <!-- <div class="honors-wrapper"> -->
         <!-- <div class="honors-header">
           Honors &amp; Awards &#127942;
         </div> -->
-        <div ref="horizontal" class="horizontal" :style="`transform:translateX(${stickyOffsetTop}px)`">
+        <div
+          ref="horizontal"
+          class="horizontal"
+          :style="`transform:translateX(${stickyOffsetTop}px)`"
+        >
           <div class="cards" role="feed">
             <HonorCard
               v-for="(item, index) in honors_list"
@@ -37,16 +42,16 @@
 
 export default {
   // mixins: [horizontalStickyScroll],
-  data () {
+  data() {
     return {
       honors_list: [],
       vintage_objects: [],
       horizontalScrollWidth: '',
-      stickyOffsetTop: ''
+      stickyOffsetTop: '',
     }
   },
   watch: {
-    horizontalScrollWidth () {
+    horizontalScrollWidth() {
       let scrollWidth = '0'
       if (this.$refs.horizontal) {
         scrollWidth = this.$refs.horizontal.scrollWidth
@@ -56,7 +61,7 @@ export default {
       // console.log("horizontal scrollWidth ", scrollWidth)
       return scrollWidth
     },
-    stickyOffsetTop () {
+    stickyOffsetTop() {
       let offsetTop = '0'
       if (this.$refs.sticky) {
         offsetTop = this.$refs.sticky.offsetTop
@@ -65,9 +70,9 @@ export default {
       }
       // console.log("sticky offsetTop ", offsetTop)
       return offsetTop * -1
-    }
+    },
   },
-  created () {
+  created() {
     this.fetch_honors_data()
     // console.log("refs ", this.$refs)
   },
@@ -77,13 +82,13 @@ export default {
   //   })
   // },
   methods: {
-    fetch_honors_data () {
+    fetch_honors_data() {
       this.honors_list = this.$store.state.modules.honors.honors.list
     },
-    handleScroll () {
+    handleScroll() {
       // console.log('sticky offset', this.$refs)
-    }
-  }
+    },
+  },
   // head: {
   //   script: [
   //     {
@@ -127,7 +132,7 @@ export default {
 .honors-header {
   font-size: 6vw;
   font-family: 'vnwf-scu', serif;
-  color:  rgb(223, 169, 20);
+  color: rgb(223, 169, 20);
   padding: 1em;
   overflow-x: scroll;
 }
@@ -148,5 +153,4 @@ export default {
     position: absolute;
   }
 }
-
 </style>

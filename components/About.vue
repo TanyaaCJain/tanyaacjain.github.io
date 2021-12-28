@@ -1,5 +1,9 @@
 <template>
-  <div id="js-scroll" data-scroll-section class="about atleast-full-page container">
+  <div
+    id="js-scroll"
+    data-scroll-section
+    class="about atleast-full-page container"
+  >
     <div data-scroll class="is-inview about-header">
       <AboutHeader />
       <!--img :src="images.sample" loop=infinite /-->
@@ -7,7 +11,7 @@
     <div class="row">
       <div class="col-md-9 about-text">
         <div class="section-text about-text text-bounding-box">
-          <div v-for="(paragraph, index) in this.about_list" :key="index">
+          <div v-for="(paragraph, index) in about_list" :key="index">
             <p v-html="paragraph" />
           </div>
         </div>
@@ -20,24 +24,23 @@
 </template>
 
 <script>
-
 export default {
-  data () {
+  data() {
     return {
       images: {
-        sample: require('@/static/gifs/about.gif')
+        sample: require('@/static/gifs/about.gif'),
       },
-      about_list: ''
+      about_list: '',
     }
   },
-  created () {
+  created() {
     this.fetch_about_data()
   },
   methods: {
-    fetch_about_data () {
+    fetch_about_data() {
       this.about_list = this.$store.state.modules.about.about.list
-    }
-  }
+    },
+  },
 }
 </script>
 

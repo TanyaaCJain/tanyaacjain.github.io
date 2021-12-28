@@ -5,30 +5,53 @@
         &#127765;
       </div> -->
       <div class="vintage-objects">
-        <div class="vintage -right in-view" data-scroll data-scroll-speed="1" data-scroll-repeat>
-          <img src="../assets/img/vintage/girl_sway.png">
+        <div
+          class="vintage -right in-view"
+          data-scroll
+          data-scroll-speed="1"
+          data-scroll-repeat
+        >
+          <img src="../assets/img/vintage/girl_sway.png" />
         </div>
-        <div class="vintage -left2 -bottom in-view" data-scroll data-scroll-speed="4" data-scroll-repeat>
-          <img src="../assets/img/vintage/book.png">
+        <div
+          class="vintage -left2 -bottom in-view"
+          data-scroll
+          data-scroll-speed="4"
+          data-scroll-repeat
+        >
+          <img src="../assets/img/vintage/book.png" />
         </div>
-        <div class="vintage -left -top in-view" data-scroll data-scroll-speed="2" data-scroll-repeat>
-          <img src="../assets/img/vintage/cassette.png">
+        <div
+          class="vintage -left -top in-view"
+          data-scroll
+          data-scroll-speed="2"
+          data-scroll-repeat
+        >
+          <img src="../assets/img/vintage/cassette.png" />
         </div>
-        <div class="vintage -right2 -bottom2 in-view" data-scroll data-scroll-speed="6" data-scroll-repeat>
-          <img src="../assets/img/vintage/flower1.png">
+        <div
+          class="vintage -right2 -bottom2 in-view"
+          data-scroll
+          data-scroll-speed="6"
+          data-scroll-repeat
+        >
+          <img src="../assets/img/vintage/flower1.png" />
         </div>
-        <div class="vintage -center in-view" data-scroll data-scroll-speed="9" data-scroll-repeat>
-          <img src="../assets/img/vintage/ballet.png">
+        <div
+          class="vintage -center in-view"
+          data-scroll
+          data-scroll-speed="9"
+          data-scroll-repeat
+        >
+          <img src="../assets/img/vintage/ballet.png" />
         </div>
       </div>
     </div>
     <div class="links-wrapper container" role="feed">
       <div class="links-display-picture">
-        <img src="../assets/img/links/ldp.png">
+        <img src="../assets/img/links/ldp.png" />
       </div>
-      <div class="links-handle">
-        @tanzitri
-      </div>
+      <div class="links-handle">@tanzitri</div>
       <LinkCard
         v-for="(item, index) in links_list"
         :id="item.id"
@@ -43,20 +66,20 @@
 <script>
 export default {
   name: 'Links',
-  data () {
+  data() {
     return {
       links_list: [],
-      vintage_objects: []
+      vintage_objects: [],
     }
   },
-  created () {
+  created() {
     this.fetch_links_data()
   },
   methods: {
-    fetch_links_data () {
+    fetch_links_data() {
       this.links_list = this.$store.state.modules.links.links.list
-    }
-  }
+    },
+  },
 }
 </script>
 
