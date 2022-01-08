@@ -9,10 +9,10 @@
 <script>
 import Vue from 'vue'
 //import LeonSansPlugin from '@/plugins/leonsans.js'
-import {LeonSans} from '@/static/js/leon.js'
+import { LeonSans } from '@/static/js/leon.js'
 
 export default {
-  data () {
+  data() {
     return {
       leon: '',
       canvas: '',
@@ -20,15 +20,15 @@ export default {
       sw: '',
       sh: '',
       pixelRatio: 2,
-      scale: ''
+      scale: '',
     }
   },
-  mounted () {
+  mounted() {
     this.calculateScale()
     this.drawLeonSans()
   },
   methods: {
-    calculateScale () {
+    calculateScale() {
       this.sw = 0.64 * window.innerWidth
       this.sh = 0.15 * window.innerWidth
       if (window.innerWidth < '330px') {
@@ -37,39 +37,39 @@ export default {
         this.scale = 0.25 * window.innerWidth
       }
     },
-    drawLeonSans () {
+    drawLeonSans() {
       this.elem = document.getElementById('about-header')
-      this.canvas = document.createElement('canvas');
+      this.canvas = document.createElement('canvas')
       this.elem.appendChild(this.canvas)
       //document.body.appendChild(this.canvas);
-      this.ctx = this.canvas.getContext("2d");
+      this.ctx = this.canvas.getContext('2d')
 
-      this.canvas.width = this.sw * this.pixelRatio;
-      this.canvas.height = this.sh * this.pixelRatio;
-      this.canvas.style.width = this.sw + 'px';
-      this.canvas.style.height = this.sh + 'px';
-      this.ctx.scale(this.pixelRatio, this.pixelRatio);
+      this.canvas.width = this.sw * this.pixelRatio
+      this.canvas.height = this.sh * this.pixelRatio
+      this.canvas.style.width = this.sw + 'px'
+      this.canvas.style.height = this.sh + 'px'
+      this.ctx.scale(this.pixelRatio, this.pixelRatio)
 
       this.leon = new LeonSans({
         text: 'about',
         color: [
           ['#9e805a', '#634b27'],
           ['#886d4a', '#715633', '#5a4120', '#422e14'],
-          ['#6b5d4c', '#635749', '#5a4120']
+          ['#6b5d4c', '#635749', '#5a4120'],
         ],
         size: this.scale,
-        weight: 200
-      });
+        weight: 200,
+      })
 
-      requestAnimationFrame( () => {
+      requestAnimationFrame(() => {
         this.ctx.clearRect(0, 0, this.sw, this.sh)
-        const x = (this.sw - this.leon.rect.w) / 2;
-        const y = (this.sh - this.leon.rect.h) / 2;
-        this.leon.position(x, y);
+        const x = (this.sw - this.leon.rect.w) / 2
+        const y = (this.sh - this.leon.rect.h) / 2
+        this.leon.position(x, y)
 
-        this.leon.draw(this.ctx);
-      });
-    }
-  }
+        this.leon.draw(this.ctx)
+      })
+    },
+  },
 }
 </script>

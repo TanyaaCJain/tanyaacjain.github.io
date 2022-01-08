@@ -1,38 +1,48 @@
 <template>
   <div id="js-scroll" data-scroll-section class="atleast-full-page container">
     <div class="social-header">
-      <div class="text in-view" data-scroll data-scroll-speed="3" data-scroll-repeat>
+      <div
+        class="text in-view"
+        data-scroll
+        data-scroll-speed="3"
+        data-scroll-repeat
+      >
         Connect @
       </div>
-      <div class="h3 backgroundstripe in-view" data-scroll data-scroll-delay="0.05" data-scroll-speed="5" data-scroll-repeat>
+      <div
+        class="h3 backgroundstripe in-view"
+        data-scroll
+        data-scroll-delay="0.05"
+        data-scroll-speed="5"
+        data-scroll-repeat
+      >
         Connect @
       </div>
       <!-- <div class="bgcircle300px posmodifier"></div> -->
     </div>
     <div class="row section-text social-text text-bounding-box">
-      <div v-for="(paragraph, index) in this.social_list" :key="index">
-        <p v-html="paragraph"> </p>
+      <div v-for="(paragraph, index) in social_list" :key="index">
+        <p v-html="paragraph"></p>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-
 export default {
-  data () {
+  data() {
     return {
-      social_list: ''
+      social_list: '',
     }
   },
-  created () {
+  created() {
     this.fetch_social_data()
   },
   methods: {
-    fetch_social_data () {
+    fetch_social_data() {
       this.social_list = this.$store.state.modules.social.social.list
-    }
-  }
+    },
+  },
 }
 </script>
 
@@ -40,7 +50,7 @@ export default {
 .social-header {
   .text {
     font-family: 'vnwf-cr', serif;
-    color:  rgb(223, 169, 20);
+    color: rgb(223, 169, 20);
     font-size: 10vw;
     padding: 40px 0 0 20px;
     justify-content: center;
@@ -74,7 +84,7 @@ export default {
   border: 1px solid;
   padding: 30px;
   margin: 1.5em !important;
-  box-shadow: 10px 10px 0 0 #000, 0 4px 4px 0 rgba(0,0,0,.05);
+  box-shadow: 10px 10px 0 0 #000, 0 4px 4px 0 rgba(0, 0, 0, 0.05);
 }
 @media screen and (max-width: 360px) {
   .social-header {

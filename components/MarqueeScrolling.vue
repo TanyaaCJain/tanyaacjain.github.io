@@ -1,18 +1,18 @@
 <template>
   <div id="marqueeTwo" class="find-anywhere-scrolling-container">
     Find Anywhere on Web as @tanyaacjain
-    <img class="polygon-rotate" :src="images.sample">
+    <img class="polygon-rotate" :src="images.sample" />
     Find Anywhere on Web as @tanyaacjain
-    <img class="polygon-rotate" :src="images.sample">
+    <img class="polygon-rotate" :src="images.sample" />
   </div>
 </template>
 
 <script>
 export default {
-  data () {
+  data() {
     return {
       images: {
-        sample: require('@/static/gifs/hexagonRotate.gif')
+        sample: require('@/static/gifs/hexagonRotate.gif'),
       },
       elem: '',
       options: '',
@@ -29,16 +29,16 @@ export default {
       textcolor: '', // Define the text color
       bgcolor: '', // Define the background color
       opacity: '',
-      process: null
+      process: null,
     }
   },
-  mounted () {
+  mounted() {
     this.marquee('marqueeTwo', {
-      direction: 'rtl'
+      direction: 'rtl',
     })
   },
   methods: {
-    buildHTML () {
+    buildHTML() {
       const elemHTML = this.elem.innerHTML
       const elemNode = this.elem.childNodes[1] || this.elem
       this.elemWidth = elemNode.offsetWidth
@@ -76,10 +76,10 @@ export default {
 
       this.start_work()
     },
-    start_work () {
+    start_work() {
       this.process = window.setInterval(this.play_work())
     },
-    play_work () {
+    play_work() {
       // beginning
       this.marqueeElem.style.left = this.start + 'px'
       this.start = this.start + this.speed
@@ -93,12 +93,12 @@ export default {
         }
       }
     },
-    end () {
+    end() {
       window.clearInterval(process)
     },
-    marquee (element, defaults) {
+    marquee(element, defaults) {
       this.elem = document.getElementById(element)
-      this.options = (defaults === undefined) ? {} : defaults
+      this.options = defaults === undefined ? {} : defaults
       this.continuous = this.options.continuous || true // once or continuous
       this.direction = this.options.direction || 'ltr' // ltr or rtl
       this.loops = this.options.loops || -1
@@ -108,8 +108,8 @@ export default {
       this.opacity = this.options.opacity || 1.0
       // Init plugin
       this.buildHTML()
-    }
-  }
+    },
+  },
 }
 </script>
 
@@ -118,6 +118,5 @@ export default {
   overflow: hidden;
   white-space: nowrap;
   position: relative;
-
 }
 </style>

@@ -2,21 +2,23 @@
   <div id="js-scroll" data-scroll-section class="about atleast-full-page">
     <div class="press-wrapper">
       <PressHeader />
-      <p class="press-header-desc">
-        Hover for details.
-      </p>
-      <hr>
+      <p class="press-header-desc">Hover for details.</p>
+      <hr />
       <div
         v-for="(item, index) in press_list"
         :id="index"
         :key="index"
-        :class="['press-box', (item.type === 'Talk') ? 'talk-cursor' : '', (item.cursor) ? item.cursor : '']"
+        :class="[
+          'press-box',
+          item.type === 'Talk' ? 'talk-cursor' : '',
+          item.cursor ? item.cursor : '',
+        ]"
         @mouseover="mouseOver(index)"
         @mouseleave="mouseLeave()"
       >
         <a :href="item.link" class="press-link">
           <p class="press-title" v-html="item.name" />
-          <p v-if="hoveredState && hoveredIndex===index" class="press-desc">
+          <p v-if="hoveredState && hoveredIndex === index" class="press-desc">
             <span class="press-label">
               {{ item.type }}
             </span>
@@ -24,44 +26,43 @@
             {{ item.description }}
           </p>
         </a>
-        <hr>
+        <hr />
       </div>
     </div>
   </div>
 </template>
 
 <script>
-
 export default {
-  data () {
+  data() {
     return {
       hoveredState: false,
-      hoveredIndex: ''
+      hoveredIndex: '',
     }
   },
-  created () {
+  created() {
     this.fetch_press_data()
   },
   methods: {
-    fetch_press_data () {
+    fetch_press_data() {
       this.press_list = this.$store.state.modules.press.press.list
     },
-    mouseOver (index) {
+    mouseOver(index) {
       this.hoveredState = true
       this.hoveredIndex = index
     },
-    mouseLeave () {
+    mouseLeave() {
       this.hoveredState = false
       this.hoveredIndex = ''
-    }
-  }
+    },
+  },
 }
 </script>
 
 <style lang="scss">
 .press-header-desc {
   font-family: 'vnwf-cr', serif;
-  color:  rgb(223, 169, 20);
+  color: rgb(223, 169, 20);
   font-size: 6vw;
   padding: 40px 0 0 20px;
 }

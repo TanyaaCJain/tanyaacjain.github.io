@@ -1,17 +1,13 @@
 <template>
   <div v-if="id" :id="id" class="honor-card hscroll-card">
-    <div class="top-row cross" @click="close()">
-      +
-    </div>
+    <div class="top-row cross" @click="close()">+</div>
     <div class="honors-heading">
       {{ name }}
     </div>
-    <hr>
+    <hr />
     <div class="honors-desc">
       <p>
-        <span class="honors-label">
-          {{ type }}.
-        </span>
+        <span class="honors-label"> {{ type }}. </span>
         ({{ year }})
         {{ description }}
       </p>
@@ -24,30 +20,30 @@ export default {
   props: {
     id: {
       type: String,
-      default: ''
+      default: '',
     },
     name: {
       type: String,
-      default: ''
+      default: '',
     },
     type: {
       type: String,
-      default: ''
+      default: '',
     },
     year: {
       type: String,
-      default: ''
+      default: '',
     },
     description: {
       type: String,
-      default: ''
-    }
+      default: '',
+    },
   },
   methods: {
-    close () {
+    close() {
       this.id = false
-    }
-  }
+    },
+  },
 }
 </script>
 

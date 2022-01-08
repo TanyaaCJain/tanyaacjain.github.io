@@ -1,12 +1,10 @@
 <template>
   <div v-if="id" :id="id" class="honor-card row">
     <div class="col honors-img">
-      <img :src="image">
+      <img :src="image" />
     </div>
     <div class="col honors-text">
-      <div class="honors-label">
-        {{ type }}. ({{ year }})
-      </div>
+      <div class="honors-label">{{ type }}. ({{ year }})</div>
       <div class="honors-heading">
         {{ name }}
       </div>
@@ -23,37 +21,37 @@ export default {
   props: {
     id: {
       type: String,
-      default: ''
+      default: '',
     },
     name: {
       type: String,
-      default: ''
+      default: '',
     },
     type: {
       type: String,
-      default: ''
+      default: '',
     },
     year: {
       type: String,
-      default: ''
+      default: '',
     },
     description: {
       type: String,
-      default: ''
+      default: '',
     },
     image: {
       type: String,
-      default: ''
-    }
+      default: '',
+    },
   },
   methods: {
-    get_image (imageName) {
+    get_image(imageName) {
       return '../assets/img/honors/' + imageName
     },
-    close () {
+    close() {
       this.id = false
-    }
-  }
+    },
+  },
 }
 </script>
 

@@ -1,39 +1,38 @@
 <template>
   <div data-scroll-section class="find-anywhere-scrolling-container">
-    <hr class="marquee-binding-hr">
+    <hr class="marquee-binding-hr" />
     <span id="marqueeZZ" class="find-anywhere-scrolling">
       Find Anywhere on Web as @tanyaacjain
-      <img class="polygon-rotate" :src="images.sample">
+      <img class="polygon-rotate" :src="images.sample" />
     </span>
-    <hr class="marquee-binding-hr">
+    <hr class="marquee-binding-hr" />
   </div>
 </template>
 
 <script>
-
 export default {
-  data () {
+  data() {
     return {
       images: {
-        sample: require('@/static/gifs/hexagonRotate.gif')
+        sample: require('@/static/gifs/hexagonRotate.gif'),
       },
       marquee_scrolling: '',
       elem: '',
-      elemHTML: ''
+      elemHTML: '',
     }
   },
-  mounted () {
+  mounted() {
     this.scroll()
   },
   methods: {
-    scroll () {
+    scroll() {
       for (let i = 0; i < 10; i++) {
         this.elem = document.getElementById('marqueeZZ')
         this.elemHTML = this.elem.innerHTML
         this.elem.innerHTML += this.elemHTML
       }
-    }
-  }
+    },
+  },
 }
 </script>
 
@@ -72,7 +71,7 @@ export default {
   letter-spacing: 3px;
   animation: marquee 21s linear infinite;
   display: inline-block;
-  animation-delay:1.5s;
+  animation-delay: 1.5s;
 
   img {
     height: 120px;
