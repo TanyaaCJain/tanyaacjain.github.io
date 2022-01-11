@@ -1,5 +1,5 @@
 <template>
-  <div v-if="id" :id="id">
+  <div v-if="id_retrieved" :id="id_retrieved">
     <a :href="link">
       <div class="link-card">
         <div class="link-text">
@@ -26,9 +26,14 @@ export default {
       default: '',
     },
   },
+  data() {
+    return {
+      id_retrieved: this.id,
+    }
+  },
   methods: {
     close() {
-      this.id = false
+      this.id_retrieved = false
     },
   },
 }

@@ -1,5 +1,5 @@
 <template>
-  <div v-if="id" :id="id" class="honor-card row">
+  <div v-if="id_retrieved" :id="id_retrieved" class="honor-card row">
     <div class="col honors-img">
       <img :src="image" />
     </div>
@@ -44,12 +44,17 @@ export default {
       default: '',
     },
   },
+  data() {
+    return {
+      id_retrieved: this.id,
+    }
+  },
   methods: {
     get_image(imageName) {
       return '../assets/img/honors/' + imageName
     },
     close() {
-      this.id = false
+      this.id_retrieved = false
     },
   },
 }

@@ -1,5 +1,5 @@
 <template>
-  <div v-if="id" :id="id" class="honor-card hscroll-card">
+  <div v-if="id_retrieved" :id="id_retrieved" class="honor-card hscroll-card">
     <div class="top-row cross" @click="close()">+</div>
     <div class="honors-heading">
       {{ name }}
@@ -39,9 +39,14 @@ export default {
       default: '',
     },
   },
+  data() {
+    return {
+      id_retrieved: this.id,
+    }
+  },
   methods: {
     close() {
-      this.id = false
+      this.id_retrieved = false
     },
   },
 }
@@ -83,7 +88,22 @@ export default {
     padding: 1em;
   }
 }
-@media screen and (max-width: 530px) {
+@media screen and (max-width: 400px) {
+  .honor-card {
+    width: 100vw;
+
+    .top-row {
+      font-size: 10vw;
+    }
+    .honors-heading {
+      font-size: 5vw;
+    }
+    .honors-desc {
+      font-size: 3.5vw;
+    }
+  }
+}
+@media screen and (min-width: 400px) and (max-width: 530px) {
   .honor-card {
     width: 55vw;
 
