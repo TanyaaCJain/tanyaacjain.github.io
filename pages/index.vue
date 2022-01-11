@@ -1,27 +1,27 @@
 <template>
   <div id="js-scroll" data-scroll-container>
-    <Header />
+    <HeaderSection />
     <FindAnywhere />
-    <About />
+    <AboutSection />
     <hr data-scroll-section />
     <!-- <TestHonor /> -->
-    <Press />
-    <Honors />
-    <Gradient />
-    <Social />
+    <PressSection />
+    <HonorsSection />
+    <GradientSection />
+    <SocialSection />
     <EndCredits />
   </div>
 </template>
 
 <script>
-import Header from '@/components/Header.vue'
-import About from '@/components/About.vue'
+import HeaderSection from '~/components/HeaderSection.vue'
+import AboutSection from '~/components/AboutSection.vue'
 import locomotive from '~/mixins/locomotive.js'
 
 export default {
   component: {
-    Header,
-    About,
+    HeaderSection,
+    AboutSection,
   },
   mixins: [locomotive],
 }

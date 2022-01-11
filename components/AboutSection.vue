@@ -5,7 +5,6 @@
     class="about atleast-full-page container"
   >
     <div data-scroll class="is-inview about-header">
-      <!-- <AboutHeader /> -->
       <!-- <img :src="images.sample" loop=infinite/> -->
       <img class="about-header-img" :src="images.sample" />
     </div>
