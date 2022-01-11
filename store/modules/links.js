@@ -4,12 +4,12 @@ const getDefaultState = () => {
       {
         id: 'l1',
         text: 'Website: tanya-jain.xyz',
-        link: 'https://tanya-jain.xyz/',
+        link: 'https://www.tanya-jain.xyz/',
       },
       {
         id: 'l2',
         text: 'QuaratinedDalgona',
-        link: 'https://instagram.com/quarantineddalgona/',
+        link: 'https://www.instagram.com/quarantineddalgona/',
       },
       {
         id: 'l3',
