@@ -84,4 +84,25 @@ export default {
     }
   }
 }
+@media screen and (max-width: 400px) {
+  .honor-card {
+    .honors-img {
+      max-width: 110px;
+    }
+
+    .honors-text {
+      .honors-label {
+        font-size: 1.2em;
+      }
+      .honors-heading {
+        font-size: 1.5em;
+        line-height: 1.2em;
+      }
+      .honors-desc {
+        font-size: 0.8em;
+        line-height: 1.2em;
+      }
+    }
+  }
+}
 </style>
