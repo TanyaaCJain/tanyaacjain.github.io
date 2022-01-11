@@ -1,5 +1,5 @@
 <template>
-  <div v-if="id" :id="id" class="honor-card row">
+  <div v-if="id_retrieved" :id="id_retrieved" class="honor-card row">
     <div class="col honors-img">
       <img :src="image" />
     </div>
@@ -44,12 +44,17 @@ export default {
       default: '',
     },
   },
+  data() {
+    return {
+      id_retrieved: this.id,
+    }
+  },
   methods: {
     get_image(imageName) {
       return '../assets/img/honors/' + imageName
     },
     close() {
-      this.id = false
+      this.id_retrieved = false
     },
   },
 }
@@ -81,6 +86,27 @@ export default {
     .honors-desc {
       font-size: 1.2em;
       line-height: 1.2em;
+    }
+  }
+}
+@media screen and (max-width: 400px) {
+  .honor-card {
+    .honors-img {
+      max-width: 110px;
+    }
+
+    .honors-text {
+      .honors-label {
+        font-size: 1.2em;
+      }
+      .honors-heading {
+        font-size: 1.5em;
+        line-height: 1.2em;
+      }
+      .honors-desc {
+        font-size: 0.8em;
+        line-height: 1.2em;
+      }
     }
   }
 }

@@ -1,24 +1,24 @@
 import _ from 'lodash'
 
 export default {
-  data () {
+  data() {
     return {
-      scrollPosition: 0
+      scrollPosition: 0,
     }
   },
   watch: {
-    $route () {
+    $route() {
       // console.log('route changed: ', this.$route)
       this.lmS.update()
-    }
+    },
   },
-  mounted () {
+  mounted() {
     this.$nextTick(
       function () {
         // eslint-disable-next-line new-cap
         this.lmS = new this.locomotiveScroll({
           el: document.querySelector('#js-scroll'),
-          smooth: true /* if false disable overflow: hidden on html, body */
+          smooth: true /* if false disable overflow: hidden on html, body */,
         })
         // console.log('mounted')
 
@@ -29,14 +29,14 @@ export default {
       }.bind(this)
     )
   },
-  destroyed () {
+  destroyed() {
     // console.log('destroy')
     this.lmS.destroy()
     window.removeEventListener('resize', this.onLmsResize)
   },
   methods: {
-    onLmsResize () {
+    onLmsResize() {
       this.lmS.update()
-    }
-  }
+    },
+  },
 }

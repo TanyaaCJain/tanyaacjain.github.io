@@ -3,4 +3,15 @@ import locomotiveScroll from 'locomotive-scroll'
 
 Object.defineProperty(Vue.prototype, 'locomotiveScroll', {
   value: locomotiveScroll,
+  mobile: {
+    breakpoint: 0,
+    smooth: true,
+  },
+  tablet: {
+    breakpoint: 0,
+    smooth: true,
+  },
+  smartphone: {
+    smooth: true,
+  },
 })

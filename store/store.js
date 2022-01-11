@@ -9,32 +9,32 @@ new Vuex.Store({
     about: {
       namespaced: true,
       state: () => ({
-        about: []
-      })
+        about: [],
+      }),
     },
     honors: {
       namespaced: true,
       state: () => ({
-        honors: []
-      })
+        honors: [],
+      }),
     },
     links: {
       namespaced: true,
       state: () => ({
-        links: []
-      })
+        links: [],
+      }),
     },
     press: {
       namespaced: true,
       state: () => ({
-        press: []
-      })
+        press: [],
+      }),
     },
     social: {
       namespaced: true,
       state: () => ({
-        social: []
-      })
-    }
-  }
+        social: [],
+      }),
+    },
+  },
 })

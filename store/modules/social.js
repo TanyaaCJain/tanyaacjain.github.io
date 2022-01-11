@@ -14,14 +14,14 @@ const getDefaultState = () => {
       'You can also view my\
        <a href="/doc/cv.pdf"> CV </a>\
        or contact me via\
-       <a href="mailto:tanyaacjain@tanya-jain.xyz"> e-mail</a>.'
-    ]
+       <a href="mailto:tanyaacjain@tanya-jain.xyz"> e-mail</a>.',
+    ],
   }
 }
 const state = () => ({
-  social: getDefaultState()
+  social: getDefaultState(),
 })
 
 export default {
-  state
+  state,
 }
