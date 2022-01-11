@@ -15,9 +15,9 @@
 
 const Marquee = function (element, defaults) {
   const elem = document.getElementById(element)
-  const options = (defaults === undefined) ? {} : defaults
-  const continuous = options.continuous || true	// once or continuous
-  const direction = options.direction || 'ltr' 	// ltr or rtl
+  const options = defaults === undefined ? {} : defaults
+  const continuous = options.continuous || true // once or continuous
+  const direction = options.direction || 'ltr' // ltr or rtl
   const loops = options.loops || -1
   let speed = options.speed || 0.5
   let milestone = 0

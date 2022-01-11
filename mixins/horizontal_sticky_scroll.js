@@ -1,12 +1,12 @@
 export default {
-  data () {
+  data() {
     return {
       spaceHolder: {},
       horizontal: {},
       vw: '',
       vh: '',
       objectWidth: '',
-      sticky: {}
+      sticky: {},
     }
   },
   // computed: {
@@ -26,7 +26,7 @@ export default {
 
   //   }
   // }
-  mounted () {
+  mounted() {
     // console.log('calling mounts')
     this.assignValues()
     //   this.scrollHorizontally()
@@ -40,26 +40,28 @@ export default {
     // console.log('sticky', this.sticky)
   },
   methods: {
-    assignValues () {
+    assignValues() {
       this.spaceHolder = document.querySelector('.space-holder')
       this.sticky = document.querySelector('.sticky')
       this.horizontal = document.querySelector('.horizontal')
     },
-    calcDynamicHeight (ref) {
+    calcDynamicHeight(ref) {
       this.vw = window.innerWidth
       this.vh = window.innerHeight
       this.objectWidth = ref.scrollWidth
       return this.objectWidth - this.vw + this.vh + 150 // 150 is the padding (in pixels) desired on the right side of the .cards container. This can be set to whatever your styles dictate
     },
-    handleScroll () {
+    handleScroll() {
       // console.log('sticky offset', this.sticky.offsetTop)
       this.horizontal.style.transform = `translateX(-${this.sticky.offsetTop}px)`
       // console.log('ht', this.horizontal.style.transform)
     },
-    handleResize () {
-      this.spaceHolder.style.height = `${this.calcDynamicHeight(this.horizontal)}px`
+    handleResize() {
+      this.spaceHolder.style.height = `${this.calcDynamicHeight(
+        this.horizontal
+      )}px`
     },
-    scrollHorizontally () {
+    scrollHorizontally() {
       // console.log('hori',this.horizontal)
       // this.spaceHolder.style.height = `${this.calcDynamicHeight(this.horizontal)}px`
       this.handleScroll()
@@ -69,6 +71,6 @@ export default {
       // console.log('calling resize listener')
 
       window.addEventListener('resize', this.handleResize())
-    }
-  }
+    },
+  },
 }
