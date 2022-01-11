@@ -83,7 +83,7 @@ export default {
   font-size: 48px;
   border: 1px solid;
   padding: 30px;
-  margin: 1.5em !important;
+  margin: 0 1.5em 1.5em 1.5em !important;
   box-shadow: 10px 10px 0 0 #000, 0 4px 4px 0 rgba(0, 0, 0, 0.05);
 }
 @media screen and (max-width: 360px) {
@@ -113,7 +113,7 @@ export default {
     }
   }
   .social-text {
-    font-size: 25px;
+    font-size: 20px;
     margin: 5px;
     padding: 20px;
   }
