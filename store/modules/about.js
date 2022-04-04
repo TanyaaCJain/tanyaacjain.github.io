@@ -10,7 +10,7 @@ const getDefaultState = () => {
 
       '💻 Computer Science and Engineering graduate',
       '🔬 Researching on detecting and analyzing text on documents. 🧪',
-      '👩‍💻 Software Engineer @ Essentia Softserv',
+      '👩‍💻 Senior Software Engineer @ Prismberry Technologies',
       '🚖 Autonomous Intelligent Vehicles enthusiast 🏎',
       '🐧 Founding member @ ASET ALiAS',
       '🐍 Design Team @ PyCon India, PyDelhi Conf',
