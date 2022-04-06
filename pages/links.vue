@@ -84,6 +84,11 @@ export default {
 </script>
 
 <style lang="scss">
+body {
+  background-color: #301e03;
+  overflow-x: hidden;
+  max-width: 100vw;
+}
 nav.navbar {
   background-color: #301e03 !important;
   border-top: 2px solid #fff;

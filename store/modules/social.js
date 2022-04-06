@@ -6,7 +6,7 @@ const getDefaultState = () => {
        <a href="https://github.com/tanyaacjain"> GitHub</a>,\
        <a href="https://linkedin.in/tanyaacjain"> Linked In</a>,\
        <a href="https://twitter.com/tanyaacjain"> Twitter</a> and\
-       <a href="https://behance.net/tanyaacjain"> Behance</a>. \
+       <a href="https://www.behance.net/Tanya-Jain"> Behance</a>. \
        To stay updated with my current interests and learn about my recommendations, you shall read my occasional posts on my blog,\
        <a href="https://kensho.tanya-jain.xyz"> Kenshō</a>.',
 
