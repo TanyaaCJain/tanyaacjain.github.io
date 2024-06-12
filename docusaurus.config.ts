@@ -3,8 +3,8 @@ import type {Config} from '@docusaurus/types';
 import type * as Preset from '@docusaurus/preset-classic';
 
 const config: Config = {
-  title: 'My Site',
-  tagline: 'Dinosaurs are cool',
+  title: 'Tanya Jain',
+  tagline: 'Personal Website',
   favicon: 'img/favicon.ico',
 
   // Set the production url of your site here
@@ -15,7 +15,7 @@ const config: Config = {
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
-  organizationName: 'facebook', // Usually your GitHub org/user name.
+  organizationName: 'tanyaacjain', // Usually your GitHub org/user name.
   projectName: 'docusaurus', // Usually your repo name.
 
   onBrokenLinks: 'throw',
@@ -63,9 +63,9 @@ const config: Config = {
     // Replace with your project's social card
     image: 'img/docusaurus-social-card.jpg',
     navbar: {
-      title: 'My Site',
+      title: 'Tanya Jain',
       logo: {
-        alt: 'My Site Logo',
+        alt: 'Tanya Jain Logo',
         src: 'img/logo.svg',
       },
       items: [
@@ -75,7 +75,7 @@ const config: Config = {
           position: 'left',
           label: 'Tutorial',
         },
-        {to: '/blog', label: 'Blog', position: 'left'},
+        // {to: '/blog', label: 'Blog', position: 'left'},
         {
           href: 'https://github.com/facebook/docusaurus',
           label: 'GitHub',
@@ -86,15 +86,15 @@ const config: Config = {
     footer: {
       style: 'dark',
       links: [
-        {
-          title: 'Docs',
-          items: [
-            {
-              label: 'Tutorial',
-              to: '/docs/intro',
-            },
-          ],
-        },
+        // {
+        //   title: 'Docs',
+        //   items: [
+        //     {
+        //       label: 'Tutorial',
+        //       to: '/docs/intro',
+        //     },
+        //   ],
+        // },
         {
           title: 'Community',
           items: [
@@ -102,26 +102,18 @@ const config: Config = {
               label: 'Stack Overflow',
               href: 'https://stackoverflow.com/questions/tagged/docusaurus',
             },
-            {
-              label: 'Discord',
-              href: 'https://discordapp.com/invite/docusaurus',
-            },
-            {
-              label: 'Twitter',
-              href: 'https://twitter.com/docusaurus',
-            },
           ],
         },
         {
           title: 'More',
           items: [
-            {
-              label: 'Blog',
-              to: '/blog',
-            },
+            // {
+            //   label: 'Blog',
+            //   to: '/blog',
+            // },
             {
               label: 'GitHub',
-              href: 'https://github.com/facebook/docusaurus',
+              href: 'https://github.com/tanyaacjain',
             },
           ],
         },
