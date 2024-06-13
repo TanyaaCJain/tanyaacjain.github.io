@@ -1,0 +1,28 @@
+{
+    "hyperlink_list": [
+        {
+            "text": "🌐 tanya-jain.xyz",
+            "link": "https://www.tanya-jain.xyz/"
+        },
+        {
+            "text": "🦚 Selected Projects",
+            "link": "/projects"
+        },
+        {
+            "text": "[Tech] Auto Integrate",
+            "link": "/projects/auto-integrate"
+        },
+        {
+            "text": "QuaratinedDalgona",
+            "link": "https://www.instagram.com/quarantineddalgona/"
+        },
+        {
+            "text": "[Design] PyCon India 2021 Programme Guide - Fine Print",
+            "link": "https://in.pycon.org/share/PyConIndia2021ProgramGuide.pdf"
+        },
+        {
+            "text": "[Design] PyCon India 2020 Programme Guide - Fine Print",
+            "link": "https://in.pycon.org/share/PyConIndia2020ProgramGuide.pdf"
+        }
+    ]
+}

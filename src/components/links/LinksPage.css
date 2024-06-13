@@ -1,0 +1,58 @@
+/* @tailwind base; */
+@tailwind components;
+@tailwind utilities;
+
+body {
+    overflow-x: hidden;
+    max-width: 100vw;
+}
+
+.hyperlink-section {
+    @apply tw-w-screen tw-overflow-hidden;
+    /* background-color: #301e03; */
+}
+
+.links-wrapper {
+    @apply tw-container tw-relative tw-py-8 sm:tw-py-8 tw-px-2 sm:tw-px-20 tw-mx-auto tw-bottom-2;
+    z-index: 10;
+    position: relative;
+}
+
+.links-wrapper .links-handle {
+    @apply tw-text-center tw-text-lg;
+    color: #fff;
+}
+
+.links-wrapper .links-img {
+    @apply tw-flex tw-justify-center tw-mx-auto tw-py-4 tw-h-[130px] tw-w-[130px];
+}
+
+.links-wrapper .links-img img {
+    @apply tw-rounded-full;
+}
+
+.hundred2 {
+    background-color: #301e03;
+    z-index: 1;
+}
+
+.link-card {
+    @apply tw-rounded-[20px] tw-w-11/12 tw-min-w-80 tw-px-2 tw-py-1 sm:tw-p-3 tw-my-4 tw-mx-auto;
+    border: solid 2px #fff;
+    background-color: #fff;
+    color: #301e03;
+}
+
+.link-card:hover {
+    background-color: transparent;
+    border: 2px solid #fff;
+    color: #fff !important;
+}
+
+.link-card > div {
+    @apply tw-text-center tw-text-lg;
+}
+
+.links-icons {
+    @apply tw-flex tw-justify-center tw-items-center;
+}
