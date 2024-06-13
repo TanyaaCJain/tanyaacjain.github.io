@@ -73,14 +73,29 @@ const config: Config = {
           type: 'docSidebar',
           sidebarId: 'tutorialSidebar',
           position: 'left',
-          label: 'Tutorial',
+          label: 'About Me',
         },
         // {to: '/blog', label: 'Blog', position: 'left'},
         {
-          href: 'https://github.com/facebook/docusaurus',
+          href: 'https://github.com/tanyaacjain',
           label: 'GitHub',
           position: 'right',
         },
+        {
+          href: 'https://linkedin.com/in/tanyaacjain',
+          label: 'LinkedIn',
+          position: 'right',
+        },
+        {
+          href: 'https://x.com/tanyaacjain',
+          label: 'Twitter',
+          position: 'right',
+        },
+        {
+          href: 'https://www.behance.net/Tanya-Jain',
+          label: 'Behance',
+          position: 'right',
+        }
       ],
     },
     footer: {
