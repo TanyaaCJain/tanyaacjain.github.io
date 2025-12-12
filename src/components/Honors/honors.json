@@ -1,0 +1,39 @@
+{
+    "honors_list": [
+        {
+            "type": "Honor",
+            "name": "Shri Baljit Shastri Award.",
+            "description": "Best in Human and Traditional Values among 900+ peers. Most coveted in Amity University UP",
+            "year": "2020",
+            "img": "BaljitShastri.png"
+        },
+        {
+            "type": "Selected",
+            "name": "Pandas Mentoring",
+            "description": "Selected to be mentored by Marc Gracia, a core maintainer of pandas",
+            "year": "2019",
+            "img": "pandas.png"
+        },
+        {
+            "type": "Award",
+            "name": "Best Website Design Award",
+            "description": "TRACE 2018 Conference, Amity University UP for GIS app aiding Himalayan irrigation & soil research",
+            "year": "2018",
+            "img": "TRACE.png"
+        },
+        {
+            "type": "Honor",
+            "name": "Invited by Ministry of Electronics and Information Technology",
+            "description": "to the 2014 MyGov event for volunteerism and participative governance, attended by India's Prime Minister and 2000+ delegates.",
+            "year": "2014",
+            "img": "myGovInvite.png"
+        },
+        {
+            "type": "Honor",
+            "name": "Invited by GD Goenka Public School Vasant Kunj, Delhi, India",
+            "description": "to judge a competition in their annual tech fest for students",
+            "year": "2023",
+            "img": "gdg.jpg"
+        }
+    ]
+}

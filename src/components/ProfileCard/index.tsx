@@ -1,5 +1,6 @@
+import BookMyCal from "../BookMyCal";
 import { TiSocialGithub, TiSocialLinkedin, TiSocialTwitter } from "react-icons/ti";
-import LDP from '@site/src/assets/images/ldp.png';
+import ProfileImage from '@site/src/assets/images/profile-image.jpg';
 import { IoLocation } from "react-icons/io5";
 
 export default function ProfileCard(): JSX.Element {
@@ -7,7 +8,7 @@ export default function ProfileCard(): JSX.Element {
     <div className='tw-py-3 tw-px-2 tw-flex tw-flex-col tw-gap-1'>
         <div className='tw-flex tw-w-full'>
             <div className='tw-flex tw-pb-2 tw-h-[90px] tw-w-[90px]'>
-                <img className='tw-rounded-full' src={LDP} alt='LDP' />
+                <img className='tw-rounded-full' src={ProfileImage} alt='ProfileImage' />
             </div>
             <div className='tw-pl-2 tw-self-center tw-flex-grow'>
                 <div className='tw-text-lg'>Tanya Jain</div>
@@ -30,12 +31,17 @@ export default function ProfileCard(): JSX.Element {
                 <IoLocation className='tw-text-xl' />
             </div>
             <div className='tw-text-xs'>
-                San Francisco | Delhi | Bangkok
+                {`127.0.0.1 in \{ San Francisco | Delhi | Bangkok \} `}
             </div>
         </div>
         <div className="tw-text-xs tw-text-center tw-py-2">
-            Senior Software Engineer | Full Stack & GenAI specialist | Founder | Creative Director
+            Senior Software Engineer | Full Stack & GenAI specialist | Creative Director
+            <br/>
+            <span className="tw-text-2xl tangerine-regular">
+            despite it all, a computer scientist
+            </span>
         </div>
+        <BookMyCal />
     </div>
   );
 }

@@ -20,7 +20,6 @@ body {
 
 .links-wrapper .links-handle {
     @apply tw-text-center tw-text-lg;
-    color: #fff;
 }
 
 .links-wrapper .links-img {

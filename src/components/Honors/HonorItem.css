@@ -1,0 +1,49 @@
+.honor-card {
+  @apply tw-flex tw-gap-4 tw-text-left;
+}
+
+.honor-card .honors-img {
+  max-width: 130px;
+  width: 20em;
+  padding: 0 1px;
+  height: 200px;
+}
+
+.honor-card .honors-img img {
+  width: 100%;
+  object-fit: cover;
+  height: 100%;
+}
+
+.honor-card .honors-text .honors-label {
+  @apply tw-text-2xl md:tw-text-4xl;
+}
+
+.honor-card .honors-text .honors-heading {
+  @apply tw-text-xl sm:tw-text-3xl;
+}
+
+.honor-card .honors-text .honors-desc {
+  @apply tw-text-lg sm:tw-text-xl;
+}
+
+@media screen and (max-width: 400px) {
+  .honor-card .honors-img {
+    max-width: 50px;
+    height: 100px;
+  }
+
+  .honors-text .honors-label {
+    font-size: 1.2em;
+  }
+
+  .honors-text .honors-heading {
+    font-size: 1.5em;
+    line-height: 1.2em;
+  }
+
+  .honors-text .honors-desc {
+    font-size: 0.9em!important;
+    line-height: 1.5em!important;
+  }
+}

@@ -6,6 +6,7 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,300;0,6..12,400;0,6..12,700;0,6..12,800;1,6..12,400;1,6..12,600;1,6..12,800&family=Nunito:wght@300&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,600;0,700;1,700&family=Nunito+Sans:ital,opsz,wght@0,6..12,300;0,6..12,400;0,6..12,700;0,6..12,800;1,6..12,400;1,6..12,600;1,6..12,800&family=Nunito:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Tangerine:wght@400;700&display=swap');
 
 @tailwind components;
 @tailwind utilities;
@@ -51,9 +52,33 @@
   src: url(../assets/fonts/bc-med.ttf)
 }
 
+.tangerine-regular {
+  font-family: "Tangerine", cursive;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.tangerine-bold {
+  font-family: "Tangerine", cursive;
+  font-weight: 700;
+  font-style: normal;
+}
+
 h1,
 h2,
 h3,
 h4 {
   font-family: 'zxcv', serif;
+}
+
+/* a[href] {
+  cursor: url(../assets/images/cursors/rightArrow.png), auto;
+} */
+
+.talk-cursor {
+  cursor: url(../assets/images/cursors/studioMicrophone.png), auto;
+}
+
+.newspaper-cursor {
+  cursor: url(../assets/images/cursors/newspaper.png), auto;
 }

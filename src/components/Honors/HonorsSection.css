@@ -1,0 +1,116 @@
+.hundred {
+  @apply tw-absolute tw-w-screen;
+  z-index: -1;
+  background-image: radial-gradient(rgba(255, 202, 53, 0.74) 4%,
+      rgb(228, 205, 39) 20%,
+      white 60%);
+}
+
+.hundred .planet {
+  @apply tw-text-center tw-w-full;
+  font-size: 32vw;
+  align-items: center;
+  line-height: 63vw;
+}
+
+.hundred .vintage-objects {
+  @apply tw-absolute tw-right-5;
+  top: 30%;
+  height: calc(100vh - 2em) !important;
+  width: 100vw;
+}
+
+.hundred .vintage-objects .girl-sway {
+  @apply tw-absolute -tw-right-0;
+}
+
+.hundred .vintage-objects .girl-sway {
+  @apply tw-absolute -tw-right-0;
+}
+
+.hundred .vintage-objects .girl-sway img {
+  @apply tw-absolute -tw-right-0;
+}
+
+
+.space-holder {
+  position: relative;
+  width: 100%;
+}
+
+.sticky {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  width: 100%;
+  overflow-x: scroll;
+  overflow-y: hidden;
+}
+
+.sticky .horizotal {
+  position: absolute;
+  will-change: transform;
+}
+
+.sticky .horizotal .cards {
+  position: relative;
+  height: 100%;
+  padding: 0 0 0 150px;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.honors-section {
+  @apply -tw-bottom-60 tw-container;
+}
+
+.honors-wrapper .honors-header {
+  @apply tw-mb-12 !important;
+  /* font-size: 6vw; */
+  font-family: 'vnwf-scu', serif;
+  color: rgb(223, 169, 20);
+  padding: 1em 1em 0 1em;
+  /* overflow-x: scroll; */
+}
+
+.honors-wrapper .honor-card-wrapper {
+  @apply tw-inline-flex tw-justify-center;
+  /* display: inline-flex; */
+  min-width: 100vw;
+  /* justify-content: center; */
+  bottom: 100px;
+  top: auto;
+}
+
+.honors-wrapper .honors-container {
+  @apply tw-container tw-mx-auto tw-px-2 sm:tw-px-0 tw-grid tw-grid-cols-1 tw-gap-8;
+}
+
+@media screen and (max-width: 1000px) {
+  .hundred .planet {
+    font-size: 60vw;
+    line-height: 150vw;
+  }
+
+  .hundred .vintage-objects {
+    height: calc(100vh - 14em) !important;
+
+  }
+
+  .honors-wrapper .honors-header {
+    font-size: 13vw;
+    line-height: 1.2em;
+    padding: 0.6em 0.6em 0 0.6em;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .honors-wrapper .honors-header {
+    font-size: 7vw;
+    line-height: 1.2em;
+    padding: 0.2em 0em 0 0em;
+    margin: 1em 0!important;
+  }
+}

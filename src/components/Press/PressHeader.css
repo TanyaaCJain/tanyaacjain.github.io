@@ -1,0 +1,87 @@
+.press-header,
+.talks-header {
+  @apply tw-inline-flex tw-w-full tw-justify-center tw-text-center tw-p-0;
+  font-family: 'vnwf-et', serif;
+  font-size: 6vw;
+
+  div {
+    /* width: 1.2em; */
+    padding: 0 0.2em;
+    height: 1.2em;
+    line-height: 1.45em;
+    text-align: center;
+  }
+}
+
+@media screen and (max-width: 800px) {
+ .press-header,
+ .talks-header {
+    font-size: 9vw;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .press-header,
+  .talks-header {
+     font-size: 12vw;
+   }
+ }
+
+.press-1 {
+  font-family: 'vnwf-scu', serif;
+  background: #000;
+  color: #fff;
+}
+.press-2 {
+  font-family: 'vnwf-cr', serif;
+  background: rgb(223, 169, 20);
+  color: #000;
+  /* width: 0.8em !important; */
+}
+.press-3 {
+  font-family: 'vnwf-seb', serif;
+  background: #000;
+  color: rgb(223, 169, 20);
+  /* width: 1.5em !important; */
+}
+.press-4 {
+  font-family: 'vnwf-scl', serif;
+  background: rgb(223, 169, 20);
+  color: #000;
+  /* width: 0.8em !important; */
+}
+.press-5 {
+  font-family: 'vnwf-cr', serif;
+  background: #000;
+  color: #fff;
+  /* width: 1em !important; */
+}
+.talks-1 {
+  font-family: 'vnwf-cr', serif;
+  background: #000;
+  color: rgb(223, 169, 20);
+  /* width: 0.8em !important; */
+}
+.talks-2 {
+  font-family: 'vnwf-seb', serif;
+  background: rgb(223, 169, 20);
+  color: #000;
+  /* width: 1.5em !important; */
+}
+.talks-3 {
+  font-family: 'vnwf-cr', serif;
+  background: #000;
+  color: #fff;
+  /* width: 1em !important; */
+}
+.talks-4 {
+  font-family: 'vnwf-scu', serif;
+  background: rgb(223, 169, 20);
+  color: #000;
+}
+.talks-5 {
+  font-family: 'vnwf-scl', serif;
+  background: #000;
+  color: rgb(223, 169, 20);
+  /* width: 0.8em !important; */
+}

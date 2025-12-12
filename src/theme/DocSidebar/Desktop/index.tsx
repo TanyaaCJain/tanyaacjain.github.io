@@ -8,7 +8,6 @@ import Content from '@theme/DocSidebar/Desktop/Content';
 import type {Props} from '@theme/DocSidebar/Desktop';
 
 import ColorModeToggleStyles from './ColorModeToggle/styles.module.css';
-
 import styles from './styles.module.css';
 
 function DocSidebarDesktop({path, sidebar, onCollapse, isHidden}: Props) {

@@ -36,7 +36,7 @@
 }
 
 .sidebarFooter {
-  @apply tw-bg-gray-50 tw-bg-opacity-40 tw-rounded-2xl tw-shadow-lg tw-mt-2 tw-ml-3 tw-mb-4 tw-mr-1 tw-p-2;
+  @apply tw-flex tw-gap-2 tw-bg-gray-50 tw-bg-opacity-40 tw-rounded-2xl tw-shadow-lg tw-mt-2 tw-ml-3 tw-mb-4 tw-mr-1 tw-p-2;
 }
 
 [data-theme='dark'] .sidebarFooter {
