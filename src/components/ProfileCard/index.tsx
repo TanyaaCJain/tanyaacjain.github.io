@@ -1,4 +1,4 @@
-import BookMyCal from "../BookMyCal";
+import Contact from "../Contact";
 import { TiSocialGithub, TiSocialLinkedin, TiSocialTwitter } from "react-icons/ti";
 import ProfileImage from '@site/src/assets/images/profile-image.jpg';
 import { IoLocation } from "react-icons/io5";
@@ -31,17 +31,17 @@ export default function ProfileCard(): JSX.Element {
                 <IoLocation className='tw-text-xl' />
             </div>
             <div className='tw-text-xs'>
-                {`127.0.0.1 in \{ San Francisco | Delhi | Bangkok \} `}
+                {`San Francisco, CA`}
             </div>
         </div>
         <div className="tw-text-xs tw-text-center tw-py-2">
-            Senior Software Engineer | Full Stack & GenAI specialist | Creative Director
-            <br/>
-            <span className="tw-text-2xl tangerine-regular">
+            {/* Full Stack - AI Engineer | Creative Director */}
+            {/* <br/> */}
+            {/* <span className="tw-text-2xl tangerine-regular">
             despite it all, a computer scientist
-            </span>
+            </span> */}
         </div>
-        <BookMyCal />
+        <Contact />
     </div>
   );
 }

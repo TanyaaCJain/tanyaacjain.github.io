@@ -33,11 +33,12 @@
 }
 
 .press-content {
-    @apply tw-grid tw-grid-cols-1 tw-gap-5 tw-my-4 tw-px-3;
+    @apply tw-grid tw-grid-cols-1 tw-gap-4 tw-my-4 tw-px-3;
 }
 
 .press-content .press-box {
-    @apply tw-text-left tw-py-4 tw-px-4 tw-rounded-lg tw-bg-white tw-bg-opacity-20 tw-justify-between;
+    @apply tw-text-left tw-px-4 tw-rounded-lg tw-bg-white tw-bg-opacity-20 tw-justify-between;
+    background: #eff0f1;
 }
 
 .press-content .press-box .press-link > div {
@@ -63,6 +64,10 @@
 
 a.press-link[href] {
     text-decoration: none;
+}
+
+a.press-link:not(:has(img)):hover {
+    background: none;
 }
 
 a.press-link:hover[href] {
