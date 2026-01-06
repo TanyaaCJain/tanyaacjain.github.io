@@ -1,0 +1,54 @@
+{
+    "documents": [
+      {
+        "title": "chyn",
+        "link": "projects/chyn",
+        "featuredImage": "./img/chyn/chyn_architecture.png"
+      },
+      {
+        "title": "rita-pod",
+        "link": "../contributing/local-community-support#rita-pod---an-ai-rich-community-experience",
+        "featuredImage": "./img/rita-pod.png"
+      },
+      {
+        "title": "RISC-V assembly interpreter, compilers, emulator and processor",
+        "link": "#",
+        "featuredImage": "./img/riscv.jpeg"
+      },
+      {
+        "title": "Vehicle Collision Prediction",
+        "link": "projects/vehicle-collision-prediction",
+        "featuredImage": "./img/vehicle-collision-prediction/vcp-cover.png"
+      },
+      {
+        "title": "GIS",
+        "link": "projects/gis",
+        "featuredImage": "./img/gis/gui_1.jpg"
+      },
+      {
+        "title": "PyCon India 2021 Programme Guide",
+        "link": "https://in.pycon.org/share/PyConIndia2021ProgramGuide.pdf",
+        "featuredImage": "./img/pyconin-2021-guide.png"
+      },
+      {
+        "title": "PyCon India 2020 Programme Guide",
+        "link": "https://in.pycon.org/share/PyConIndia2020ProgramGuide.pdf",
+        "featuredImage": "./img/pyconin-2020-guide.png"
+      },
+      {
+        "title": "LinuxChix India",
+        "link": "../industry/open-source-software#linuxchix-india",
+        "featuredImage": "./img/linuxchix-india-cover.png"
+      },
+      {
+        "title": "Amity Business Proposal",
+        "link": "https://www.behance.net/gallery/141132009/Business-Proposal-Editorial-Design",
+        "featuredImage": "./img/amity-business-proposal.png"
+      },
+      {
+        "title": "PyDelhi Conf 2017",
+        "link": "https://www.behance.net/gallery/115907203/PyDelhi-Conference-Design",
+        "featuredImage": "./img/pydelhi-conf-2017.png"
+      }
+    ]
+}

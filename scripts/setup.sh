@@ -50,14 +50,13 @@ yarn install
 echo "🔐 Making scripts executable..."
 chmod +x scripts/*.sh
 
-# Initialize git submodules for blog content
-echo "📦 Initializing content submodules..."
-if bash scripts/sync-content.sh; then
-# if bash scripts/init-submodules.sh; then
-  echo "✅ Submodules initialized successfully"
+# Initialize git subtrees for blog content
+echo "📦 Initializing content subtrees..."
+if bash scripts/setup-content.sh; then
+  echo "✅ Subtrees initialized successfully"
 else
-  echo "⚠️  Submodule initialization failed or skipped"
-  echo "   You can run 'yarn init-submodules' manually later"
+  echo "⚠️  Subtrees initialization failed or skipped"
+  echo "   You can run 'yarn init:content' manually later"
 fi
 
 echo "✨ Setup complete!"
