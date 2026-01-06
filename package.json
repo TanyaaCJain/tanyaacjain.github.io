@@ -5,16 +5,21 @@
   "scripts": {
     "docusaurus": "docusaurus",
     "start": "docusaurus start",
-    "build": "docusaurus build",
+    "dev": "docusaurus start",
+    "build": "bash scripts/build.sh",
+    "build:docusaurus": "docusaurus build",
     "swizzle": "docusaurus swizzle",
-    "deploy": "docusaurus deploy",
+    "deploy": "bash scripts/deploy.sh",
+    "deploy:direct": "docusaurus deploy",
     "clear": "docusaurus clear",
     "serve": "docusaurus serve",
     "write-translations": "docusaurus write-translations",
     "write-heading-ids": "docusaurus write-heading-ids",
     "typecheck": "tsc",
     "copy-theme": "copy-theme",
-    "setup-theme": "cp -R node_modules/@sawatdeehaneu/docusaurus-theme/src/theme/* src/theme"
+    "setup-theme": "cp -R node_modules/@sawatdeehaneu/docusaurus-theme/src/theme/* src/theme",
+    "setup": "bash scripts/setup.sh",
+    "fetch-essays": "tsx scripts/fetch-essays.ts"
   },
   "dependencies": {
     "@calcom/embed-react": "^1.5.0",
@@ -38,6 +43,7 @@
     "@docusaurus/module-type-aliases": "3.4.0",
     "@docusaurus/tsconfig": "3.4.0",
     "@docusaurus/types": "3.4.0",
+    "tsx": "^4.7.0",
     "typescript": "~5.2.2"
   },
   "browserslist": {

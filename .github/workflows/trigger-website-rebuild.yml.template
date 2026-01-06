@@ -1,0 +1,66 @@
+# Template: Trigger Website Rebuild from Content Repository
+#
+# Add this workflow to your PRIVATE content repositories (e.g., stellar-curation)
+# to automatically trigger a rebuild of your website when essays are updated.
+#
+# Setup Instructions:
+# 1. Copy this file to your content repository: .github/workflows/trigger-website-rebuild.yml
+# 2. Remove the .template extension
+# 3. Add WEBSITE_REBUILD_TOKEN secret to your content repository:
+#    - Go to repository Settings → Secrets and variables → Actions
+#    - Add new secret: WEBSITE_REBUILD_TOKEN
+#    - Value: GitHub Personal Access Token with 'repo' scope for tanyaacjain.github.io
+# 4. Update the 'paths' section if your essays are in a different directory
+# 5. Update the repository URL if needed
+
+name: Trigger Website Rebuild
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'essays/**'  # Only trigger when essays directory changes
+  workflow_dispatch:  # Allow manual trigger
+
+jobs:
+  trigger-rebuild:
+    name: Notify Website to Rebuild
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Send repository dispatch event
+        run: |
+          echo "🔔 Triggering website rebuild..."
+          echo "📦 Repository: ${{ github.repository }}"
+          echo "🌿 Branch: ${{ github.ref_name }}"
+          echo "👤 Triggered by: ${{ github.actor }}"
+
+          curl -X POST \
+            -H "Accept: application/vnd.github.v3+json" \
+            -H "Authorization: token ${{ secrets.WEBSITE_REBUILD_TOKEN }}" \
+            https://api.github.com/repos/tanyaacjain/tanyaacjain.github.io/dispatches \
+            -d '{
+              "event_type": "content-updated",
+              "client_payload": {
+                "repository": "${{ github.repository }}",
+                "event_type": "${{ github.event_name }}",
+                "sender": "${{ github.actor }}",
+                "branch": "${{ github.ref_name }}",
+                "commit": "${{ github.sha }}"
+              }
+            }'
+
+          echo "✅ Rebuild triggered successfully!"
+
+      - name: Summary
+        run: |
+          echo "### 🚀 Website Rebuild Triggered" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "- **Repository:** ${{ github.repository }}" >> $GITHUB_STEP_SUMMARY
+          echo "- **Branch:** ${{ github.ref_name }}" >> $GITHUB_STEP_SUMMARY
+          echo "- **Commit:** ${{ github.sha }}" >> $GITHUB_STEP_SUMMARY
+          echo "- **Triggered by:** ${{ github.actor }}" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "Check the website repository for build status:" >> $GITHUB_STEP_SUMMARY
+          echo "https://github.com/tanyaacjain/tanyaacjain.github.io/actions" >> $GITHUB_STEP_SUMMARY
