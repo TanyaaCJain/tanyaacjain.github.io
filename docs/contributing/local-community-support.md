@@ -35,7 +35,7 @@ Collaborated with [Kamily Staryga] (CEO, Rita Health) and [Simran Kaur] (ex-Meta
 
 [Kamily Staryga]: https://www.linkedin.com/in/kamilastaryga
 [Simran Kaur]: https://www.linkedin.com/in/kaur-simran
-[South Park Commons SF]: https://www.southparkcommons.com/
+[South Park Commons]: https://www.southparkcommons.com/
 [OpenAI]: https://openai.com/
 
 [Loom]: https://www.loom.com/share/5a758a8baedc40ecac15e538d00bc3dc?sid=121b4f59-d01b-4a19-a7a3-158989c36a60
