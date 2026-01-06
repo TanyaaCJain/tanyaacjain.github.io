@@ -7,9 +7,9 @@ set -e  # Exit on error
 
 echo "🏗️  Starting build process..."
 
-# Fetch essays from private repository
-echo "📝 Step 1: Fetching essays from private repository..."
-tsx scripts/fetch-essays.ts
+# Sync essays from submodule
+echo "📝 Step 1: Syncing essays from submodule..."
+bash scripts/sync-content.sh
 
 # Build the Docusaurus site
 echo "🔨 Step 2: Building Docusaurus site..."

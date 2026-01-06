@@ -5,12 +5,9 @@
   "scripts": {
     "docusaurus": "docusaurus",
     "start": "docusaurus start",
-    "dev": "docusaurus start",
-    "build": "bash scripts/build.sh",
-    "build:docusaurus": "docusaurus build",
+    "build": "docusaurus build",
     "swizzle": "docusaurus swizzle",
-    "deploy": "bash scripts/deploy.sh",
-    "deploy:direct": "docusaurus deploy",
+    "deploy": "docusaurus deploy",
     "clear": "docusaurus clear",
     "serve": "docusaurus serve",
     "write-translations": "docusaurus write-translations",
@@ -18,8 +15,12 @@
     "typecheck": "tsc",
     "copy-theme": "copy-theme",
     "setup-theme": "cp -R node_modules/@sawatdeehaneu/docusaurus-theme/src/theme/* src/theme",
-    "setup": "bash scripts/setup.sh",
-    "fetch-essays": "tsx scripts/fetch-essays.ts"
+    "setup": "./scripts/setup.sh",
+    "init:content": "./scripts/init-submodules.sh",
+    "sync:content": "./scripts/sync-content.sh",
+    "dev:with-content": "yarn sync:content && docusaurus start",
+    "build:with-content": "./scripts/build.sh",
+    "deploy:with-content": "./scripts/deploy.sh"
   },
   "dependencies": {
     "@calcom/embed-react": "^1.5.0",
@@ -43,7 +44,6 @@
     "@docusaurus/module-type-aliases": "3.4.0",
     "@docusaurus/tsconfig": "3.4.0",
     "@docusaurus/types": "3.4.0",
-    "tsx": "^4.7.0",
     "typescript": "~5.2.2"
   },
   "browserslist": {

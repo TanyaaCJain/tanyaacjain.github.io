@@ -29,53 +29,82 @@ yarn setup
 
 ---
 
-### `fetch-essays.ts` - Fetch Content from Private Repository
+### `init-submodules.sh` - Initialize Git Submodules
 
-Fetches markdown essays from a private GitHub repository.
+Initializes the essays directory as a git submodule from a private repository.
 
 **Usage:**
 ```bash
-tsx scripts/fetch-essays.ts
+./scripts/init-submodules.sh
 # or
-yarn fetch-essays
+yarn init-submodules
 ```
 
 **Environment Variables Required:**
-- `GH_TOKEN` - GitHub Personal Access Token with `repo` scope
+- `GH_TOKEN` - GitHub Personal Access Token with `repo` scope (for private repos)
 - `GH_USER_NAME` - GitHub username (default: `tanyaacjain`)
 - `GH_REPO_NAME` - Repository name (default: `stellar-curation`)
 
 **What it does:**
 1. Loads environment variables from `.env`
-2. Fetches list of markdown files from `essays/` directory in private repo
-3. Downloads each markdown file
-4. Saves files to `blog/` directory
-5. Reports success/failure for each file
+2. Checks if submodule already exists
+3. Adds the private repository as a git submodule at `essays/stellar-curation/`
+4. Configures sparse checkout to only get the `/essays/` directory
+5. Uses authenticated URL with token for private repos
 
 **Output:**
-- Markdown files saved to `blog/` directory
-- Console logs showing progress and results
+- Git submodule configured at `essays/stellar-curation/`
+- Sparse checkout configured (only `/essays/` directory is checked out)
+- Essays appear at `essays/stellar-curation/essays/*.md` (git maintains directory structure)
+- `.gitmodules` file created/updated
+
+**Note:** Sparse checkout pattern `essays/*` ensures only the essays directory from stellar-curation is checked out, not the entire repo. This reduces clone size and focuses on just the content we need.
+
+---
+
+### `sync-content.sh` - Sync Content from Submodule
+
+Updates the submodule and syncs essay files to the blog directory.
+
+**Usage:**
+```bash
+./scripts/sync-content.sh
+# or
+yarn sync:content
+```
+
+**What it does:**
+1. Checks if submodule is initialized
+2. Updates submodule to latest commit (`git submodule update --remote`)
+3. Copies markdown files from `essays/stellar-curation/essays/` to `essays/` root
+   - `essays/stellar-curation/` = stellar-curation repo (submodule with sparse checkout)
+   - `essays/stellar-curation/essays/` = essays directory within that repo
+4. Reports number of essays synced
+
+**Output:**
+- Updated submodule content in `essays/stellar-curation/`
+- Essay files copied from `essays/stellar-curation/essays/` to `essays/` directory (where Docusaurus expects them)
 
 ---
 
 ### `build.sh` - Build Static Site
 
-Fetches content and builds the Docusaurus static site.
+Syncs content from submodule and builds the Docusaurus static site.
 
 **Usage:**
 ```bash
 ./scripts/build.sh
 # or
-yarn build
+yarn build:with-content
 ```
 
 **What it does:**
-1. Runs `fetch-essays.ts` to get latest content
+1. Runs `sync-content.sh` to get latest content from submodule
 2. Runs `docusaurus build` to create static site
 3. Generates static files in `build/` directory
 
 **Prerequisites:**
-- `.env` file configured with GitHub credentials
+- Git submodule initialized (`essays/stellar-curation/` exists)
 - Dependencies installed (`yarn install`)
 
 **Output:**
@@ -91,7 +120,7 @@ Deploys the built site to GitHub Pages.
 ```bash
 ./scripts/deploy.sh
 # or
-yarn deploy
+yarn deploy:with-content
 ```
 
 **What it does:**
@@ -100,7 +129,7 @@ yarn deploy
 3. Deploys to gh-pages branch using Docusaurus deploy command
 
 **Prerequisites:**
-- Site must be built first (`yarn build`)
+- Site must be built first (`yarn build:with-content`)
 - Git credentials configured
 - Write access to repository
 
@@ -118,15 +147,13 @@ yarn deploy
 yarn setup
 
 # Start development server (no fetch needed)
-yarn dev
-# or
-yarn start
+yarn dev:with-content
 ```
 
 ### Production Build
 ```bash
 # Build with latest content
-yarn build
+yarn build:with-content
 
 # Preview the build
 yarn serve
@@ -135,14 +162,24 @@ yarn serve
 ### Manual Deployment
 ```bash
 # Build and deploy
-yarn build
+yarn build:with-content
 yarn deploy
 ```
 
-### Fetch Content Only
+### Sync Content Only
 ```bash
-# Just fetch essays without building
-yarn fetch-essays
+# Just sync essays from submodule without building
+yarn sync:content
+```
+
+### Update Submodule to Latest
+```bash
+# Pull latest changes in submodule
+cd blog/essays
+git pull origin main
+cd ../..
+# Then sync to blog directory
+yarn sync:content
 ```
 
 ## Environment Variables
@@ -171,15 +208,19 @@ GH_REPO_NAME=stellar-curation
 
 ## Troubleshooting
 
-### "GH_TOKEN not found"
-- Ensure `.env` file exists in project root
-- Verify `GH_TOKEN` is set correctly
-- Check token has `repo` scope
+### "Submodule not initialized"
+- Run `yarn init-submodules` to initialize submodules
+- Ensure `.env` file exists with `GH_TOKEN` (for private repos)
+- Verify `GH_TOKEN` has `repo` scope
+- Check repository exists and is accessible
 
-### "Failed to download file"
-- Verify token has access to private repository
-- Check repository name and username are correct
-- Ensure `essays/` directory exists in private repo
+### "No essays found in essays/stellar-curation/essays/"
+- Verify essays exist in the submodule repository at `/essays/` directory
+- Check that markdown files are in the `essays/` directory of stellar-curation repo
+- Run `git submodule update --remote essays/stellar-curation` to pull latest
+- Ensure submodule is pointing to correct branch
+- Verify directory structure: `essays/stellar-curation/essays/*.md`
+- Check sparse checkout config: `git -C essays/stellar-curation sparse-checkout list`
 
 ### "Build directory not found" (during deploy)
 - Run `yarn build` before `yarn deploy`
@@ -195,13 +236,17 @@ GH_REPO_NAME=stellar-curation
 setup.sh
   └─> Creates .env
   └─> Installs dependencies
+  └─> init-submodules.sh
+        └─> Adds git submodule at essays/stellar-curation/
+        └─> Configures sparse checkout (cone mode)
+        └─> Only checks out essays/ directory
 
 build.sh
-  └─> fetch-essays.ts
-  │     └─> Downloads from GitHub API
-  │     └─> Saves to blog/
+  └─> sync-content.sh
+  │     └─> Updates submodule (git submodule update --remote)
+  │     └─> Copies *.md files from essays/stellar-curation/essays/ to essays/
   └─> docusaurus build
-        └─> Processes blog/ content
+        └─> Processes essays/ content
         └─> Generates build/ directory
 
 deploy.sh
@@ -214,7 +259,15 @@ deploy.sh
 
 These scripts are used in GitHub Actions workflows:
 
-- **deploy.yml**: Runs `fetch-essays` → `build:docusaurus` → deploys
-- **rebuild-on-webhook.yml**: Triggered by content updates, runs same flow
+- **deploy.yml**: Checks out submodules → runs `sync-content` → `build` → deploys
+- **rebuild-on-webhook.yml**: Triggered by content updates, checks out submodules → runs `sync-content` → `build` → deploys
+
+GitHub Actions automatically checks out submodules using:
+```yaml
+- uses: actions/checkout@v4
+  with:
+    submodules: 'recursive'
+    token: ${{ secrets.GH_TOKEN }}
+```
 
 See `.github/workflows/README.md` for workflow documentation.

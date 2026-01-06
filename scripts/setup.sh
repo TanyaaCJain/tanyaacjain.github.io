@@ -34,6 +34,14 @@ else
   echo "✅ .env file already exists"
 fi
 
+# Load environment variables
+if [ -f .env ]; then
+    export $(grep -v '^#' .env | xargs)
+    echo "✅ Environment variables loaded from .env"
+else
+    echo "⚠️  .env file not found. Skipping environment variable loading."
+fi
+
 # Install dependencies
 echo "📦 Installing dependencies with yarn..."
 yarn install
@@ -42,9 +50,20 @@ yarn install
 echo "🔐 Making scripts executable..."
 chmod +x scripts/*.sh
 
+# Initialize git submodules for blog content
+echo "📦 Initializing content submodules..."
+if bash scripts/sync-content.sh; then
+# if bash scripts/init-submodules.sh; then
+  echo "✅ Submodules initialized successfully"
+else
+  echo "⚠️  Submodule initialization failed or skipped"
+  echo "   You can run 'yarn init-submodules' manually later"
+fi
+
 echo "✨ Setup complete!"
 echo ""
 echo "Next steps:"
-echo "1. Edit .env file and add your GitHub credentials"
-echo "2. Run 'yarn dev' to start development server"
-echo "3. Run 'yarn build' to create production build"
+echo "1. Edit .env file and add your GitHub credentials (if using private repos)"
+echo "2. Run 'yarn sync-essays' to sync latest blog content"
+echo "3. Run 'yarn dev' to start development server"
+echo "4. Run 'yarn build' to create production build"

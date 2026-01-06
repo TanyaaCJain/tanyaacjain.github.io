@@ -44,6 +44,8 @@ const config: Config = {
             'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
         },
         blog: {
+          path: 'essays',
+          routeBasePath: 'essays',
           showReadingTime: true,
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
@@ -80,7 +82,7 @@ const config: Config = {
           position: 'left',
           label: 'About Me',
         },
-        {to: '/blog', label: 'Blog', position: 'left'},
+        {to: '/essays', label: 'Essays', position: 'left'},
         {
           href: 'https://github.com/tanyaacjain',
           label: 'GitHub',
@@ -128,8 +130,8 @@ const config: Config = {
           title: 'More',
           items: [
             {
-              label: 'Blog',
-              to: '/blog',
+              label: 'Essays',
+              to: '/essays',
             },
             {
               label: 'GitHub',

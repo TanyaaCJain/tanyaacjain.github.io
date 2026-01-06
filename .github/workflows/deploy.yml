@@ -19,6 +19,9 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          submodules: 'recursive'
+          token: ${{ secrets.GH_TOKEN }}
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
@@ -29,21 +32,13 @@ jobs:
       - name: Install dependencies
         run: yarn install --frozen-lockfile
 
-      - name: Fetch essays from private repository
+      - name: Sync essays from submodule
         env:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
-          GH_USER_NAME: ${{ secrets.GH_USER_NAME }}
-          GH_REPO_NAME: ${{ secrets.GH_REPO_NAME }}
-        run: yarn fetch-essays
+        run: yarn sync:content
 
       - name: Build website
-        run: yarn build:docusaurus
+        run: yarn build
 
       - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./build
-          user_name: 'Tanya Jain'
-          user_email: 'tanyaacjain@github.com'
-          commit_message: 'Deploy website'
+        run: yarn deploy:with-content

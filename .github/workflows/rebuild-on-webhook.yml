@@ -1,9 +1,20 @@
-name: Rebuild on Content Change
+name: Build on Content Update
 
 on:
+  # Trigger 1: Schedule (12 AM midnight on 1st of every month)
+  schedule:
+    - cron: '0 0 1 * *'
+
+  # Trigger 2: Repository dispatch (from webhooks)
   repository_dispatch:
     types: [content-updated]
+
+  # Trigger 3: Manual trigger
   workflow_dispatch:
+
+  # Trigger 4: When this repo changes
+  push:
+    branches: [main]
 
 permissions:
   contents: write
@@ -11,19 +22,44 @@ permissions:
   id-token: write
 
 jobs:
-  rebuild:
-    name: Rebuild and Redeploy Website
+  build:
+    name: Build and Deploy Website
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          submodules: 'recursive'
+          token: ${{ secrets.GH_TOKEN }}
 
-      - name: Log webhook trigger
+      - name: Log scheduled trigger
+        if: ${{ github.event_name == 'schedule' }}
         run: |
-          echo "🔔 Webhook triggered from: ${{ github.event.client_payload.repository }}"
+          echo "� Scheduled run"
+          echo "🕒 Triggered by: schedule event"
+
+      - name: Log repository_dispatch trigger
+        if: ${{ github.event_name == 'repository_dispatch' }}
+        run: |
+          echo "🔔 Repository dispatch from: ${{ github.event.client_payload.repository }}"
           echo "📝 Event: ${{ github.event.client_payload.event_type }}"
           echo "👤 Triggered by: ${{ github.event.client_payload.sender }}"
+
+      - name: Log manual workflow_dispatch trigger
+        if: ${{ github.event_name == 'workflow_dispatch' }}
+        run: |
+          echo "🛠️ Manual workflow dispatch"
+          echo "👤 Triggered by: ${{ github.actor }}"
+          echo "📥 Inputs: ${{ toJson(github.event.inputs) }}"
+
+      - name: Log push trigger
+        if: ${{ github.event_name == 'push' }}
+        run: |
+          echo "📦 Push to ref: ${{ github.ref }}"
+          echo "👤 Pusher: ${{ github.actor }}"
+          echo "🔗 Commit: ${{ github.sha }}"
+          echo "📝 Message: ${{ github.event.head_commit.message }}"
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
@@ -34,24 +70,25 @@ jobs:
       - name: Install dependencies
         run: yarn install --frozen-lockfile
 
-      - name: Fetch essays from private repository
+      - name: Sync essays from submodule
         env:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
-          GH_USER_NAME: ${{ secrets.GH_USER_NAME }}
-          GH_REPO_NAME: ${{ secrets.GH_REPO_NAME }}
-        run: yarn fetch-essays
+        run: yarn sync:content
 
       - name: Build website
-        run: yarn build:docusaurus
+        run: yarn build
 
       - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./build
-          user_name: 'Tanya Jain'
-          user_email: 'tanyaacjain@github.com'
-          commit_message: 'Rebuild from content update: ${{ github.event.client_payload.repository }}'
+        run: yarn deploy:with-content
+
+      # - name: Deploy to GitHub Pages
+      #   uses: peaceiris/actions-gh-pages@v3
+      #   with:
+      #     github_token: ${{ secrets.GITHUB_TOKEN }}
+      #     publish_dir: ./build
+      #     user_name: 'Tanya Jain'
+      #     user_email: 'tanyaacjain@github.com'
+      #     commit_message: 'Rebuild from content update: ${{ github.event.client_payload.repository }}'
 
       - name: Notify completion
         run: echo "✨ Website rebuilt and deployed successfully!"
