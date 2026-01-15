@@ -13,17 +13,18 @@ fi
 GIT_TOKEN="${GH_TOKEN:-}"
 USE_SSH="${USE_SSH:-false}"
 
-if [ "$USE_SSH" = "true" ]; then
-    ESSAYS_URL="git@github.com:tanyaacjain/stellar-curation.git"
-    DOCS_URL="git@github.com:tanyaacjain/personal-penguin.git"
-else
+GIT_PREFIX="git"
+
+if [ "$USE_SSH" = "false" ]; then
     if [ -z "$GIT_TOKEN" ]; then
         echo "❌ GH_TOKEN required"
         exit 1
     fi
-    ESSAYS_URL="https://${GIT_TOKEN}@github.com/tanyaacjain/stellar-curation.git"
-    DOCS_URL="https://${GIT_TOKEN}@github.com/tanyaacjain/personal-penguin.git"
+    GIT_PREFIX="https://${GIT_TOKEN}"
 fi
+
+ESSAYS_URL="${GIT_PREFIX}@github.com/tanyaacjain/essays.git"
+DOCS_URL="${GIT_PREFIX}@github.com/tanyaacjain/personal-penguin.git"
 
 # Update essays
 echo "📝 Updating essays..."
