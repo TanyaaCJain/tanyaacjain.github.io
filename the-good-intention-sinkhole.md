@@ -62,5 +62,5 @@ Perhaps, this path would lead us to be more morally effective, and have the prag
 
 ---
 
-[1] [Moral Competence](https://evanjconrad.com/posts/moral-competence) by Evan J Conrad
+[1] [Moral Competence](https://evanjconrad.com/posts/moral-competence) by Evan J Conrad \
 [2] [Anekāntavāda: The Relativity of Views](https://pluralism.org/anekantavada-the-relativity-of-views)
