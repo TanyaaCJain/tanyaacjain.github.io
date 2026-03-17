@@ -16,15 +16,15 @@
 }
 
 .honor-card .honors-text .honors-label {
-  @apply tw-text-2xl md:tw-text-4xl;
+  @apply tw-text-xl md:tw-text-3xl;
 }
 
 .honor-card .honors-text .honors-heading {
-  @apply tw-text-xl sm:tw-text-3xl;
+  @apply tw-text-lg sm:tw-text-2xl;
 }
 
 .honor-card .honors-text .honors-desc {
-  @apply tw-text-lg sm:tw-text-xl;
+  @apply tw-text-sm sm:tw-text-base;
 }
 
 @media screen and (max-width: 400px) {
