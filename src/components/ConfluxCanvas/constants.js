@@ -9,7 +9,7 @@ export const SCENES = [
     accentColor:    [180, 130,  10],
   },
   {
-    id: 'peacock', label: 'Rooted in India', enabled: false,
+    id: 'peacock', label: 'Rooted in India', enabled: true,
     primaryColor:   [  6, 182, 212],
     secondaryColor: [ 34, 197,  94],
     accentColor:    [ 99, 102, 241],
@@ -27,7 +27,7 @@ export const SCENES = [
     accentColor:    [255, 200,  80],
   },
   {
-    id: 'bay', label: 'Configured in San Francisco', enabled: false,
+    id: 'bay', label: 'Configured in San Francisco', enabled: true,
     primaryColor:   [ 99, 102, 241],
     secondaryColor: [226, 232, 240],
     accentColor:    [165, 180, 252],
@@ -38,10 +38,16 @@ export const SCENES = [
     secondaryColor: [148, 163, 184],
     accentColor:    [223, 169,  20],
   },
+  {
+    id: 'conflux', label: 'Where Worlds Converge', enabled: false,
+    primaryColor:   [223, 169,  20],
+    secondaryColor: [226, 232, 240],
+    accentColor:    [ 13, 148, 136],
+  },
 ];
 
 // ─── Timing ───────────────────────────────────────────────────────────────────
-export const SCENE_DURATION = 9000;   // ms each scene is held
+export const SCENE_DURATION = 10000;   // ms each scene is held
 export const TRANSITION_MS  = 2200;   // ms crossfade between scenes
 
 // ─── Particle pool ────────────────────────────────────────────────────────────

@@ -56,14 +56,14 @@ export default function Home() {
           <ConfluxCanvas />
           <div className={styles.heroContent}>
             <p className={styles.heroEyebrow} aria-hidden="true">
-              — Engineer &nbsp;·&nbsp; Founder &nbsp;·&nbsp; Creative Director
+              — AI Engineer &nbsp;·&nbsp; Founder &nbsp;·&nbsp; Creative Director
             </p>
             <h1 id="hero-name" className={styles.heroName}>
               Tanya Jain
             </h1>
-            <p className={styles.heroTitle}>
+            {/* <p className={styles.heroTitle}>
               Full Stack &amp; GenAI Specialist
-            </p>
+            </p> */}
             <p
               className={styles.heroTagline}
               aria-label="Tagline: despite it all, a computer scientist"

@@ -7,22 +7,16 @@ import {
   SPRING, DAMPING, CURSOR_RADIUS, CURSOR_FORCE,
 } from './constants';
 import { lerpColor, rgbStr, clamp } from './utils';
-import * as neuralScene  from './scenes/neural';
 import * as peacockScene from './scenes/india';
-import * as circuitScene from './scenes/circuit';
 import * as yipengScene  from './scenes/thailand';
 import * as bayScene     from './scenes/bay';
-import * as aeroScene    from './scenes/aero';
 
 // Pair each scene config with its module.
 // To disable a scene, set `enabled: false` in constants.js — no changes needed here.
 const ALL_SCENES = [
-  { ...SCENES[0], module: neuralScene  },
   { ...SCENES[1], module: peacockScene },
-  { ...SCENES[2], module: circuitScene },
   { ...SCENES[3], module: yipengScene  },
   { ...SCENES[4], module: bayScene     },
-  { ...SCENES[5], module: aeroScene    },
 ].filter(s => s.enabled);
 
 // ─── Component ────────────────────────────────────────────────────────────────
