@@ -9,8 +9,8 @@ import Layout from '@theme/Layout';
 const LinksPage = () => {
   return (
     <Layout
-            title="Tailored Links Page"
-            description="A page to display the main navigation links">
+      title="Tailored Links Page"
+      description="A page to display the main navigation links">
     <div id='js-scroll' data-scroll-section className='hyperlink-section'>
       <div className='links-wrapper' role='feed'>
         <div className='links-img'>
