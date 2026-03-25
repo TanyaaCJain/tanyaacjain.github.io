@@ -10,7 +10,7 @@ import { lerpColor, rgbStr, clamp } from './utils';
 import * as neuralScene  from './scenes/neural';
 import * as peacockScene from './scenes/india';
 import * as circuitScene from './scenes/circuit';
-import * as yipengScene  from './scenes/yipeng';
+import * as yipengScene  from './scenes/thailand';
 import * as bayScene     from './scenes/bay';
 import * as aeroScene    from './scenes/aero';
 
