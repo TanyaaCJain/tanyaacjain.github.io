@@ -68,7 +68,7 @@ export default function Home() {
               className={styles.heroTagline}
               aria-label="Tagline: despite it all, a computer scientist"
             >
-              despite it all, a homo sapien computer scientist
+              despite it all, a human computer scientist
             </p>
             <div className={styles.heroSocial} role="list" aria-label="Social links">
               <a

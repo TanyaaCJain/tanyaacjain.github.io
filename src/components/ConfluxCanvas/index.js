@@ -8,7 +8,7 @@ import {
 } from './constants';
 import { lerpColor, rgbStr, clamp } from './utils';
 import * as neuralScene  from './scenes/neural';
-import * as peacockScene from './scenes/peacock';
+import * as peacockScene from './scenes/india';
 import * as circuitScene from './scenes/circuit';
 import * as yipengScene  from './scenes/yipeng';
 import * as bayScene     from './scenes/bay';
@@ -184,6 +184,11 @@ export default function ConfluxCanvas() {
       curScene.module.drawConnectors(ctx, { ...sharedCtx, alpha: outAlpha, particles, AMBIENT_START, scene: curScene });
       if (transitioning) {
         nxtScene.module.drawConnectors(ctx, { ...sharedCtx, alpha: inAlpha, particles, AMBIENT_START, scene: nxtScene });
+      }
+
+      // Tick animated formation targets (optional — only peacock exports this)
+      if (curScene.module.tickFormation) {
+        curScene.module.tickFormation(particles, AMBIENT_START, { cx, cy, H, time });
       }
 
       // Particle update + draw

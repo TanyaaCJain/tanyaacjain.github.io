@@ -9,7 +9,7 @@ export const SCENES = [
     accentColor:    [180, 130,  10],
   },
   {
-    id: 'peacock', label: 'India', enabled: false,
+    id: 'peacock', label: 'India', enabled: true,
     primaryColor:   [  6, 182, 212],
     secondaryColor: [ 34, 197,  94],
     accentColor:    [ 99, 102, 241],
@@ -27,7 +27,7 @@ export const SCENES = [
     accentColor:    [255, 200,  80],
   },
   {
-    id: 'bay', label: 'San Francisco', enabled: true,
+    id: 'bay', label: 'San Francisco', enabled: false,
     primaryColor:   [ 99, 102, 241],
     secondaryColor: [226, 232, 240],
     accentColor:    [165, 180, 252],
