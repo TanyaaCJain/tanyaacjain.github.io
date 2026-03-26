@@ -1,6 +1,7 @@
 import React from 'react';
 import { HiOutlineMail } from 'react-icons/hi';
 import styles from './styles.module.css';
+import CopyButton from '../CopyButton';
 
 export default function FloatingNav({ activeLink }) {
   return (
@@ -29,13 +30,13 @@ export default function FloatingNav({ activeLink }) {
             </a>
           </li>
           <li>
-            <a
-              href="mailto:tanyaacjain@gmail.com"
+            <CopyButton
+              text="tanyaacjain@gmail.com"
               className={styles.navLink}
-              aria-label="Contact via email"
+              aria-label="Copy email address"
             >
               <HiOutlineMail aria-hidden="true" className={styles.navIcon} />
-            </a>
+            </CopyButton>
           </li>
         </ul>
       </div>

@@ -109,6 +109,13 @@
   font-size: 1.1rem;
 }
 
+/* Ensure <button> element doesn't override .navLink with browser defaults */
+button.navLink {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
 /* ─────────────────────────────────────────
    RESPONSIVE
 ───────────────────────────────────────── */

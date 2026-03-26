@@ -5,6 +5,7 @@ import { SiBehance } from 'react-icons/si';
 import styles from './about.module.css';
 import FloatingNav from '../components/FloatingNav';
 import AmbientCanvas from '../components/AmbientCanvas';
+import CopyButton from '../components/CopyButton';
 
 export default function About() {
   useEffect(() => {
@@ -156,9 +157,13 @@ export default function About() {
             <p className={styles.contactNote}>
               If you're building something interesting, want to collaborate, or just want to
               talk —{' '}
-              <a href="mailto:tanyaacjain@gmail.com" className={styles.emailLink}>
+              <CopyButton
+                text="tanyaacjain@gmail.com"
+                className={styles.emailLink}
+                aria-label="Copy email address"
+              >
                 write to me.
-              </a>
+              </CopyButton>
             </p>
           </section>
 
