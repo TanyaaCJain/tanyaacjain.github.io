@@ -22,7 +22,7 @@ export default function FloatingNav({ activeLink }) {
           </li>
           <li>
             <a
-              href="/docs/intro"
+              href="/about"
               className={`${styles.navLink}${activeLink === 'about' ? ` ${styles.navLinkActive}` : ''}`}
             >
               About

@@ -102,11 +102,11 @@
 
 .heroEyebrow {
   font-family: 'Nunito Sans', sans-serif;
-  font-size: 0.7rem;
+  font-size: 1rem;
   letter-spacing: 0.22em;
   text-transform: uppercase;
   color: rgba(223, 169, 20, 0.55);
-  margin: 0 0 1.25rem;
+  margin: 0 0 1.05rem;
 }
 
 .heroName {
@@ -149,10 +149,10 @@
 .heroTagline {
   font-family: 'Tangerine', cursive;
   font-weight: 700;
-  font-size: clamp(1.8rem, 4.5vw, 3.2rem);
+  font-size: clamp(0.3rem, 4vw, 2.9rem);
   color: #dfa914;
   letter-spacing: 0.02em;
-  margin: 0 0 0.6rem;
+  margin: -0.7rem 0.3rem 0.6rem;
   opacity: 0.8;
 }
 
