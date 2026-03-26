@@ -1,0 +1,160 @@
+/* ─────────────────────────────────────────
+   ESSAYS LIST PAGE
+───────────────────────────────────────── */
+.page {
+  background-color: #0a0a0f;
+  color: #f5f0e8;
+  min-height: 100vh;
+  font-family: 'Nunito Sans', sans-serif;
+}
+
+/* Suppress default docusaurus chrome */
+:global(.blog-list-page) :global(.navbar),
+:global(.blog-list-page) :global(.navbar--fixed-top),
+:global(.blog-list-page) :global(footer.footer),
+:global(.blog-list-page) :global(.footer) {
+  display: none !important;
+}
+
+:global(.blog-list-page) :global(.main-wrapper) {
+  padding-top: 0 !important;
+  margin-top: 0 !important;
+}
+
+/* ─────────────────────────────────────────
+   LAYOUT — centred reading column
+───────────────────────────────────────── */
+.container {
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 7rem clamp(1.5rem, 5vw, 3rem) 8rem;
+}
+
+/* ─────────────────────────────────────────
+   PAGE HEADING
+───────────────────────────────────────── */
+.heading {
+  font-family: 'zxcv', serif;
+  font-size: clamp(3rem, 8vw, 6rem);
+  line-height: 0.95;
+  letter-spacing: -0.02em;
+  margin: 0 0 0.25rem;
+
+  background: linear-gradient(
+    125deg,
+    #f5f0e8 0%,
+    #e8dfc8 35%,
+    #dfa914 55%,
+    #f5f0e8 80%,
+    #ede5d0 100%
+  );
+  background-size: 220% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: shimmer 7s linear infinite;
+}
+
+@keyframes shimmer {
+  0%   { background-position: 0% center; }
+  100% { background-position: 220% center; }
+}
+
+.subheading {
+  font-family: 'Nunito Sans', sans-serif;
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(223, 169, 20, 0.45);
+  margin: 0 0 4rem;
+}
+
+/* ─────────────────────────────────────────
+   CATEGORY GROUPS
+───────────────────────────────────────── */
+.group {
+  margin-bottom: 3.5rem;
+}
+
+.groupLabel {
+  font-family: 'Nunito Sans', sans-serif;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: rgba(223, 169, 20, 0.5);
+  margin: 0 0 1rem;
+}
+
+.divider {
+  border: none;
+  border-top: 1px solid rgba(255, 248, 220, 0.08);
+  margin: 0 0 1.5rem;
+}
+
+/* ─────────────────────────────────────────
+   POST LIST
+───────────────────────────────────────── */
+.postList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+}
+
+.postItem {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.6rem 0;
+  border-bottom: 1px solid rgba(255, 248, 220, 0.04);
+}
+
+.postItem:last-child {
+  border-bottom: none;
+}
+
+.postLink {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(1.25rem, 2.5vw, 1.55rem);
+  font-weight: 500;
+  line-height: 1.2;
+  color: rgba(245, 240, 232, 0.85);
+  text-decoration: none;
+  transition: color 0.2s ease;
+  flex: 1;
+}
+
+.postLink:hover {
+  color: #f5f0e8;
+  text-decoration: none;
+}
+
+.postLink:hover .postLinkInner {
+  background-size: 100% 1px;
+}
+
+.postDate {
+  font-family: 'Nunito Sans', sans-serif;
+  font-size: 0.68rem;
+  letter-spacing: 0.08em;
+  color: rgba(245, 240, 232, 0.22);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+/* ─────────────────────────────────────────
+   RESPONSIVE
+───────────────────────────────────────── */
+@media (max-width: 520px) {
+  .postDate {
+    display: none;
+  }
+
+  .postItem {
+    padding: 0.75rem 0;
+  }
+}

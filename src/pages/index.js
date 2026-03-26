@@ -2,9 +2,9 @@ import React, { useEffect } from 'react';
 import Head from '@docusaurus/Head';
 import { TiSocialGithub, TiSocialLinkedin, TiSocialTwitter } from 'react-icons/ti';
 import { SiBehance } from 'react-icons/si';
-import { HiOutlineMail } from 'react-icons/hi';
 import styles from './index.module.css';
 import ConfluxCanvas from '../components/ConfluxCanvas';
+import FloatingNav from '../components/FloatingNav';
 
 export default function Home() {
   useEffect(() => {
@@ -28,28 +28,7 @@ export default function Home() {
       </a>
 
       {/* Floating pill nav */}
-      <nav
-        className={styles.nav}
-        aria-label="Primary navigation"
-        role="navigation"
-      >
-        <div className={styles.navInner}>
-          <span className={styles.navBrand} aria-hidden="true">TJ</span>
-          <ul className={styles.navLinks} role="list">
-            <li><a href="/essays" className={styles.navLink}>Essays</a></li>
-            <li><a href="/docs/intro" className={styles.navLink}>About</a></li>
-            <li>
-              <a
-                href="mailto:tanyaacjain@gmail.com"
-                className={styles.navLink}
-                aria-label="Contact via email"
-              >
-                <HiOutlineMail aria-hidden="true" className={styles.navIcon} />
-              </a>
-            </li>
-          </ul>
-        </div>
-      </nav>
+      <FloatingNav />
 
       <main id="main-content" className={styles.page} tabIndex={-1}>
         <section className={styles.hero} aria-labelledby="hero-name">
