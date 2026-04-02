@@ -23,3 +23,6 @@ yarn-error.log*
 # content (synced from submodule)
 essays/*
 docs/*
+work/*
+design/*
+static/img/*

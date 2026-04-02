@@ -5,6 +5,7 @@ import { SiBehance } from 'react-icons/si';
 import styles from './about.module.css';
 import FloatingNav from '../components/FloatingNav';
 import AmbientCanvas from '../components/AmbientCanvas';
+import VietnameseBoatCanvas from '../components/VietnameseBoatCanvas';
 import CopyButton from '../components/CopyButton';
 
 export default function About() {
@@ -49,6 +50,7 @@ export default function About() {
       {/* Canvas is a direct child of .page so it spans the full scrollable height */}
       <main id="main-content" className={styles.page} tabIndex={-1}>
         <AmbientCanvas />
+        <VietnameseBoatCanvas />
 
         {/* ── INTRO ─────────────────────────── */}
         <section className={styles.intro} aria-labelledby="about-name">
