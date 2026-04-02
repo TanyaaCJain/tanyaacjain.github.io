@@ -13,6 +13,10 @@
   margin-top: 0 !important;
 }
 
+body {
+  background: #0a0a0f;
+}
+
 /* ─────────────────────────────────────────
    SKIP LINK (accessibility)
 ───────────────────────────────────────── */

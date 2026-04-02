@@ -32,13 +32,15 @@ jobs:
       - name: Install dependencies
         run: yarn install --frozen-lockfile
 
-      - name: Sync essays from submodule
-        env:
-          GH_TOKEN: ${{ secrets.GH_TOKEN }}
-        run: yarn sync:content
+      # - name: Sync essays from submodule
+      #   env:
+      #     GH_TOKEN: ${{ secrets.GH_TOKEN }}
+      #   run: yarn sync:content
 
       - name: Build website
         run: yarn build
 
       - name: Deploy to GitHub Pages
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
         run: yarn deploy:with-content

@@ -73,7 +73,15 @@ jobs:
       - name: Sync essays from submodule
         env:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
-        run: yarn sync:content
+        run: |
+          mkdir -p essays
+          curl -s -H "Authorization: token ${{ secrets.GH_TOKEN }}" \
+            https://raw.githubusercontent.com/tanyaacjain/stellar-curation/main/essays/ \
+            | grep -oP 'href="\K[^"]+\.md' | while read file; do
+            curl -s -H "Authorization: token ${{ secrets.GH_TOKEN }}" \
+              "https://raw.githubusercontent.com/tanyaacjain/stellar-curation/main/essays/$file" \
+              -o "essays/$file"
+          done
 
       - name: Build website
         run: yarn build

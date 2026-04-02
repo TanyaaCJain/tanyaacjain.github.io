@@ -1,6 +1,10 @@
 import {themes as prismThemes} from 'prism-react-renderer';
 import type {Config} from '@docusaurus/types';
 import type * as Preset from '@docusaurus/preset-classic';
+import { BLOGS } from './src/config/blogs';
+
+const techBlog   = BLOGS.find(b => b.key === 'tech')!;
+const designBlog = BLOGS.find(b => b.key === 'design')!;
 
 const config: Config = {
   title: 'Tanya Jain',
@@ -34,12 +38,14 @@ const config: Config = {
     [
       'classic',
       {
-        docs: {
-          routeBasePath: '/docs',
-          path: './docs',
-          sidebarPath: './sidebars.ts',
-        },
+        // docs: {
+        //   routeBasePath: '/docs',
+        //   path: './docs',
+        //   sidebarPath: './sidebars.ts',
+        // },
+        docs: false,
         blog: {
+          id: 'default',
           path: 'essays',
           routeBasePath: 'essays',
           showReadingTime: true,
@@ -57,7 +63,30 @@ const config: Config = {
       } satisfies Preset.Options,
     ],
   ],
-
+  plugins: [
+    [
+      '@docusaurus/plugin-content-blog',
+      {
+        id: `${techBlog.key}-blog`,
+        routeBasePath: techBlog.routeBasePath,
+        path: techBlog.contentPath,
+        showReadingTime: true,
+        postsPerPage: 'ALL',
+      },
+    ],
+    // Uncomment when ./design directory exists:
+    [
+      '@docusaurus/plugin-content-blog',
+      {
+        id: `${designBlog.key}-blog`,
+        routeBasePath: designBlog.routeBasePath,
+        path: designBlog.contentPath,
+        showReadingTime: true,
+        postsPerPage: 'ALL',
+      },
+    ],
+    require.resolve('./src/plugins/workTagsMeta'),
+  ],
   themeConfig: {
     image: 'img/social-card.PNG',
     navbar: {
@@ -67,12 +96,6 @@ const config: Config = {
         src: 'img/profile-image.jpg',
       },
       items: [
-        {
-          type: 'docSidebar',
-          sidebarId: 'tutorialSidebar',
-          position: 'left',
-          label: 'About Me',
-        },
         {to: '/essays', label: 'Essays', position: 'left'},
         {
           href: 'https://github.com/tanyaacjain',
@@ -99,24 +122,6 @@ const config: Config = {
     footer: {
       style: 'dark',
       links: [
-        // {
-        //   title: 'Docs',
-        //   items: [
-        //     {
-        //       label: 'Tutorial',
-        //       to: '/docs/intro',
-        //     },
-        //   ],
-        // },
-        {
-          title: 'Community',
-          items: [
-            {
-              label: 'Stack Overflow',
-              href: 'https://stackoverflow.com/questions/tagged/docusaurus',
-            },
-          ],
-        },
         {
           title: 'More',
           items: [

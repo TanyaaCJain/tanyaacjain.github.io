@@ -2,6 +2,7 @@
 title: On Loss and Letting Go
 authors: tanya
 date: 2025-12-15
+tags: [philosophy]
 ---
 
 # On Loss and Letting Go
@@ -42,10 +43,12 @@ When we finally stop oscillating between the past and the future, we arrive at t
 
 We can call it gratitude. We can call it hope. Or we can simply recognize that there is so much still to see, to feel, and to become. And none of it was ever limited to what we could hold in a clenched fist.
 
-> I have been speaking as if I know. As if the journey ends here, in this well-lit room, with windows open and gratitude in my chest. As I write, I still recall the despair of standing in the rubble of collapsed walls, when loss takes everything like a tornado devouring even the strongest structures. It's the feeling of uncertainty that kicks in when one day you wake up to the front door being slammed on your face.
+> I don't know if the journey ends in a well-lit room, with windows open and gratitude in my chest. As I write, I still recall the despair of standing in rubble—when loss takes everything like a tornado devouring even the strongest foundations. The uncertainty that kicks in when one day you wake up to find the front door slammed in your face.
 
-> And yet, knowing all this, I cannot say how the journey will unfold when something shatters again. Someone could leave. Something almost understood could turn back to exclaim the big misunderstanding. A door I thought sealed could crack open and reveal more darkness. I don't know if I will remember any of this the next time loss arrives.
+> And yet, knowing all this, I cannot say how the journey will unfold when something shatters again. Someone could leave. Something almost understood could turn back to exclaim the big misunderstanding. A door I thought sealed could crack open and reveal more darkness. I don't know if I will remember any of this.
 
-> What I know is this: right now, in this moment, the fist is unclenching. That is all. That is everything. That is nothing. 
+> Still, sitting here right now, the fist is unclenching. It's simply because a clenched fist cannot hold anything - not grief, not hope, not another person's hand, not even a new opportunity.
 
-> Hopefully, I too can reflect with this piece when the time arrives.
+> That is all. That is everything. That is nothing.
+
+> Hopefully, I too can return to this piece when the time arrives.

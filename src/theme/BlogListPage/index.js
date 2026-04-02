@@ -2,8 +2,16 @@ import React, { useEffect } from 'react';
 import { PageMetadata, HtmlClassNameProvider } from '@docusaurus/theme-common';
 import SearchMetadata from '@theme/SearchMetadata';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
+import { usePluginData } from '@docusaurus/useGlobalData';
+import { getBlogFields } from '@site/src/components/FloatingNav/selection';
 import FloatingNav from '@site/src/components/FloatingNav';
-import styles from './styles.module.css';
+import { BlogStylesContext } from './BlogStylesContext';
+import baseStyles from './styles.module.css';
+import designStyles from './styles.design.module.css';
+import { groupWorkBySection, WorkSection } from './WorkListPage';
+
+const STYLE_OVERRIDES = { design: designStyles };
+const styles = baseStyles;
 
 function formatDate(dateStr) {
   const d = new Date(dateStr);
@@ -60,6 +68,12 @@ function BlogSections({tag, posts}) {
 
 export default function BlogListPage({ metadata, items }) {
   const { siteConfig } = useDocusaurusContext();
+  const { blogFields } = getBlogFields();
+  const isWorkLayout = blogFields.layout === 'work';
+  const activeStyles = { ...baseStyles, ...(STYLE_OVERRIDES[blogFields.styleKey] || {}) };
+
+  const tagsMeta = usePluginData('work-tags-meta') || {};
+  const tagsYmlOrder = Object.values(tagsMeta);
 
   useEffect(() => {
     document.documentElement.classList.add('blog-list-page');
@@ -68,29 +82,48 @@ export default function BlogListPage({ metadata, items }) {
     };
   }, []);
 
-  const groups = groupByTag(items);
+  const rawGroups = isWorkLayout ? groupWorkBySection(items) : groupByTag(items);
+  const groups = isWorkLayout
+    ? [...rawGroups].sort((a, b) => {
+        const ai = tagsYmlOrder.findIndex(t => t.label === a.tag.label);
+        const bi = tagsYmlOrder.findIndex(t => t.label === b.tag.label);
+        if (ai === -1 && bi === -1) return a.tag.label.localeCompare(b.tag.label);
+        if (ai === -1) return 1;
+        if (bi === -1) return -1;
+        return ai - bi;
+      })
+    : rawGroups;
 
   return (
+    <BlogStylesContext.Provider value={activeStyles}>
     <HtmlClassNameProvider className="blog-list-page">
       <PageMetadata
-        title={metadata.blogTitle || 'Essays'}
-        description={metadata.blogDescription || `Essays by ${siteConfig.title}`}
+        title={blogFields.title || metadata.blogTitle}
+        description={metadata.blogDescription || `${blogFields.title} by ${siteConfig.title}`}
       />
       <SearchMetadata tag="blog_posts_list" />
 
-      <FloatingNav activeLink="essays" />
+      <FloatingNav activeLink={blogFields.activeLink} />
 
       <main className={styles.page} tabIndex={-1}>
-        <div className={styles.container}>
-          <h1 className={styles.heading}>Essays</h1>
-          <p className={styles.subheading}>Thoughts on living, thinking, and becoming</p>
+        <div className={isWorkLayout ? styles.containerWork : styles.container}>
+          <h1 className={styles.heading}>{blogFields.title}</h1>
+          <p className={styles.subheading}>
+            {blogFields.subheading}
+          </p>
 
-          {groups.map(({ tag, posts }) => (
-            <BlogSections tag={tag} posts={posts} />
-          ))}
+          {isWorkLayout
+            ? groups.map(({ tag, aboutDesc, remarks, articles, projects }) => (
+                <WorkSection key={tag.label} tag={tag} aboutDesc={aboutDesc} remarks={remarks} articles={articles} projects={projects} />
+              ))
+            : groups.map(({ tag, posts }) => (
+                <BlogSections key={tag.label} tag={tag} posts={posts} />
+              ))
+          }
 
         </div>
       </main>
     </HtmlClassNameProvider>
+    </BlogStylesContext.Provider>
   );
 }

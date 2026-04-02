@@ -1,9 +1,13 @@
 import React, { useEffect } from 'react';
 import OriginalBlogLayout from '@theme-original/BlogLayout';
+import { getBlogFields } from '@site/src/components/FloatingNav/selection';
 import FloatingNav from '@site/src/components/FloatingNav';
 import './styles.css';
 
 export default function BlogLayout(props) {
+  const { blogFields } = getBlogFields();
+  const activeLink = blogFields.activeLink;
+
   useEffect(() => {
     document.documentElement.classList.add('blog-page');
     return () => {
@@ -16,7 +20,7 @@ export default function BlogLayout(props) {
 
   return (
     <>
-      <FloatingNav activeLink="essays" />
+      <FloatingNav activeLink={activeLink} />
       <OriginalBlogLayout toc={toc} {...rest} />
     </>
   );

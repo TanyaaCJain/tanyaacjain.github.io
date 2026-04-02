@@ -2,6 +2,7 @@
 title: The Good Intention's Sinkhole
 authors: tanya
 date: 2025-11-20
+tags: [philosophy]
 ---
 
 # The Good Intention's Sinkhole

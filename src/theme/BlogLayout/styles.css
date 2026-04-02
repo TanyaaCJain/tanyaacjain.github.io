@@ -81,14 +81,17 @@
    HEADINGS — zxcv serif
 ───────────────────────────────────────── */
 
-.blog-post-page {
-  &h1, &h2, &h3, &h4 {
+.blog-post-page .markdown h1,
+.blog-post-page .markdown h2,
+.blog-post-page .markdown h3,
+.blog-post-page .markdown h4,
+.blog-post-page .markdown h5 {
     font-family: 'zxcv', serif;
     color: #a07a13;
     margin-top: 2.5em;
     margin-bottom: 0.6em;
-  }
-
+}
+.blog-post-page {  
   &h1 {
     font-size: clamp(2rem, 4vw, 3rem);
     line-height: 2.75rem;
