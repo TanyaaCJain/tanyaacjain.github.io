@@ -6,9 +6,13 @@ export function drawHills(ctx, { W, H, alpha, roadY, towerX_L, towerX_R }) {
   const SW = 10;            // treeline spike width (px)
   const SH = H * 0.018;     // treeline spike height
 
-  // ── Hill body ──────────────────────────────────────────────────────────────
+  // ── Hill body — gradient fades to transparent below road so slant blends ───
   ctx.globalAlpha = alpha * 0.65;
-  ctx.fillStyle   = 'rgba(10, 16, 13, 1)';
+  const hillGrad = ctx.createLinearGradient(0, roadY, 0, H);
+  hillGrad.addColorStop(0,   'rgba(10, 16, 13, 1)');
+  hillGrad.addColorStop(0.15,'rgba(10, 16, 13, 0.6)');
+  hillGrad.addColorStop(1,   'rgba(10, 16, 13, 0)');
+  ctx.fillStyle = hillGrad;
 
   ctx.beginPath();
   ctx.moveTo(0, H);

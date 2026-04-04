@@ -58,7 +58,7 @@ function drawThungChai(ctx, x, y, size, alpha) {
   hullPath();
   const sphGrad = ctx.createRadialGradient(
     -rW * 0.38, rimY + domeD * 0.22, 0,
-     0,          rimY + domeD * 0.5,  rW * 1.05
+     0,         rimY + domeD * 0.5,  rW * 1.05
   );
   sphGrad.addColorStop(0,   'rgba(220, 178, 108, 0.26)');
   sphGrad.addColorStop(0.5, 'rgba(160, 118, 58,  0.08)');
@@ -330,10 +330,12 @@ function getWaveTilt(x, time, b) {
 }
 
 // ─── Boat data ────────────────────────────────────────────────────────────────
-// Positioned near the top of the page (yR 9–16%), drifting right → left.
+// Positioned near the top of the page, drifting right → left.
+// Front boat (i=2) sits lower to avoid clashing with the header name.
+const BOAT_YR = [0.05, 0.08, 0.11];
 
 const BOATS = Array.from({ length: 3 }, (_, i) => ({
-  yR:       0.09 + i * 0.035,    // 9%, 12.5%, 16% — near the header
+  yR:       BOAT_YR[i],
   speed:    0.020 + i * 0.007,   // px/ms horizontal drift
   phase:    (i * 0.618033) % 1,
   size:     24 + i * 6,           // 24 / 30 / 36 px
@@ -348,6 +350,8 @@ const BOATS = Array.from({ length: 3 }, (_, i) => ({
   alpha:    0.62 + i * 0.05,
   // Rowing cycle
   rowSpeed: 0.00085 + i * 0.00010,
+  // Downward slope over crossing (0 = flat, positive = drifts lower left→right)
+  slopeAmp: i === 2 ? 0.07 : 0,
 }));
 
 // ─── Component ────────────────────────────────────────────────────────────────
@@ -379,9 +383,12 @@ export default function VietnameseBoatCanvas() {
       ctx.clearRect(0, 0, W, H);
 
       for (const b of BOATS) {
-        const span = W + b.size * 4;
-        const x    = W + b.size * 2 - (time * b.speed + b.phase * span) % span;
-        const baseY = b.yR * H;
+        const span  = W + b.size * 4;
+        const drift = (time * b.speed + b.phase * span) % span;
+        // left → right
+        const x     = -b.size * 2 + drift;
+        // slopeAmp > 0: boat rises as it crosses right (drift/span goes 0→1)
+        const baseY = b.yR * H - (b.slopeAmp * H * drift / span);
         const y     = getWaveY(baseY, x, time, b);
         const tilt  = getWaveTilt(x, time, b);
 
