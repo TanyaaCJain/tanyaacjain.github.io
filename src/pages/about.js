@@ -120,12 +120,20 @@ export default function About() {
           <section className={`${styles.section} ${styles.revealSection}`} aria-labelledby="writing-label">
             <h2 id="writing-label" className={styles.sectionLabel}>Writing</h2>
             <p className={styles.prose}>
-              I write about technology, systems, and the quieter things in between - the kind of
+              I write about technology, systems, art and the quieter things in between - the kind of
               thinking that doesn't fit cleanly into a PRD or a pull request. Sometimes personal,
-              sometimes technical, always honest.
+              sometimes technical, sometimes creative, always honest.
             </p>
-            <a href="/essays" className={styles.cta}>
-              Read the essays <span aria-hidden="true">→</span>
+            <a href="/writings" className={styles.cta}>
+              Read the writings <span aria-hidden="true">→</span>
+            </a>
+            <br/>
+            <a href="/tech" className={styles.cta}>
+              Read the technical work <span aria-hidden="true">→</span>
+            </a>
+            <br/>
+            <a href="/design" className={styles.cta}>
+              Read the creative work <span aria-hidden="true">→</span>
             </a>
           </section>
 

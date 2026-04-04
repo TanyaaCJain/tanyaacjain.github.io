@@ -21,8 +21,8 @@ yarn-debug.log*
 yarn-error.log*
 
 # content (synced from submodule)
-essays/*
-docs/*
-work/*
-design/*
-static/img/*
+/writings
+/docs
+/work
+/design
+/static/img/

@@ -13,12 +13,12 @@ export interface BlogConfig {
 
 export const BLOGS: BlogConfig[] = [
   {
-    key: 'essays',
-    routeBasePath: 'essays',
-    contentPath: './essays',
-    title: 'Essays',
+    key: 'writings',
+    routeBasePath: 'writings',
+    contentPath: './writings',
+    title: 'Writings',
     subheading: 'Thoughts on living, thinking, and becoming',
-    navLabel: 'Essays',
+    navLabel: 'Writings',
     layout: 'essays',
   },
   {
@@ -41,6 +41,8 @@ export const BLOGS: BlogConfig[] = [
     styleKey: 'design',
   },
 ];
+
+export const FALLBACK_BLOG_KEY = 'writings';
 
 // Nav items in display order (blogs + standalone pages)
 export const NAV_ITEMS = [

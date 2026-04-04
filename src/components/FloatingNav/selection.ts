@@ -1,7 +1,7 @@
 import { useLocation } from '@docusaurus/router';
-import { getBlogConfigByPath, BLOGS } from '@site/src/config/blogs';
+import { getBlogConfigByPath, BLOGS, FALLBACK_BLOG_KEY } from '@site/src/config/blogs';
 
-const fallback = BLOGS.find(b => b.key === 'essays')!;
+const fallback = BLOGS.find(b => b.key === FALLBACK_BLOG_KEY)!;
 
 export function getBlogFields() {
   const { pathname } = useLocation();

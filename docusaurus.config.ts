@@ -1,5 +1,5 @@
 import {themes as prismThemes} from 'prism-react-renderer';
-import type {Config} from '@docusaurus/types';
+import type { Config } from '@docusaurus/types';
 import type * as Preset from '@docusaurus/preset-classic';
 import { BLOGS } from './src/config/blogs';
 
@@ -46,8 +46,8 @@ const config: Config = {
         docs: false,
         blog: {
           id: 'default',
-          path: 'essays',
-          routeBasePath: 'essays',
+          path: 'writings',
+          routeBasePath: 'writings',
           showReadingTime: true,
         },
         theme: {
@@ -96,7 +96,6 @@ const config: Config = {
         src: 'img/profile-image.jpg',
       },
       items: [
-        {to: '/essays', label: 'Essays', position: 'left'},
         {
           href: 'https://github.com/tanyaacjain',
           label: 'GitHub',
