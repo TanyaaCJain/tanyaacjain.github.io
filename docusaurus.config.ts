@@ -125,8 +125,8 @@ const config: Config = {
           title: 'More',
           items: [
             {
-              label: 'Essays',
-              to: '/essays',
+              label: 'Writings',
+              to: '/writings',
             },
             {
               label: 'GitHub',

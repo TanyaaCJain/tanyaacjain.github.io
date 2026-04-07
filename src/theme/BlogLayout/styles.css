@@ -107,6 +107,10 @@
   .blog-post-page h1 {
     line-height: 2.75rem;
   }
+
+  .blog-post-page .markdown {
+    font-size: clamp(0.8rem, 1.6vw, 1rem);
+  }
 }
 
 /* Post title (article header) */
