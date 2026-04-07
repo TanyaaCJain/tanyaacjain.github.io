@@ -29,33 +29,33 @@ export function drawSun(ctx, { cx, cy, W, H, alpha, time }) {
   // ── 2. Soft broad rays — barely visible, just a suggestion ────────────────
   // Wide, low-alpha wedges. No sharp edges — diffused like light through fog.
   const RAY_ANGLES = [-1.2, -0.75, -0.38, 0, 0.38, 0.75, 1.2];
-  const RAY_LEN    = H * 1.1;
+  const RAY_LENGTH = H * 1.1;
 
-  for (let r = 0; r < RAY_ANGLES.length; r++) {
-    const base  = RAY_ANGLES[r] + Math.PI / 2;
-    const halfW = 0.055 + (r % 2) * 0.030;
-    const pulse = 0.45 + 0.55 * Math.sin(time * 0.00018 + r * 1.4);
-    const rAlpha = alpha * (0.028 - Math.abs(RAY_ANGLES[r]) * 0.008) * pulse;
-    if (rAlpha < 0.003) continue;
+  for (let rayIdx = 0; rayIdx < RAY_ANGLES.length; rayIdx++) {
+    const rayBaseAngle = RAY_ANGLES[rayIdx] + Math.PI / 2;
+    const rayHalfWidth = 0.055 + (rayIdx % 2) * 0.030;
+    const pulse        = 0.45 + 0.55 * Math.sin(time * 0.00018 + rayIdx * 1.4);
+    const rayAlpha     = alpha * (0.028 - Math.abs(RAY_ANGLES[rayIdx]) * 0.008) * pulse;
+    if (rayAlpha < 0.003) continue;
 
-    const x1 = sunX + Math.cos(base - halfW) * RAY_LEN;
-    const y1 = sunY + Math.sin(base - halfW) * RAY_LEN;
-    const x2 = sunX + Math.cos(base + halfW) * RAY_LEN;
-    const y2 = sunY + Math.sin(base + halfW) * RAY_LEN;
-    const mx  = sunX + Math.cos(base) * RAY_LEN;
-    const my  = sunY + Math.sin(base) * RAY_LEN;
+    const leftX  = sunX + Math.cos(rayBaseAngle - rayHalfWidth) * RAY_LENGTH;
+    const leftY  = sunY + Math.sin(rayBaseAngle - rayHalfWidth) * RAY_LENGTH;
+    const rightX = sunX + Math.cos(rayBaseAngle + rayHalfWidth) * RAY_LENGTH;
+    const rightY = sunY + Math.sin(rayBaseAngle + rayHalfWidth) * RAY_LENGTH;
+    const midX   = sunX + Math.cos(rayBaseAngle) * RAY_LENGTH;
+    const midY   = sunY + Math.sin(rayBaseAngle) * RAY_LENGTH;
 
-    const g = ctx.createLinearGradient(sunX, sunY, mx, my);
-    g.addColorStop(0,   `rgba(255, 215, 95, ${rAlpha})`);
-    g.addColorStop(0.25,`rgba(240, 175, 50, ${rAlpha * 0.45})`);
-    g.addColorStop(1,   'rgba(0,0,0,0)');
+    const rayGradient = ctx.createLinearGradient(sunX, sunY, midX, midY);
+    rayGradient.addColorStop(0,    `rgba(255, 215, 95, ${rayAlpha})`);
+    rayGradient.addColorStop(0.25, `rgba(240, 175, 50, ${rayAlpha * 0.45})`);
+    rayGradient.addColorStop(1,    'rgba(0,0,0,0)');
 
     ctx.beginPath();
     ctx.moveTo(sunX, sunY);
-    ctx.lineTo(x1, y1);
-    ctx.lineTo(x2, y2);
+    ctx.lineTo(leftX, leftY);
+    ctx.lineTo(rightX, rightY);
     ctx.closePath();
-    ctx.fillStyle = g;
+    ctx.fillStyle = rayGradient;
     ctx.fill();
   }
 

@@ -1,7 +1,14 @@
 export const INTL_ORANGE = [192,  54,  44];   // Golden Gate "International Orange"
 export const ORANGE_DIM  = [160,  44,  36];
 
+// Memoize computed geometry — values only change on canvas resize, not per frame.
+let _cachedGeometry = null;
+let _cacheKey = '';
+
 export function geometry(cx, cy, W, H) {
+  const key = `${cx},${cy},${W},${H}`;
+  if (key === _cacheKey && _cachedGeometry) return _cachedGeometry;
+  _cacheKey = key;
   const towerSpanX = W * 0.45;
   const towerX_L   = cx - towerSpanX / 2;
   const towerX_R   = cx + towerSpanX / 2;
@@ -40,8 +47,9 @@ export function geometry(cx, cy, W, H) {
     return roadY - (1 - t) * (1 - t) * sagDepth;
   };
 
-  return { towerSpanX, towerX_L, towerX_R, roadY, towerTopY, sagDepth,
-           anchorX_L, anchorX_R, anchorY, SO, mainCable,
-           innerL, innerR, outerL, outerR,
-           outerMidX_L, outerMidX_R, outerCableL, outerCableR };
+  _cachedGeometry = { towerSpanX, towerX_L, towerX_R, roadY, towerTopY, sagDepth,
+                      anchorX_L, anchorX_R, anchorY, SO, mainCable,
+                      innerL, innerR, outerL, outerR,
+                      outerMidX_L, outerMidX_R, outerCableL, outerCableR };
+  return _cachedGeometry;
 }

@@ -136,31 +136,31 @@ function drawAgarwoodBlossom(ctx, x, y, size, rotation, alpha) {
 // All agarwood kept in side bands — nothing in the centre text column.
 
 const GOLDENBERRY = Array.from({ length: 10 }, (_, i) => ({
-  xR:       i % 2 === 0
-              ? (i * 0.618033) % 0.20          // left  0–20%
-              : 0.80 + (i * 0.618033) % 0.18,  // right 80–98%
-  speed:    0.024 + (i % 5) * 0.008,
-  phase:    (i * 0.618033) % 1,
-  size:     10 + (i % 4) * 3,                  // 10–19px — large enough to read
-  rotSpeed: 0.00014 + (i % 3) * 0.00009,
-  rotPhase: i * 1.618,
-  swayAmp:  20 + (i % 4) * 9,
-  swayFreq: 0.00065 + (i % 3) * 0.00028,
+  xRatio:        i % 2 === 0
+                   ? (i * 0.618033) % 0.20          // left  0–20%
+                   : 0.80 + (i * 0.618033) % 0.18,  // right 80–98%
+  verticalSpeed: 0.024 + (i % 5) * 0.008,           // px per ms, downward
+  phaseOffset:   (i * 0.618033) % 1,
+  size:          10 + (i % 4) * 3,                  // 10–19px — large enough to read
+  rotationSpeed: 0.00014 + (i % 3) * 0.00009,
+  rotationPhase: i * 1.618,
+  swayAmplitude: 20 + (i % 4) * 9,                  // horizontal sway range (px)
+  swayFrequency: 0.00065 + (i % 3) * 0.00028,
 }));
 
 const AGARWOOD = Array.from({ length: 12 }, (_, i) => {
   const slot = i % 3;
   return {
-    xR:       slot === 0 ? (i * 0.618033) % 0.22          // left  0–22%
-            : slot === 1 ? 0.76 + (i * 0.618033) % 0.22  // right 76–98%
-            :              0.80 + (i * 0.618033) % 0.18,  // also right (different offset)
-    speed:    0.016 + (i % 5) * 0.007,
-    phase:    (i * 0.7071) % 1,
-    size:     8 + (i % 4) * 2,                            // 8–14px
-    rotSpeed: 0.00009 + (i % 4) * 0.00007,
-    rotPhase: i * 2.236,
-    swayAmp:  25 + (i % 3) * 12,
-    swayFreq: 0.00055 + (i % 4) * 0.00022,
+    xRatio:        slot === 0 ? (i * 0.618033) % 0.22          // left  0–22%
+                 : slot === 1 ? 0.76 + (i * 0.618033) % 0.22  // right 76–98%
+                 :              0.80 + (i * 0.618033) % 0.18,  // also right (different offset)
+    verticalSpeed: 0.016 + (i % 5) * 0.007,
+    phaseOffset:   (i * 0.7071) % 1,
+    size:          8 + (i % 4) * 2,                            // 8–14px
+    rotationSpeed: 0.00009 + (i % 4) * 0.00007,
+    rotationPhase: i * 2.236,
+    swayAmplitude: 25 + (i % 3) * 12,
+    swayFrequency: 0.00055 + (i % 4) * 0.00022,
   };
 });
 
@@ -193,23 +193,29 @@ export default function AmbientCanvas() {
       ctx.clearRect(0, 0, W, H);
 
       for (const f of GOLDENBERRY) {
-        const span = H + f.size * 4;
-        const y = (time * f.speed + f.phase * span) % span - f.size * 2;
-        const x = f.xR * W + f.swayAmp * Math.sin(time * f.swayFreq + f.phase * Math.PI * 2);
-        drawGoldenberry(ctx, x, y, f.size, time * f.rotSpeed + f.rotPhase, 0.72);
+        const scrollSpan = H + f.size * 4;
+        const y = (time * f.verticalSpeed + f.phaseOffset * scrollSpan) % scrollSpan - f.size * 2;
+        if (y > H + f.size) continue; // element fully below canvas (briefly, during wrap)
+        const x = f.xRatio * W + f.swayAmplitude * Math.sin(time * f.swayFrequency + f.phaseOffset * Math.PI * 2);
+        drawGoldenberry(ctx, x, y, f.size, time * f.rotationSpeed + f.rotationPhase, 0.72);
       }
 
       for (const f of AGARWOOD) {
-        const span = H + f.size * 4;
-        const y = (time * f.speed + f.phase * span) % span - f.size * 2;
-        const x = f.xR * W + f.swayAmp * Math.sin(time * f.swayFreq + f.phase * Math.PI * 2);
-        drawAgarwoodBlossom(ctx, x, y, f.size, time * f.rotSpeed + f.rotPhase, 0.68);
+        const scrollSpan = H + f.size * 4;
+        const y = (time * f.verticalSpeed + f.phaseOffset * scrollSpan) % scrollSpan - f.size * 2;
+        if (y > H + f.size) continue;
+        const x = f.xRatio * W + f.swayAmplitude * Math.sin(time * f.swayFrequency + f.phaseOffset * Math.PI * 2);
+        drawAgarwoodBlossom(ctx, x, y, f.size, time * f.rotationSpeed + f.rotationPhase, 0.68);
       }
 
       rafId = requestAnimationFrame(draw);
     }
 
-    const ro = new ResizeObserver(resize);
+    let resizeTimer;
+    const ro = new ResizeObserver(() => {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(resize, 150);
+    });
     ro.observe(canvas.parentElement);
 
     const initTimer = setTimeout(() => {
@@ -217,10 +223,20 @@ export default function AmbientCanvas() {
       rafId = requestAnimationFrame(draw);
     }, 0);
 
+    const onVisibility = () => {
+      if (document.hidden) {
+        cancelAnimationFrame(rafId);
+      } else {
+        rafId = requestAnimationFrame(draw);
+      }
+    };
+    document.addEventListener('visibilitychange', onVisibility);
+
     return () => {
       clearTimeout(initTimer);
       cancelAnimationFrame(rafId);
       ro.disconnect();
+      document.removeEventListener('visibilitychange', onVisibility);
     };
   }, []);
 

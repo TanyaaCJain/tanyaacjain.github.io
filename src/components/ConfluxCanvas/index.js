@@ -122,12 +122,14 @@ export default function ConfluxCanvas() {
     }
 
     // ── Main loop ─────────────────────────────────────────────────────────────
+    const CR2 = CURSOR_RADIUS * CURSOR_RADIUS; // pre-computed for squared-distance check
     let time = 0;
+    let lastFrameTime = 0;
 
     function loop(now) {
       rafId = requestAnimationFrame(loop);
-      const dt = Math.min(now - (loop.last ?? now), 50);
-      loop.last = now;
+      const dt = Math.min(now - (lastFrameTime || now), 50);
+      lastFrameTime = now;
       time += dt;
 
       // Scene transition timing
@@ -223,14 +225,17 @@ export default function ConfluxCanvas() {
           p.vx = (p.vx + dx * SPRING) * DAMPING;
           p.vy = (p.vy + dy * SPRING) * DAMPING;
 
-          // Cursor repulsion
-          const cdx  = p.x - mouseX;
-          const cdy  = p.y - mouseY;
-          const dist = Math.sqrt(cdx * cdx + cdy * cdy);
-          if (dist < CURSOR_RADIUS && dist > 0.1) {
-            const force = (CURSOR_FORCE * (CURSOR_RADIUS - dist)) / CURSOR_RADIUS;
-            p.vx += (cdx / dist) * force;
-            p.vy += (cdy / dist) * force;
+          // Cursor repulsion — axis-aligned bbox reject first (cheap abs), then exact dist
+          const cdx = p.x - mouseX;
+          const cdy = p.y - mouseY;
+          if (Math.abs(cdx) < CURSOR_RADIUS && Math.abs(cdy) < CURSOR_RADIUS) {
+            const dist2 = cdx * cdx + cdy * cdy;
+            if (dist2 < CR2 && dist2 > 0.01) {
+              const dist  = Math.sqrt(dist2);
+              const force = (CURSOR_FORCE * (CURSOR_RADIUS - dist)) / CURSOR_RADIUS;
+              p.vx += (cdx / dist) * force;
+              p.vy += (cdy / dist) * force;
+            }
           }
           p.x += p.vx; p.y += p.vy;
         }
@@ -261,8 +266,9 @@ export default function ConfluxCanvas() {
     rafId = requestAnimationFrame(loop);
 
     // ── Event listeners ───────────────────────────────────────────────────────
+    // Cache the bounding rect — recomputed only on resize, not every mousemove.
+    let rect = canvas.getBoundingClientRect();
     const onMouse = (e) => {
-      const rect = canvas.getBoundingClientRect();
       mouseX = e.clientX - rect.left;
       mouseY = e.clientY - rect.top;
     };
@@ -270,14 +276,33 @@ export default function ConfluxCanvas() {
     window.addEventListener('mousemove', onMouse, { passive: true });
     window.addEventListener('mouseleave', onLeave);
 
-    const ro = new ResizeObserver(() => { resize(); assignScene(sceneIndex); });
+    let resizeTimer;
+    const ro = new ResizeObserver(() => {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(() => {
+        resize();
+        rect = canvas.getBoundingClientRect();
+        assignScene(sceneIndex);
+      }, 150);
+    });
     ro.observe(canvas);
+
+    // Pause RAF when tab is hidden — saves CPU/battery in background tabs.
+    const onVisibility = () => {
+      if (document.hidden) {
+        cancelAnimationFrame(rafId);
+      } else {
+        rafId = requestAnimationFrame(loop);
+      }
+    };
+    document.addEventListener('visibilitychange', onVisibility);
 
     return () => {
       cancelAnimationFrame(rafId);
       ro.disconnect();
       window.removeEventListener('mousemove', onMouse);
       window.removeEventListener('mouseleave', onLeave);
+      document.removeEventListener('visibilitychange', onVisibility);
     };
   }, []);
 
