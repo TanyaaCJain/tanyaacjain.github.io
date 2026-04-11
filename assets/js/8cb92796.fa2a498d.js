@@ -1,0 +1,1 @@
+"use strict";(globalThis.webpackChunktanyaacjain_github_io=globalThis.webpackChunktanyaacjain_github_io||[]).push([[4943],{1530:a=>{a.exports=JSON.parse('{"metadata":{"permalink":"/writings","page":1,"postsPerPage":10,"totalPages":1,"totalCount":6,"blogDescription":"Blog","blogTitle":"Blog"}}')}}]);

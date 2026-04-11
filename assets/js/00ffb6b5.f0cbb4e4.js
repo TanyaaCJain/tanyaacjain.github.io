@@ -1,0 +1,1 @@
+"use strict";(globalThis.webpackChunktanyaacjain_github_io=globalThis.webpackChunktanyaacjain_github_io||[]).push([[2836],{278:a=>{a.exports=JSON.parse('{"name":"docusaurus-plugin-content-blog","id":"tech-blog"}')}}]);

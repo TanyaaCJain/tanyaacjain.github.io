@@ -1,0 +1,429 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+    <channel>
+        <title>Tanya Jain Blog</title>
+        <link>https://www.jaintanya.com/tech</link>
+        <description>Tanya Jain Blog</description>
+        <lastBuildDate>Thu, 15 Jan 2026 00:00:00 GMT</lastBuildDate>
+        <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
+        <generator>https://github.com/jpmonette/feed</generator>
+        <language>en</language>
+        <item>
+            <title><![CDATA[aaa]]></title>
+            <link>https://www.jaintanya.com/tech/aaa/about</link>
+            <guid>https://www.jaintanya.com/tech/aaa/about</guid>
+            <pubDate>Thu, 15 Jan 2026 00:00:00 GMT</pubDate>
+            <description><![CDATA[First GenAI hire brought in to architect and scale the enterprise GenAI program, partnered with product leadership to launch 7 product lines and deliver $4.8M in annual operational savings. Architected & scaled the flagship roadside assistance platform from 0 to 1, serving 60K+ DAUs, and driving a 44% increase in accuracy across AI-powered interactions.]]></description>
+            <content:encoded><![CDATA[<p>First GenAI hire brought in to architect and scale the enterprise GenAI program, partnered with product leadership to launch 7 product lines and deliver $4.8M in annual operational savings. Architected &amp; scaled the flagship roadside assistance platform from 0 to 1, serving 60K+ DAUs, and driving a 44% increase in accuracy across AI-powered interactions.</p>]]></content:encoded>
+            <category>Gen AI at AAA</category>
+        </item>
+        <item>
+            <title><![CDATA[The Invisible Integration Architecture]]></title>
+            <link>https://www.jaintanya.com/tech/aaa/invisible-integration-architecture</link>
+            <guid>https://www.jaintanya.com/tech/aaa/invisible-integration-architecture</guid>
+            <pubDate>Thu, 15 May 2025 00:00:00 GMT</pubDate>
+            <description><![CDATA[When most developers see tickets on an agile board, they see tasks. I see leverage, often starting from point -1.]]></description>
+            <content:encoded><![CDATA[<p>When most developers see tickets on an agile board, they see tasks. I see leverage, often starting from point -1.</p>
+<p>Our company had dozens of digital properties: membership portals, insurance dashboards, travel booking engines, branch locators. Each operated as its own kingdom: different stacks, teams, release cycles, and definitions of “urgent.</p>
+<p>Every new capability required negotiating entry into each one. This is the kind of friction that masquerades as process in high-bureaucracy environments: discovery calls, integration debates, version mismatches, bandwidth constraints.</p>
+<p>A simple feature, like a universal point of ingestion to our generative AI roadside assistant, turned into months of coordination. One property would launch. The rest would wait.</p>
+<p>I realized we were building a product that required adoption.</p>
+<p><strong>The problem was territorial.</strong></p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="the-architecture-of-a-parasite">The Architecture of a Parasite<a class="hash-link" aria-label="Direct link to The Architecture of a Parasite" title="Direct link to The Architecture of a Parasite" href="https://www.jaintanya.com/tech/aaa/invisible-integration-architecture#the-architecture-of-a-parasite">​</a></h2>
+<p>I built the platform to behave like a parasite. Without asking for permission or negotiating entry, it attaches itself where traffic already exists and begins operating within the host, without requiring the host to change.</p>
+<p>Technically, this meant a single script that:</p>
+<ul>
+<li>initializes its own DOM root if none exists</li>
+<li>detects the environment via domain/runtime signals</li>
+<li>routes to the correct backend without configuration</li>
+<li>operates independently of the host’s stack or release cycle</li>
+</ul>
+<p>Handling session context across properties without direct integration required reconstructing user state from fragmented signals—cookies, local storage, URL parameters—and resolving them via backend identity mapping, all without relying on host-provided authentication hooks.</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="the-trade-offs-that-made-it-viable">The Trade-offs That Made It Viable<a class="hash-link" aria-label="Direct link to The Trade-offs That Made It Viable" title="Direct link to The Trade-offs That Made It Viable" href="https://www.jaintanya.com/tech/aaa/invisible-integration-architecture#the-trade-offs-that-made-it-viable">​</a></h3>
+<p>This model prioritizes survival and sacrifices flexibility.</p>
+<ul>
+<li>No per-team customization surface to slow decisions.</li>
+<li>Limited visibility into internals. (UI, state, and logic were self-contained).</li>
+<li>Reduced control for host teams (environment inference via domain-based routing)</li>
+</ul>
+<p>It also required strong guardrails to avoid interfering with host behavior.</p>
+<p>But in early-stage systems—especially in uncertain domains like GenAI—distribution is the primary constraint. Removing friction mattered more than enabling control.</p>
+<p>This reduced integration from a multi-week process to a ~30-second decision.</p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="the-outcome-economics">The Outcome Economics<a class="hash-link" aria-label="Direct link to The Outcome Economics" title="Direct link to The Outcome Economics" href="https://www.jaintanya.com/tech/aaa/invisible-integration-architecture#the-outcome-economics">​</a></h2>
+<p>Over the next six months, the assistant appeared on over most properties.</p>
+<p>There were no integration meetings, no onboarding docs, and almost no support requests. Teams adopted it independently because the cost to try was negligible and rollback was trivial.</p>
+<p><em>"Add this script tag."</em> <br>
+<em>"That's it?"</em> <br>
+<em>"That's it."</em></p>
+<p>What normally takes weeks of coordination became a same-day decision. Adoption worked because the value was immediately visible to end-users.</p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="the-hidden-complexity">The Hidden Complexity<a class="hash-link" aria-label="Direct link to The Hidden Complexity" title="Direct link to The Hidden Complexity" href="https://www.jaintanya.com/tech/aaa/invisible-integration-architecture#the-hidden-complexity">​</a></h2>
+<p>This simplicity was deliberate. Descoping became the core design tool. Every configuration option, like theming or customization, was a potential bottleneck disguised as flexibility. So it was removed.</p>
+<p>All updates shipped centrally and became instantly available everywhere, without requiring any action from host teams.</p>
+<p>The system knew how to find what it needed. The host didn’t need to know anything.</p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="the-lesson">The Lesson<a class="hash-link" aria-label="Direct link to The Lesson" title="Direct link to The Lesson" href="https://www.jaintanya.com/tech/aaa/invisible-integration-architecture#the-lesson">​</a></h2>
+<p>A platform requires upfront investment but compounds in value through adoption. Its scalability is determined by how easily it propagates.</p>
+<p>Most platforms behave like guests: waiting to be invited, configured, and maintained. They fail when they require effort to adopt.</p>
+<p>This one behaved differently. It attached itself, adapted quietly, and delivered value unobtrusively.</p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="conclusive-thought">Conclusive Thought<a class="hash-link" aria-label="Direct link to Conclusive Thought" title="Direct link to Conclusive Thought" href="https://www.jaintanya.com/tech/aaa/invisible-integration-architecture#conclusive-thought">​</a></h2>
+<p>If you want something to spread across an organization, don’t optimize for configurability. Optimize for inevitability.</p>
+<p>The most effective systems don’t demand adoption. They make it unavoidable.</p>
+<p>That’s the kind of leverage I aim for, that is, build once, and remove the need for others to build at all.</p>]]></content:encoded>
+            <category>Gen AI at AAA</category>
+        </item>
+        <item>
+            <title><![CDATA[Essentia Softserv LLP]]></title>
+            <link>https://www.jaintanya.com/tech/other-engagements/essentia</link>
+            <guid>https://www.jaintanya.com/tech/other-engagements/essentia</guid>
+            <pubDate>Mon, 11 Nov 2024 00:00:00 GMT</pubDate>
+            <description><![CDATA[About the organisation]]></description>
+            <content:encoded><![CDATA[<h4 class="anchor anchorWithStickyNavbar_LWe7" id="about-the-organisation">About the organisation<a class="hash-link" aria-label="Direct link to About the organisation" title="Direct link to About the organisation" href="https://www.jaintanya.com/tech/other-engagements/essentia#about-the-organisation">​</a></h4>
+<div class="sm:tw-flex tw-gap-1 tw-items-center tw-text-sm"><div class="tw-min-w-[125px] tw-w-[125px] tw-text-center tw-pb-3 md:tw-pb-0"><img src="https://essentia.dev/images/logo.svg" alt="Essentia.dev" class="tw-max-h-[125px] themedComponent_mlkZ themedComponent--light_NVdE"><img src="https://essentia.dev/images/logo.svg" alt="Essentia.dev" class="tw-max-h-[125px] themedComponent_mlkZ themedComponent--dark_xIcU"></div><div class="sm:tw-ml-3 tw-w-full"><p><a href="https://essentia.dev/">Essentia.dev</a> is an IT software solution provider based in Delhi, India.</p><div class="tw-flex -tw-mt-3"><div><a href="https://essentia.dev/" target="_blank" rel="noreferrer">Website</a><span class="tw-mx-1">•</span></div><div><a href="https://www.linkedin.com/company/essentia-dev/about/" target="_blank" rel="noreferrer">LinkedIn</a></div></div></div></div>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="the-work">The work<a class="hash-link" aria-label="Direct link to The work" title="Direct link to The work" href="https://www.jaintanya.com/tech/other-engagements/essentia#the-work">​</a></h4>
+<p><strong>The Challenge</strong>:</p>
+<p>Essentia Softserv faced challenges with project timelines and system inefficiencies
+that affected client satisfaction and operational costs.</p>
+<p><strong>My Contributions</strong>:</p>
+<ul>
+<li>Spearheaded the integration of automation and agile practices to streamline development
+processes, significantly reducing bottlenecks.</li>
+<li>Engineered and implemented robust database architectures across diverse tools, and developed
+from scratch a comprehensive payment system to boost transaction success rates.</li>
+<li>Took up the responsibilities of a developer relations manager, liaising directly with clients
+to tailor solutions to their needs, and guided cross-functional teams by instilling best practices.</li>
+<li>Actively represented the company at major industry conferences across India, enhancing our
+corporate profile and engagement with the tech community.</li>
+</ul>
+<p><strong>The Results</strong>:</p>
+<ul>
+<li>Delivered a project that saved over $20,000, an amount significant enough to cover multiple
+developers’ salaries for three months in India - cut project timelines by 40%, and lifted client
+satisfaction by 67%.</li>
+<li>Mentored a team of 20 trainees, improving our task completion rate by 10%, which underscored
+my dedication to team development and project excellence.</li>
+</ul>]]></content:encoded>
+            <category>Other engagements</category>
+        </item>
+        <item>
+            <title><![CDATA[Prismberry]]></title>
+            <link>https://www.jaintanya.com/tech/other-engagements/prismberry</link>
+            <guid>https://www.jaintanya.com/tech/other-engagements/prismberry</guid>
+            <pubDate>Mon, 11 Nov 2024 00:00:00 GMT</pubDate>
+            <description><![CDATA[About the organisation]]></description>
+            <content:encoded><![CDATA[<h4 class="anchor anchorWithStickyNavbar_LWe7" id="about-the-organisation">About the organisation<a class="hash-link" aria-label="Direct link to About the organisation" title="Direct link to About the organisation" href="https://www.jaintanya.com/tech/other-engagements/prismberry#about-the-organisation">​</a></h4>
+<div class="sm:tw-flex tw-gap-1 tw-items-center tw-text-sm"><div class="tw-min-w-[125px] tw-w-[125px] tw-text-center tw-pb-3 md:tw-pb-0"><img src="https://prismberry.com/wp-content/smush-webp/2024/04/prismberry.png.webp" alt="Prismberry" class="tw-max-h-[125px] themedComponent_mlkZ themedComponent--light_NVdE"><img src="https://prismberry.com/wp-content/smush-webp/2024/04/prismberry.png.webp" alt="Prismberry" class="tw-max-h-[125px] themedComponent_mlkZ themedComponent--dark_xIcU"></div><div class="sm:tw-ml-3 tw-w-full"><p><a href="https://prismberry.com/">Prismberry</a> is a consultancy service provider in software design and development focused on Artificial Intelligence, Product Engineering, Cloud Technologies, Data Analytics, Mobile Application, Automation, DevOps etc.</p><div class="tw-flex -tw-mt-3"><div><a href="https://prismberry.com/" target="_blank" rel="noreferrer">Website</a><span class="tw-mx-1">•</span></div><div><a href="https://www.linkedin.com/company/prismberry-technologies" target="_blank" rel="noreferrer">LinkedIn</a></div></div></div></div>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="the-work">The work<a class="hash-link" aria-label="Direct link to The work" title="Direct link to The work" href="https://www.jaintanya.com/tech/other-engagements/prismberry#the-work">​</a></h4>
+<p><strong>The Objective</strong>:</p>
+<p>Ensuring all teams across the company produce
+high-quality deliverables for our clients, notably Flipkart.
+I was responsible for the entire software development lifecycle, from requirements gathering
+to deployment.</p>
+<p><strong>My Role</strong>:</p>
+<p>I spearheaded an overhaul of the NLP systems and backend processes,
+integrating cutting-edge BERT models and optimizing SQL queries. My initial
+project involved training Transformer models from scratch on a custom language dataset,
+and to deploy them on a production server. Later on, I worked on various products that drove</p>
+<p><strong>The Impact</strong>:</p>
+<p>My efforts significantly enhanced the reliability of our software,
+improving overall customer satisfaction and streamlining operations.
+These efforts include:</p>
+<ul>
+<li>Increased NLP accuracy by 20% with new language BERT models on RTX 3080Ti GPUs.</li>
+<li>Boosted user engagement 25% by CNN based audio feature analysis and revamping e-commerce backend with Stripe &amp; audio processing.</li>
+<li>Cut SQL query time 93%, from 15s to less than 1s, optimizing site performance.</li>
+<li>Enhanced software reliability 15% via test-driven development and code maintenance.</li>
+</ul>]]></content:encoded>
+            <category>Other engagements</category>
+        </item>
+        <item>
+            <title><![CDATA[RISC-V assembly interpreter, compilers, emulator and processor]]></title>
+            <link>https://www.jaintanya.com/tech/explorations/riscv/riscv</link>
+            <guid>https://www.jaintanya.com/tech/explorations/riscv/riscv</guid>
+            <pubDate>Mon, 11 Nov 2024 00:00:00 GMT</pubDate>
+            <category>Explorations</category>
+        </item>
+        <item>
+            <title><![CDATA[Providing Aid to Local Communities With Technology]]></title>
+            <link>https://www.jaintanya.com/tech/local-community-support/about</link>
+            <guid>https://www.jaintanya.com/tech/local-community-support/about</guid>
+            <pubDate>Wed, 15 May 2024 00:00:00 GMT</pubDate>
+            <description><![CDATA[These are projects where technology meets human necessity, and where the measure of success is its endurance after I step away. They are expressions of a single approach: identify a gap, build systems that empower, and design for the work to outlast me.]]></description>
+            <content:encoded><![CDATA[<p>These are projects where technology meets human necessity, and where the measure of success is its endurance after I step away. They are expressions of a single approach: identify a gap, build systems that empower, and design for the work to outlast me.</p>]]></content:encoded>
+            <category>Local Community Support</category>
+        </item>
+        <item>
+            <title><![CDATA[Digital Literacy - Extending Access Locally]]></title>
+            <link>https://www.jaintanya.com/tech/local-community-support/digital-literacy</link>
+            <guid>https://www.jaintanya.com/tech/local-community-support/digital-literacy</guid>
+            <pubDate>Wed, 15 May 2024 00:00:00 GMT</pubDate>
+            <description><![CDATA[Technology access remains unevenly distributed. So, I’ve made it a personal commitment to help correct that imbalance—teaching the children of household staff, volunteering with NGOs, and ensuring that the communities adjacent to my own are not left behind as the world digitizes.]]></description>
+            <content:encoded><![CDATA[<p>Technology access remains unevenly distributed. So, I’ve made it a personal commitment to help correct that imbalance—teaching the children of household staff, volunteering with NGOs, and ensuring that the communities adjacent to my own are not left behind as the world digitizes.</p>
+<p>No formal program governs this work. It flows from a conviction that access, once earned, must be extended.</p>]]></content:encoded>
+            <category>Local Community Support</category>
+        </item>
+        <item>
+            <title><![CDATA[Lowering Barriers to Access Eye Assessment]]></title>
+            <link>https://www.jaintanya.com/tech/local-community-support/eye-assessment</link>
+            <guid>https://www.jaintanya.com/tech/local-community-support/eye-assessment</guid>
+            <pubDate>Wed, 15 May 2024 00:00:00 GMT</pubDate>
+            <description><![CDATA[At [CCFIS], I investigated whether mobile-optimized versions of eye and ear charts could increase engagement with preliminary vision and hearing assessments. This project stemmed from the question, if people could be met where they already reside,on their devices, to lower barriers to basic healthcare access?]]></description>
+            <content:encoded><![CDATA[<p>At <a href="https://www.ccfis.net/" target="_blank" rel="noopener noreferrer">CCFIS</a>, I investigated whether mobile-optimized versions of eye and ear charts could increase engagement with preliminary vision and hearing assessments. This project stemmed from the question, if people could be met where they already reside,on their devices, to lower barriers to basic healthcare access?</p>
+<p>With this we meant accessibility is seldom merely a matter of cost. It demands meeting individuals in their existing contexts, with tools that integrate into their lives rather than disrupting them.</p>]]></content:encoded>
+            <category>Local Community Support</category>
+        </item>
+        <item>
+            <title><![CDATA[Sustainable Infrastructure Built with Community Ownership]]></title>
+            <link>https://www.jaintanya.com/tech/local-community-support/jhajhar</link>
+            <guid>https://www.jaintanya.com/tech/local-community-support/jhajhar</guid>
+            <pubDate>Wed, 15 May 2024 00:00:00 GMT</pubDate>
+            <description><![CDATA[When I encountered an infrastructure initiative in Jhajar district in Haryana, I recognized a familiar challenge. Villages needed inexpensive clean water and reliable energy. I spearheaded a project introducing water filtration and biogas power, but the deeper investment was in training. We focused on women homemakers, equipping them to operate and maintain the systems independently. The goal was not just cleaner water or renewable energy but a cascade: employment, self-sufficiency, and the confidence that emerges when a community controls its own infrastructure.]]></description>
+            <content:encoded><![CDATA[<p>When I encountered an infrastructure initiative in Jhajar district in Haryana, I recognized a familiar challenge. Villages needed inexpensive clean water and reliable energy. I spearheaded a project introducing water filtration and biogas power, but the deeper investment was in training. We focused on women homemakers, equipping them to operate and maintain the systems independently. The goal was not just cleaner water or renewable energy but a cascade: employment, self-sufficiency, and the confidence that emerges when a community controls its own infrastructure.</p>
+<p>This work was selected as a finalist for IIIT-Delhi’s “Building Better Villages” tech event. The recognition was welcome, but the enduring outcome is the community’s continued stewardship for their own resources.</p>]]></content:encoded>
+            <category>Local Community Support</category>
+        </item>
+        <item>
+            <title><![CDATA[Mentoring]]></title>
+            <link>https://www.jaintanya.com/tech/local-community-support/mentorships</link>
+            <guid>https://www.jaintanya.com/tech/local-community-support/mentorships</guid>
+            <pubDate>Wed, 15 May 2024 00:00:00 GMT</pubDate>
+            <description><![CDATA[Mentoring is the structured transfer of practical wisdom and experience to foster development.]]></description>
+            <content:encoded><![CDATA[<p>Mentoring is the structured transfer of practical wisdom and experience to foster development.</p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="ai-hackathon--berkeley">AI Hackathon @ Berkeley<a class="hash-link" aria-label="Direct link to AI Hackathon @ Berkeley" title="Direct link to AI Hackathon @ Berkeley" href="https://www.jaintanya.com/tech/local-community-support/mentorships#ai-hackathon--berkeley">​</a></h2>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="about-the-initiative">About the initiative<a class="hash-link" aria-label="Direct link to About the initiative" title="Direct link to About the initiative" href="https://www.jaintanya.com/tech/local-community-support/mentorships#about-the-initiative">​</a></h4>
+<div class="sm:tw-flex tw-gap-1 tw-items-center tw-text-sm"><div class="tw-min-w-[125px] tw-w-[125px] tw-text-center tw-pb-3 md:tw-pb-0"><img src="https://ai.hackberkeley.org/_next/static/media/logo.de9dbd92.png" alt="Cal Hacks @ Berkeley" class="tw-max-h-[125px] themedComponent_mlkZ themedComponent--light_NVdE"><img src="https://ai.hackberkeley.org/_next/static/media/logo.de9dbd92.png" alt="Cal Hacks @ Berkeley" class="tw-max-h-[125px] themedComponent_mlkZ themedComponent--dark_xIcU"></div><div class="sm:tw-ml-3 tw-w-full"><p><a href="https://hackberkeley.org/">Hackathons @ Berkeley</a> is a non-profit organization responsible for Cal Hacks, the world's largest collegiate hackathon which annually convenes innovators to explore technological boundaries.</p><div class="tw-flex -tw-mt-3"><div><a href="https://hackberkeley.org/" target="_blank" rel="noreferrer">Website</a><span class="tw-mx-1">•</span></div><div><a href="https://twitter.com/CalHacks" target="_blank" rel="noreferrer">Twitter</a></div></div></div></div>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="contribution">Contribution<a class="hash-link" aria-label="Direct link to Contribution" title="Direct link to Contribution" href="https://www.jaintanya.com/tech/local-community-support/mentorships#contribution">​</a></h4>
+<p>As a mentor at the AI Hackathon, I provided technical guidance and strategic feedback to competing teams, helping them refine their concepts and implement functional solutions within the event timeline.</p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="girl-tech-power">Girl Tech Power<a class="hash-link" aria-label="Direct link to Girl Tech Power" title="Direct link to Girl Tech Power" href="https://www.jaintanya.com/tech/local-community-support/mentorships#girl-tech-power">​</a></h2>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="about-the-initiative-1">About the initiative<a class="hash-link" aria-label="Direct link to About the initiative" title="Direct link to About the initiative" href="https://www.jaintanya.com/tech/local-community-support/mentorships#about-the-initiative-1">​</a></h4>
+<div class="sm:tw-flex tw-gap-1 tw-items-center tw-text-sm"><div class="tw-min-w-[125px] tw-w-[125px] tw-text-center tw-pb-3 md:tw-pb-0"><img src="https://pbs.twimg.com/profile_images/629735945139458048/b3AJOa5H_400x400.png" alt="Girl Tech Power" class="tw-max-h-[125px] themedComponent_mlkZ themedComponent--light_NVdE"><img src="https://pbs.twimg.com/profile_images/629735945139458048/b3AJOa5H_400x400.png" alt="Girl Tech Power" class="tw-max-h-[125px] themedComponent_mlkZ themedComponent--dark_xIcU"></div><div class="sm:tw-ml-3 tw-w-full"><p><a href="https://girltechpower.cs.usfca.edu/">Girl Tech Power</a> is a summer code camp at the University of San Francisco designed to empower middle and high school girls to join the tech industry. Directed by Professor Alark Joshi and funded by Craig Newmark Philanthropies, the program concludes with a visit to a Bay Area tech company, where participants meet female engineers and present their final projects.</p><div class="tw-flex -tw-mt-3"><div><a href="https://girltechpower.cs.usfca.edu/" target="_blank" rel="noreferrer">Website</a><span class="tw-mx-1">•</span></div><div><a href="https://x.com/girltechpower" target="_blank" rel="noreferrer">Twitter</a></div></div></div></div>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="contribution-1">Contribution<a class="hash-link" aria-label="Direct link to Contribution" title="Direct link to Contribution" href="https://www.jaintanya.com/tech/local-community-support/mentorships#contribution-1">​</a></h4>
+<p>As a Girl Tech Power leader, I directed initiatives to teach middle and high school girls foundational Python coding, with a final project of building a functional game. To build community, each class concluded with Disney trivia. Participant feedback highlighted the supportive environment and the valuable technical skills acquired.</p>
+<div class="img-tb"><table><thead><tr><th><img decoding="async" loading="lazy" alt="GTP 1" src="https://www.jaintanya.com/assets/images/1-35c9e6f35a3e6ab55010fd7331011de7.JPG" width="2048" height="1536" class="img_ev3q"></th><th><img decoding="async" loading="lazy" alt="GTP 2" src="https://www.jaintanya.com/assets/images/2-294f3fc680d1bcca3d9e80151028a865.JPG" width="828" height="622" class="img_ev3q"></th></tr></thead><tbody><tr><td><img decoding="async" loading="lazy" alt="GTP 3" src="https://www.jaintanya.com/assets/images/3-edf7dcb72b247322b868983468993d72.JPG" width="1024" height="768" class="img_ev3q"></td><td><img decoding="async" loading="lazy" alt="GTP 4" src="https://www.jaintanya.com/assets/images/4-3c903a2214cfb26f4f578a6434df9321.JPG" width="1024" height="768" class="img_ev3q"></td></tr></tbody></table></div>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="exercism">Exercism<a class="hash-link" aria-label="Direct link to Exercism" title="Direct link to Exercism" href="https://www.jaintanya.com/tech/local-community-support/mentorships#exercism">​</a></h2>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="about-the-organisation">About the organisation<a class="hash-link" aria-label="Direct link to About the organisation" title="Direct link to About the organisation" href="https://www.jaintanya.com/tech/local-community-support/mentorships#about-the-organisation">​</a></h4>
+<div class="sm:tw-flex tw-gap-1 tw-items-center tw-text-sm"><div class="tw-min-w-[125px] tw-w-[125px] tw-text-center tw-pb-3 md:tw-pb-0"><img src="https://assets.exercism.org/assets/icons/exercism-with-logo-black-12752bd7fcf6862ba8ad7a2b75e21a9b2409d7fd.svg" alt="Exercism" class="tw-max-h-[125px] themedComponent_mlkZ themedComponent--light_NVdE"><img src="https://assets.exercism.org/assets/icons/exercism-with-logo-black-12752bd7fcf6862ba8ad7a2b75e21a9b2409d7fd.svg" alt="Exercism" class="tw-max-h-[125px] themedComponent_mlkZ themedComponent--dark_xIcU"></div><div class="sm:tw-ml-3 tw-w-full"><p><a href="https://exercism.org/">Exercism</a> is an online, open-source, free coding platform designed to help enhance coding skills through practice and mentorship on 70 programming languages and 5989 coding exercises.
+<br>
+<!-- -->7.3K stars. 4.9K followers.</p><div class="tw-flex -tw-mt-3"><div><a href="https://github.com/exercism" target="_blank" rel="noreferrer">GitHub</a><span class="tw-mx-1">•</span></div><div><a href="https://exercism.org/" target="_blank" rel="noreferrer">Website</a><span class="tw-mx-1">•</span></div><div><a href="https://twitter.com/exercism_io" target="_blank" rel="noreferrer">Twitter</a><span class="tw-mx-1">•</span></div><div><a href="https://en.wikipedia.org/wiki/Exercism" target="_blank" rel="noreferrer">Wiki</a></div></div></div></div>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="contribution-2">Contribution<a class="hash-link" aria-label="Direct link to Contribution" title="Direct link to Contribution" href="https://www.jaintanya.com/tech/local-community-support/mentorships#contribution-2">​</a></h4>
+<p>As a mentor, I provided feedback and answered questions to help students improve their coding skills in Python and JavaScript, and learn new programming concepts.</p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="alias---amity-linux-assistance-sapience">ALiAS - Amity Linux Assistance Sapience<a class="hash-link" aria-label="Direct link to ALiAS - Amity Linux Assistance Sapience" title="Direct link to ALiAS - Amity Linux Assistance Sapience" href="https://www.jaintanya.com/tech/local-community-support/mentorships#alias---amity-linux-assistance-sapience">​</a></h2>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="about-the-organisation-1">About the organisation<a class="hash-link" aria-label="Direct link to About the organisation" title="Direct link to About the organisation" href="https://www.jaintanya.com/tech/local-community-support/mentorships#about-the-organisation-1">​</a></h4>
+<div class="sm:tw-flex tw-gap-1 tw-items-center tw-text-sm"><div class="tw-min-w-[125px] tw-w-[125px] tw-text-center tw-pb-3 md:tw-pb-0"><img src="https://avatars.githubusercontent.com/u/20925586?s=280&amp;v=4" alt="ALiAS" class="tw-max-h-[125px] themedComponent_mlkZ themedComponent--light_NVdE"><img src="https://avatars.githubusercontent.com/u/20925586?s=280&amp;v=4" alt="ALiAS" class="tw-max-h-[125px] themedComponent_mlkZ themedComponent--dark_xIcU"></div><div class="sm:tw-ml-3 tw-w-full"><p><a href="https://asetalias.in/">ALiAS</a> is a student-led organization cum tech community that fosters open-source culture, the use of Linux and the culture of hacking and sharing.</p><div class="tw-flex -tw-mt-3"><div><a href="https://github.com/asetalias" target="_blank" rel="noreferrer">GitHub</a><span class="tw-mx-1">•</span></div><div><a href="https://asetalias.in/" target="_blank" rel="noreferrer">Website</a><span class="tw-mx-1">•</span></div><div><a href="https://linktr.ee/asetalias" target="_blank" rel="noreferrer">LinkTree</a><span class="tw-mx-1">•</span></div><div><a href="https://twitter.com/asetalias" target="_blank" rel="noreferrer">Twitter</a><span class="tw-mx-1">•</span></div><div><a href="https://www.linkedin.com/company/asetalias/" target="_blank" rel="noreferrer">LinkedIn</a></div></div></div></div>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="contribution-3">Contribution<a class="hash-link" aria-label="Direct link to Contribution" title="Direct link to Contribution" href="https://www.jaintanya.com/tech/local-community-support/mentorships#contribution-3">​</a></h4>
+<p>As President and a founding member, I guided newcomers through the contribution process, organized weekly meetings, led technical sessions, and established study groups. I also founded the 'Women in Tech' initiative, organizing workshops and events to promote greater participation in the industry.</p>
+<div class="img-tb"><table><thead><tr><th><img decoding="async" loading="lazy" alt="ALiAS 1" src="https://www.jaintanya.com/assets/images/02212017_1-b7e971380e873506b7a46bbd12249084.jpeg" width="1280" height="599" class="img_ev3q"></th><th><img decoding="async" loading="lazy" alt="ALiAS 2" src="https://www.jaintanya.com/assets/images/03082017_1-78ba2a40ea5962991725e5ad27fe1f39.jpeg" width="1296" height="609" class="img_ev3q"></th></tr></thead></table></div>
+<div class="theme-admonition theme-admonition-note admonition_xJq3 alert alert--secondary"><div class="admonitionHeading_Gvgb"><span class="admonitionIcon_Rf37"><svg viewBox="0 0 14 16"><path fill-rule="evenodd" d="M6.3 5.69a.942.942 0 0 1-.28-.7c0-.28.09-.52.28-.7.19-.18.42-.28.7-.28.28 0 .52.09.7.28.18.19.28.42.28.7 0 .28-.09.52-.28.7a1 1 0 0 1-.7.3c-.28 0-.52-.11-.7-.3zM8 7.99c-.02-.25-.11-.48-.31-.69-.2-.19-.42-.3-.69-.31H6c-.27.02-.48.13-.69.31-.2.2-.3.44-.31.69h1v3c.02.27.11.5.31.69.2.2.42.31.69.31h1c.27 0 .48-.11.69-.31.2-.19.3-.42.31-.69H8V7.98v.01zM7 2.3c-3.14 0-5.7 2.54-5.7 5.68 0 3.14 2.56 5.7 5.7 5.7s5.7-2.55 5.7-5.7c0-3.15-2.56-5.69-5.7-5.69v.01zM7 .98c3.86 0 7 3.14 7 7s-3.14 7-7 7-7-3.12-7-7 3.14-7 7-7z"></path></svg></span><a href="https://www.jaintanya.com/writings/alias">Read more about my journey with ALiAS</a></div></div>]]></content:encoded>
+            <category>Local Community Support</category>
+        </item>
+        <item>
+            <title><![CDATA[CHYN - Revolutionizing Curated Travel with Cloud Computing]]></title>
+            <link>https://www.jaintanya.com/tech/explorations/chyn/chyn</link>
+            <guid>https://www.jaintanya.com/tech/explorations/chyn/chyn</guid>
+            <pubDate>Wed, 15 May 2024 00:00:00 GMT</pubDate>
+            <description><![CDATA[-->]]></description>
+            <content:encoded><![CDATA[<h2 class="anchor anchorWithStickyNavbar_LWe7" id="project-description">Project Description<a class="hash-link" aria-label="Direct link to Project Description" title="Direct link to Project Description" href="https://www.jaintanya.com/tech/explorations/chyn/chyn#project-description">​</a></h2>
+<p>CHYN, derived from the Hindi word चयन (chayan), meaning 'to select' or 'curate', is a cloud-based platform designed to make curated travel more accessible. Utilizing advanced Machine Learning (ML) technologies, CHYN fills significant gaps in the oversaturated travel market, focusing on providing a highly personalized and accessible daily travel experience.</p>
+<div class="image-display"><p><img decoding="async" loading="lazy" alt="chyn Set Up Journey" src="https://www.jaintanya.com/assets/images/chyn_setup-52886395d9ef757aa1f75ad19af45aee.png" width="1407" height="902" class="img_ev3q"></p></div>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="motivation">Motivation<a class="hash-link" aria-label="Direct link to Motivation" title="Direct link to Motivation" href="https://www.jaintanya.com/tech/explorations/chyn/chyn#motivation">​</a></h2>
+<p>The project was inspired by the need to streamline the curated travel experience, making it more accessible and tailored through the use of cutting-edge ML technologies. CHYN aims to simplify the process of travel planning by automating the curation based on individual preferences and insights derived from vast amounts of travel data.</p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="system-architecture">System Architecture<a class="hash-link" aria-label="Direct link to System Architecture" title="Direct link to System Architecture" href="https://www.jaintanya.com/tech/explorations/chyn/chyn#system-architecture">​</a></h2>
+<p>CHYN leverages a robust cloud-based architecture to deliver its services:</p>
+<ul>
+<li><strong>Frontend</strong>: Utilizes React (switched from Vue3 for better static file generation).</li>
+<li><strong>Hosting</strong>: AWS S3 bucket hosts the SPA, enabling web app hosting with automated builds and deployments via GitHub Actions.</li>
+<li><strong>Security and Access</strong>: Managed through AWS Route 53 for DNS resolution, AWS CloudFront for content delivery, and SSL certificates for secure user access.</li>
+<li><strong>Authentication</strong>: AWS Cognito is used for secure user authentication and authorization with JWT tokens.</li>
+<li><strong>Backend Processing</strong>: AWS Lambda functions handle CRUD operations, integrated with AWS RDS for relational data storage.</li>
+</ul>
+<div class="image-display"><p><img decoding="async" loading="lazy" alt="chyn Architecture" src="https://www.jaintanya.com/assets/images/chyn_architecture-fa2a01973904c96ca013c86920a3dd47.png" width="1455" height="1455" class="img_ev3q"></p></div>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="key-technologies-and-innovations">Key Technologies and Innovations<a class="hash-link" aria-label="Direct link to Key Technologies and Innovations" title="Direct link to Key Technologies and Innovations" href="https://www.jaintanya.com/tech/explorations/chyn/chyn#key-technologies-and-innovations">​</a></h2>
+<ul>
+<li><strong>AWS Polly</strong>: Enhances accessibility by converting text to audio, aiding travelers who prefer audio guides or are visually impaired.</li>
+<li><strong>AWS Bedrock x Claude</strong>: Employs LLM models to extract noteworthy places and details from textual content, making it easier for users to bookmark places from blogs and articles.</li>
+</ul>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="challenges">Challenges<a class="hash-link" aria-label="Direct link to Challenges" title="Direct link to Challenges" href="https://www.jaintanya.com/tech/explorations/chyn/chyn#challenges">​</a></h2>
+<ul>
+<li>Managing S3 bucket configurations and ensuring that bucket names match the desired domain names.</li>
+<li>Handling AWS Security Token Service (STS) for secure role assumption by IAM users.</li>
+<li>Addressing common issues like 404 NotFound errors for misconfigured endpoints.</li>
+</ul>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="impact-and-significance">Impact and Significance<a class="hash-link" aria-label="Direct link to Impact and Significance" title="Direct link to Impact and Significance" href="https://www.jaintanya.com/tech/explorations/chyn/chyn#impact-and-significance">​</a></h2>
+<p>CHYN significantly impacts the travel industry by providing a platform that not only simplifies the travel planning process but also enhances the accessibility and personalization of travel experiences. It addresses key challenges in curated travel, such as the need for personalized recommendations and the ability to seamlessly integrate travel insights and preferences.</p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="limitations">Limitations<a class="hash-link" aria-label="Direct link to Limitations" title="Direct link to Limitations" href="https://www.jaintanya.com/tech/explorations/chyn/chyn#limitations">​</a></h2>
+<ul>
+<li>The application currently operates with a limited scope, primarily focusing on San Francisco.</li>
+<li>Privacy considerations prevent the use of background tracking, limiting real-time data gathering.</li>
+<li>Distances between locations are calculated as the crow flies, which may not always reflect actual travel distances.</li>
+</ul>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="conclusion">Conclusion<a class="hash-link" aria-label="Direct link to Conclusion" title="Direct link to Conclusion" href="https://www.jaintanya.com/tech/explorations/chyn/chyn#conclusion">​</a></h2>
+<p>CHYN has successfully demonstrated how a range of AWS services can be integrated to build a comprehensive cloud-based solution for the travel industry. The project underscores the importance of security in cloud deployments and highlights the potential for cloud technologies to significantly enhance user experiences in web applications.</p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="future-scope">Future Scope<a class="hash-link" aria-label="Direct link to Future Scope" title="Direct link to Future Scope" href="https://www.jaintanya.com/tech/explorations/chyn/chyn#future-scope">​</a></h2>
+<ul>
+<li><strong>Personalized Recommendations</strong>: Introduce algorithms that tailor travel recommendations based on user behavior and past itineraries.</li>
+<li><strong>Social Sharing</strong>: Develop features that allow users to share their travel plans with friends or on social media platforms.</li>
+<li><strong>Surprise Me Feature</strong>: Implement an innovative feature that generates random but intriguing travel plans for users seeking spontaneous travel experiences.</li>
+</ul>]]></content:encoded>
+            <category>Explorations</category>
+        </item>
+        <item>
+            <title><![CDATA[Paper - Vehicle Collision Prediction Using CNN]]></title>
+            <link>https://www.jaintanya.com/tech/explorations/vehicle-collision-prediction/vehicle-collision-prediction</link>
+            <guid>https://www.jaintanya.com/tech/explorations/vehicle-collision-prediction/vehicle-collision-prediction</guid>
+            <pubDate>Wed, 15 May 2024 00:00:00 GMT</pubDate>
+            <description><![CDATA[Project Overview]]></description>
+            <content:encoded><![CDATA[<h2 class="anchor anchorWithStickyNavbar_LWe7" id="project-overview">Project Overview<a class="hash-link" aria-label="Direct link to Project Overview" title="Direct link to Project Overview" href="https://www.jaintanya.com/tech/explorations/vehicle-collision-prediction/vehicle-collision-prediction#project-overview">​</a></h2>
+<p>This project explores groundbreaking advancements in vehicle collision prediction algorithms using convolutional neural networks (CNNs). Highly recognized among the top 20% of submissions at the ICDAM international conference, our research presents a comprehensive analysis of 108 CNN configurations, significantly enhancing autonomous vehicle safety by innovatively addressing real-world complexities.</p>
+<div class="image-display"><p><img decoding="async" loading="lazy" alt="Vehicle Collision Prediction" src="https://www.jaintanya.com/assets/images/vcp-cover-87cb936d2fa8f3c847596f688cff859e.png" width="1574" height="1400" class="img_ev3q"></p></div>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="objectives">Objectives<a class="hash-link" aria-label="Direct link to Objectives" title="Direct link to Objectives" href="https://www.jaintanya.com/tech/explorations/vehicle-collision-prediction/vehicle-collision-prediction#objectives">​</a></h2>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="develop-a-highly-accurate-system">Develop a Highly Accurate System<a class="hash-link" aria-label="Direct link to Develop a Highly Accurate System" title="Direct link to Develop a Highly Accurate System" href="https://www.jaintanya.com/tech/explorations/vehicle-collision-prediction/vehicle-collision-prediction#develop-a-highly-accurate-system">​</a></h3>
+<p>Create a system that predicts vehicle collisions with high accuracy andminimal computational resources. This system aims to improve the reliability and responsiveness of autonomous vehicles in real-world conditions, ultimately enhancing road safety.</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="evaluation">Evaluation<a class="hash-link" aria-label="Direct link to Evaluation" title="Direct link to Evaluation" href="https://www.jaintanya.com/tech/explorations/vehicle-collision-prediction/vehicle-collision-prediction#evaluation">​</a></h3>
+<p>Assess various CNN configurations on performance metrics such as accuracy, precision, recall, and F1-score. The goal is to identify optimal configurations that ensure the best balance between performance and computational efficiency, facilitating widespread adoption in the automotive industry.</p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="methodology">Methodology<a class="hash-link" aria-label="Direct link to Methodology" title="Direct link to Methodology" href="https://www.jaintanya.com/tech/explorations/vehicle-collision-prediction/vehicle-collision-prediction#methodology">​</a></h2>
+<p>The study involved creating and analyzing a substantial dataset of 8,284 data points and detailing the performance of various CNN configurations, examining aspects like accuracy, precision, recall, and F1-score. The detailed comparative analysis of various configurations -- including different layers, activation functions, optimizers, and loss functions, provides valuable insights into which combinations of techniques and optimizations yield the best results.</p>
+<p><img decoding="async" loading="lazy" alt="CNN Model" src="https://www.jaintanya.com/assets/images/vcp-cnn-bb3693873e9e7711f40710a619860815.png" width="1038" height="442" class="img_ev3q"></p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="key-findings">Key Findings<a class="hash-link" aria-label="Direct link to Key Findings" title="Direct link to Key Findings" href="https://www.jaintanya.com/tech/explorations/vehicle-collision-prediction/vehicle-collision-prediction#key-findings">​</a></h2>
+<p>The top-performing CNN configuration achieved 100% accuracy along with perfect precision, recall, and F1-score, demonstrating its capability to reliably predict vehicle collisions in complex environments.</p>
+<p>This high accuracy, coupled with low computational demands, marks a significant step forward in making advanced autonomous driving technologies more practical and accessible.</p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="key-challenges">Key Challenges<a class="hash-link" aria-label="Direct link to Key Challenges" title="Direct link to Key Challenges" href="https://www.jaintanya.com/tech/explorations/vehicle-collision-prediction/vehicle-collision-prediction#key-challenges">​</a></h2>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="data-limitations">Data Limitations<a class="hash-link" aria-label="Direct link to Data Limitations" title="Direct link to Data Limitations" href="https://www.jaintanya.com/tech/explorations/vehicle-collision-prediction/vehicle-collision-prediction#data-limitations">​</a></h3>
+<p>Significant challenges arose from the restricted availability and variability of real-world collision data, which is crucial for training predictive models.</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="complexity-in-prediction">Complexity in Prediction<a class="hash-link" aria-label="Direct link to Complexity in Prediction" title="Direct link to Complexity in Prediction" href="https://www.jaintanya.com/tech/explorations/vehicle-collision-prediction/vehicle-collision-prediction#complexity-in-prediction">​</a></h3>
+<p>Object prediction in autonomous driving typically benefits from the recognizable and consistent structures of objects like cars and humans. However, collision scenarios often partially or completely deform these structures, complicating the prediction process. This deformation disrupts the basic geometric and visual cues that are essential for accurate recognition, presenting a unique and significant challenge for collision prediction systems.</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="system-efficiency">System Efficiency<a class="hash-link" aria-label="Direct link to System Efficiency" title="Direct link to System Efficiency" href="https://www.jaintanya.com/tech/explorations/vehicle-collision-prediction/vehicle-collision-prediction#system-efficiency">​</a></h3>
+<p>Achieving high accuracy in collision prediction while maintaining computational efficiency was paramount, given the real-time operational needs of autonomous vehicles. This balance is crucial for the practical deployment of AI in dynamic environments, where both speed and reliability are critical.</p>
+<p><img decoding="async" loading="lazy" alt="Vehicle Collision Prediction" src="https://www.jaintanya.com/assets/images/vcp-prediction-f4e69dfb8b216aba8d06cb0a5e5edf48.png" width="1594" height="324" class="img_ev3q"></p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="impact">Impact<a class="hash-link" aria-label="Direct link to Impact" title="Direct link to Impact" href="https://www.jaintanya.com/tech/explorations/vehicle-collision-prediction/vehicle-collision-prediction#impact">​</a></h2>
+<p>This research substantially advances the field of collision prediction algorithms, with significant implications for enhancing public safety and the operational efficiency of autonomous transportation systems. By improving the accuracy and reliability of such predictions, the technology can drastically reduce the incidence of road accidents, thereby saving lives and minimizing injuries.</p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="future-work">Future Work<a class="hash-link" aria-label="Direct link to Future Work" title="Direct link to Future Work" href="https://www.jaintanya.com/tech/explorations/vehicle-collision-prediction/vehicle-collision-prediction#future-work">​</a></h2>
+<p>The next phase will focus on integrating and testing these CNN configurations in real-world scenarios with diverse types of autonomous vehicles. This effort will aim to further refine the models to handle a variety of traffic conditions, improving the overall robustness and reliability of the collision prediction technologies.</p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="conclusion">Conclusion<a class="hash-link" aria-label="Direct link to Conclusion" title="Direct link to Conclusion" href="https://www.jaintanya.com/tech/explorations/vehicle-collision-prediction/vehicle-collision-prediction#conclusion">​</a></h2>
+<p>By setting new benchmarks in vehicle safety through innovative AI techniques, this project makes crucial contributions to enhancing global road safety. The distinguished recognition of our paper underscores the transformative impact and pioneering nature of our research.</p>]]></content:encoded>
+            <category>Explorations</category>
+        </item>
+        <item>
+            <title><![CDATA[Open GIS Project - Making Data Accessible]]></title>
+            <link>https://www.jaintanya.com/tech/local-community-support/gis/gis</link>
+            <guid>https://www.jaintanya.com/tech/local-community-support/gis/gis</guid>
+            <pubDate>Wed, 15 May 2024 00:00:00 GMT</pubDate>
+            <description><![CDATA[Real-Time GIS Framework for Yamuna's Environmental Monitoring]]></description>
+            <content:encoded><![CDATA[<h2 class="anchor anchorWithStickyNavbar_LWe7" id="real-time-gis-framework-for-yamunas-environmental-monitoring">Real-Time GIS Framework for Yamuna's Environmental Monitoring<a class="hash-link" aria-label="Direct link to Real-Time GIS Framework for Yamuna's Environmental Monitoring" title="Direct link to Real-Time GIS Framework for Yamuna's Environmental Monitoring" href="https://www.jaintanya.com/tech/local-community-support/gis/gis#real-time-gis-framework-for-yamunas-environmental-monitoring">​</a></h2>
+<p><strong>Institution</strong>: Amity University, Noida, India <br>
+<strong>Advisor</strong>: Madhuri Kumari, Nitasha Hasteer</p>
+<p><img decoding="async" loading="lazy" alt="GIS GUI Image" src="https://www.jaintanya.com/assets/images/gui_1-f279fd302e84e7d6e63b10c52dddebb6.jpg" width="1162" height="1162" class="img_ev3q"></p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="project-description">Project Description<a class="hash-link" aria-label="Direct link to Project Description" title="Direct link to Project Description" href="https://www.jaintanya.com/tech/local-community-support/gis/gis#project-description">​</a></h2>
+<p>Environmental policy suffers when data remains inaccessible to convey its own problems. Under <a href="https://scholar.google.co.in/citations?user=Salw3OoAAAAJ&amp;hl=en" target="_blank" rel="noopener noreferrer">Dr. Madhuri Kumari</a>’s guidance, I teamed up with <a href="https://www.jaintanya.com/writings/alias">ALiAS</a> members and developed a GIS-based web framework for real-time river pollution monitoring—built on open-source tools to ensure transparency and adaptability.</p>
+<p>The platform delivers critical data to stakeholders across the Government of India, equipping environmental researchers with the evidentiary foundation needed to advocate for policy reform. The same ethos that guided ALiAS—open knowledge, accessible infrastructure—applies as urgently to river systems as to codebases.</p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="overview">Overview<a class="hash-link" aria-label="Direct link to Overview" title="Direct link to Overview" href="https://www.jaintanya.com/tech/local-community-support/gis/gis#overview">​</a></h2>
+<p>Developed a robust web-based Geographic Information System (GIS) leveraging open-source technologies to monitor environmental phenomena, such as river pollution levels. The solution integrates spatial data management across various geographic locations, providing a scalable and intuitive tool for environmental researchers and decision-makers.</p>
+<p><img decoding="async" loading="lazy" alt="GIS Framework Diagram" src="https://www.jaintanya.com/assets/images/gis_framework-1a9ce5df07f9ddf73224ffc1220ece33.jpg" width="2000" height="1400" class="img_ev3q"></p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="objectives">Objectives<a class="hash-link" aria-label="Direct link to Objectives" title="Direct link to Objectives" href="https://www.jaintanya.com/tech/local-community-support/gis/gis#objectives">​</a></h2>
+<ul>
+<li>Facilitate the real-time visualization and management of environmental data.</li>
+<li>Employ cost-effective, open-source tools to ensure wide accessibility and adaptability.</li>
+</ul>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="comprehensive-technology-stack">Comprehensive Technology Stack<a class="hash-link" aria-label="Direct link to Comprehensive Technology Stack" title="Direct link to Comprehensive Technology Stack" href="https://www.jaintanya.com/tech/local-community-support/gis/gis#comprehensive-technology-stack">​</a></h2>
+<ul>
+<li><strong>Frontend</strong>: HTML, CSS, JavaScript, AJAX, jQuery, Bootstrap</li>
+<li><strong>Backend</strong>: Django, used for handling API requests, data management, and server-side logic.</li>
+<li><strong>Database</strong>: PostgreSQL, for secure and scalable data storage.</li>
+<li><strong>GIS Tools</strong>: QGIS, SAGA GIS for spatial data analysis and management.</li>
+<li><strong>Data Analysis and Visualization</strong>: Pandas for data handling and manipulation, Google Charts for creating dynamic, interactive graphical representations of data.</li>
+</ul>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="system-architecture">System Architecture<a class="hash-link" aria-label="Direct link to System Architecture" title="Direct link to System Architecture" href="https://www.jaintanya.com/tech/local-community-support/gis/gis#system-architecture">​</a></h2>
+<p>The architecture is structured into three layers:</p>
+<ul>
+<li><strong>Client Layer</strong>: Employs AJAX and jQuery for responsive user interactions and real-time data updates.</li>
+<li><strong>Application Layer</strong>: Django serves as the backbone, managing authentication, database interactions, and API integrations.</li>
+<li><strong>Database Layer</strong>: Utilizes PostgreSQL to manage both spatial and non-spatial data efficiently.</li>
+</ul>
+<div class="max-w-400px"><p><img decoding="async" loading="lazy" alt="Application Layer Diagram" src="https://www.jaintanya.com/assets/images/gis_application_layer-f62895ffc32ce665d9caa3fab1f477ce.jpg" width="1069" height="1170" class="img_ev3q"></p></div>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="key-features-and-innovations">Key Features and Innovations<a class="hash-link" aria-label="Direct link to Key Features and Innovations" title="Direct link to Key Features and Innovations" href="https://www.jaintanya.com/tech/local-community-support/gis/gis#key-features-and-innovations">​</a></h2>
+<ul>
+<li><strong>Dynamic Data Visualization</strong>: Interactive maps and graphs allow for comprehensive analysis and reporting of environmental data.</li>
+<li><strong>Advanced Data Management</strong>: Supports multiple data formats and facilitates seamless data input and manipulation through a well-designed GUI.</li>
+<li><strong>Enhanced User Experience</strong>: Features such as map zooming, shapefile overlaying, and real-time filtering enhance user interaction and data accessibility.</li>
+</ul>
+<p><img decoding="async" loading="lazy" alt="GIS GUI Image" src="https://www.jaintanya.com/assets/images/gui_2-6ab367383ed73eb24c988e1de746d0c1.png" width="1165" height="870" class="img_ev3q"></p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="impact-and-significance">Impact and Significance<a class="hash-link" aria-label="Direct link to Impact and Significance" title="Direct link to Impact and Significance" href="https://www.jaintanya.com/tech/local-community-support/gis/gis#impact-and-significance">​</a></h2>
+<p>This project supports critical environmental initiatives, such as the monitoring and management of river pollution. By leveraging advanced GIS capabilities and open-source technologies, the framework aids in making informed decisions that significantly impact community health and environmental preservation.</p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="conclusion">Conclusion<a class="hash-link" aria-label="Direct link to Conclusion" title="Direct link to Conclusion" href="https://www.jaintanya.com/tech/local-community-support/gis/gis#conclusion">​</a></h2>
+<p>This GIS framework demonstrates the power of integrating open-source technology with advanced data analysis tools to address environmental challenges. It is a pivotal solution for researchers and policymakers aiming to enhance environmental monitoring and decision-making processes.</p>]]></content:encoded>
+            <category>Local Community Support</category>
+        </item>
+        <item>
+            <title><![CDATA[3. Reclaiming the Fertility Journey]]></title>
+            <link>https://www.jaintanya.com/tech/local-community-support/rita-ai/rita-ai</link>
+            <guid>https://www.jaintanya.com/tech/local-community-support/rita-ai/rita-ai</guid>
+            <pubDate>Wed, 15 May 2024 00:00:00 GMT</pubDate>
+            <description><![CDATA[Rita Pod AI]]></description>
+            <content:encoded><![CDATA[<p><img decoding="async" loading="lazy" alt="Rita Pod AI" src="https://www.jaintanya.com/assets/images/rita-pod-c2daa6b57269eeee433b02f4fee75b69.png" width="1269" height="1269" class="img_ev3q"></p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="rita-pod-ai">Rita pod AI<a class="hash-link" aria-label="Direct link to Rita pod AI" title="Direct link to Rita pod AI" href="https://www.jaintanya.com/tech/local-community-support/rita-ai/rita-ai#rita-pod-ai">​</a></h2>
+<p>Fertility care is often isolating and a driving question to solve this issue was - how might we make an inherently isolating process feel communal? At the <a href="https://www.southparkcommons.com/" target="_blank" rel="noopener noreferrer">South Park Commons</a> Hackathon, sponsored by <a href="https://openai.com/" target="_blank" rel="noopener noreferrer">OpenAI</a>, I collaborated with <a href="https://www.linkedin.com/in/kamilastaryga" target="_blank" rel="noopener noreferrer">Kamily Staryga</a> (CEO, Rita Health) and <a href="https://www.linkedin.com/in/kaur-simran" target="_blank" rel="noopener noreferrer">Simran Kaur</a> (ex-Meta PM) to construct an alternative - Rita Pod, a platform that reframes fertility support as a community-driven experience.</p>
+<p>We fused AI with medically validated assessments to connect women in need of care to navigate similar stages. To address the loneliness and confusion that permeate fertility journeys, it featured real-time misinformation correction, voice input, emotional recognition, and personalized peer support.</p>
+<video src="/assets/medias/rita-pod-a70a83d6895bb69bccec6184c7384d93.mp4" width="560" height="315" controls=""></video>
+<p><a href="https://www.loom.com/share/5a758a8baedc40ecac15e538d00bc3dc?sid=121b4f59-d01b-4a19-a7a3-158989c36a60" target="_blank" rel="noopener noreferrer">Loom</a> | <a href="https://www.wearerita.com/" target="_blank" rel="noopener noreferrer">Rita AI Website</a></p>]]></content:encoded>
+            <category>Local Community Support</category>
+        </item>
+        <item>
+            <title><![CDATA[ALiAS - Amity Linux Assistance Sapience]]></title>
+            <link>https://www.jaintanya.com/tech/open-source/alias/alias</link>
+            <guid>https://www.jaintanya.com/tech/open-source/alias/alias</guid>
+            <pubDate>Wed, 15 May 2024 00:00:00 GMT</pubDate>
+            <description><![CDATA[ALiAS - Amity Linux Assistance Sapience]]></description>
+            <content:encoded><![CDATA[<h2 class="anchor anchorWithStickyNavbar_LWe7" id="alias---amity-linux-assistance-sapience">ALiAS - Amity Linux Assistance Sapience<a class="hash-link" aria-label="Direct link to ALiAS - Amity Linux Assistance Sapience" title="Direct link to ALiAS - Amity Linux Assistance Sapience" href="https://www.jaintanya.com/tech/open-source/alias/alias#alias---amity-linux-assistance-sapience">​</a></h2>
+<div class="sm:tw-flex tw-gap-1 tw-items-center tw-text-sm"><div class="tw-min-w-[125px] tw-w-[125px] tw-text-center tw-pb-3 md:tw-pb-0"><img src="https://avatars.githubusercontent.com/u/20925586?s=280&amp;v=4" alt="ALiAS" class="tw-max-h-[125px] themedComponent_mlkZ themedComponent--light_NVdE"><img src="https://avatars.githubusercontent.com/u/20925586?s=280&amp;v=4" alt="ALiAS" class="tw-max-h-[125px] themedComponent_mlkZ themedComponent--dark_xIcU"></div><div class="sm:tw-ml-3 tw-w-full"><p><a href="https://asetalias.in/">ALiAS</a> is a student-led organization cum tech community that fosters open-source culture, the use of Linux and the culture of hacking and sharing.</p><div class="tw-flex -tw-mt-3"><div><a href="https://github.com/asetalias" target="_blank" rel="noreferrer">GitHub</a><span class="tw-mx-1">•</span></div><div><a href="https://asetalias.in/" target="_blank" rel="noreferrer">Website</a><span class="tw-mx-1">•</span></div><div><a href="https://linktr.ee/asetalias" target="_blank" rel="noreferrer">LinkTree</a><span class="tw-mx-1">•</span></div><div><a href="https://twitter.com/asetalias" target="_blank" rel="noreferrer">Twitter</a><span class="tw-mx-1">•</span></div><div><a href="https://www.linkedin.com/company/asetalias/" target="_blank" rel="noreferrer">LinkedIn</a></div></div></div></div>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="contribution">Contribution<a class="hash-link" aria-label="Direct link to Contribution" title="Direct link to Contribution" href="https://www.jaintanya.com/tech/open-source/alias/alias#contribution">​</a></h4>
+<p>As a repository maintainer, I contributed to website development, documentation, and the creation of logistical systems for administrative and event management. I also assisted with social media strategy and developed a mobile application in Summer 2018.</p>
+<div class="theme-admonition theme-admonition-note admonition_xJq3 alert alert--secondary"><div class="admonitionHeading_Gvgb"><span class="admonitionIcon_Rf37"><svg viewBox="0 0 14 16"><path fill-rule="evenodd" d="M6.3 5.69a.942.942 0 0 1-.28-.7c0-.28.09-.52.28-.7.19-.18.42-.28.7-.28.28 0 .52.09.7.28.18.19.28.42.28.7 0 .28-.09.52-.28.7a1 1 0 0 1-.7.3c-.28 0-.52-.11-.7-.3zM8 7.99c-.02-.25-.11-.48-.31-.69-.2-.19-.42-.3-.69-.31H6c-.27.02-.48.13-.69.31-.2.2-.3.44-.31.69h1v3c.02.27.11.5.31.69.2.2.42.31.69.31h1c.27 0 .48-.11.69-.31.2-.19.3-.42.31-.69H8V7.98v.01zM7 2.3c-3.14 0-5.7 2.54-5.7 5.68 0 3.14 2.56 5.7 5.7 5.7s5.7-2.55 5.7-5.7c0-3.15-2.56-5.69-5.7-5.69v.01zM7 .98c3.86 0 7 3.14 7 7s-3.14 7-7 7-7-3.12-7-7 3.14-7 7-7z"></path></svg></span><a href="https://www.jaintanya.com/writings/alias">Read more about my journey with ALiAS</a></div></div>]]></content:encoded>
+            <category>Open Source Software</category>
+        </item>
+        <item>
+            <title><![CDATA[Arrow Air]]></title>
+            <link>https://www.jaintanya.com/tech/open-source/arrowair/arrow-air</link>
+            <guid>https://www.jaintanya.com/tech/open-source/arrowair/arrow-air</guid>
+            <pubDate>Wed, 15 May 2024 00:00:00 GMT</pubDate>
+            <description><![CDATA[About the organisation]]></description>
+            <content:encoded><![CDATA[<h4 class="anchor anchorWithStickyNavbar_LWe7" id="about-the-organisation">About the organisation<a class="hash-link" aria-label="Direct link to About the organisation" title="Direct link to About the organisation" href="https://www.jaintanya.com/tech/open-source/arrowair/arrow-air#about-the-organisation">​</a></h4>
+<div class="sm:tw-flex tw-gap-1 tw-items-center tw-text-sm"><div class="tw-min-w-[125px] tw-w-[125px] tw-text-center tw-pb-3 md:tw-pb-0"><img src="https://assets-global.website-files.com/639a2d8db0ff26e6ca7a68ff/639b4d564b6eae570db90e0b_arr_logo-nav.svg" alt="Arrow Air" class="tw-max-h-[125px] themedComponent_mlkZ themedComponent--light_NVdE" style="filter:brightness(1.8) invert(1) contrast(1.5) saturate(1.5) sepia(1) hue-rotate(180deg) grayscale(1)"><img src="https://assets-global.website-files.com/639a2d8db0ff26e6ca7a68ff/639b4d564b6eae570db90e0b_arr_logo-nav.svg" alt="Arrow Air" class="tw-max-h-[125px] themedComponent_mlkZ themedComponent--dark_xIcU" style="filter:brightness(1.8) invert(1) contrast(1.5) saturate(1.5) sepia(1) hue-rotate(180deg) grayscale(1)"></div><div class="sm:tw-ml-3 tw-w-full"><p><a href="https://www.arrowair.com/">Arrow Air</a> DAO is a decentralized community building vertical-takeoff and landing vehicles (VTOLs) along with the services and infrastructure to transport people and goods. The open source AAM ecosystem for flight planning and VTOL asset management is now an independent organisation named <a href="https://www.aetheric.nl/">aetheric</a>, based in Netherlands.</p><div class="tw-flex -tw-mt-3"><div><a href="https://www.arrowair.com/" target="_blank" rel="noreferrer">Website</a><span class="tw-mx-1">•</span></div><div><a href="https://github.com/Arrow-air" target="_blank" rel="noreferrer">GitHub</a><span class="tw-mx-1">•</span></div><div><a href="https://www.linkedin.com/company/arrowair" target="_blank" rel="noreferrer">LinkedIn</a></div></div></div></div>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="the-work">The work<a class="hash-link" aria-label="Direct link to The work" title="Direct link to The work" href="https://www.jaintanya.com/tech/open-source/arrowair/arrow-air#the-work">​</a></h4>
+<p><strong>The Mission</strong>: To revolutionize the user experience for VTOL logistics by building an intelligent,
+AI-native platform from the ground up.</p>
+<p><strong>My Strategy</strong>: Led full-stack development, architecting a Gen AI-powered web app with a React frontend
+and a Python backend featuring a RAG pipeline (OpenAI, Pinecone).</p>
+<p><strong>The Results</strong>: Engineered the full stack web app, for accurate, real-time intelligence. Delivered a high
+performance app with sub-1.5s FCP and enhanced user personalisation and operational efficiency by shipping
+a core AI feature.</p>
+<p><img decoding="async" loading="lazy" alt="Web App" src="https://www.jaintanya.com/assets/images/arrow-air-a808b200262696797225cdc676b588ad.png" width="2512" height="1302" class="img_ev3q"></p>]]></content:encoded>
+            <category>Open Source Software</category>
+        </item>
+        <item>
+            <title><![CDATA[LinuxChix India]]></title>
+            <link>https://www.jaintanya.com/tech/open-source/linux-chix/linux-chix</link>
+            <guid>https://www.jaintanya.com/tech/open-source/linux-chix/linux-chix</guid>
+            <pubDate>Wed, 15 May 2024 00:00:00 GMT</pubDate>
+            <description><![CDATA[LinuxChix India]]></description>
+            <content:encoded><![CDATA[<h2 class="anchor anchorWithStickyNavbar_LWe7" id="linuxchix-india">LinuxChix India<a class="hash-link" aria-label="Direct link to LinuxChix India" title="Direct link to LinuxChix India" href="https://www.jaintanya.com/tech/open-source/linux-chix/linux-chix#linuxchix-india">​</a></h2>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="about-the-organisation">About the organisation<a class="hash-link" aria-label="Direct link to About the organisation" title="Direct link to About the organisation" href="https://www.jaintanya.com/tech/open-source/linux-chix/linux-chix#about-the-organisation">​</a></h4>
+<div class="sm:tw-flex tw-gap-1 tw-items-center tw-text-sm"><div class="tw-min-w-[125px] tw-w-[125px] tw-text-center tw-pb-3 md:tw-pb-0"><img src="https://avatars.githubusercontent.com/u/24838409?s=280&amp;v=4" alt="LinuxChix India" class="tw-max-h-[125px] themedComponent_mlkZ themedComponent--light_NVdE"><img src="https://avatars.githubusercontent.com/u/24838409?s=280&amp;v=4" alt="LinuxChix India" class="tw-max-h-[125px] themedComponent_mlkZ themedComponent--dark_xIcU"></div><div class="sm:tw-ml-3 tw-w-full"><p><a href="http://india.linuxchix.org/">LinuxChix India</a> is a non-profit organization for the Linux user groups in India, passionate about sharing knowledge and learning. It aims to promote gender diversity in Free and Open Source Software (FOSS) communities in India.</p><div class="tw-flex -tw-mt-3"><div><a href="https://github.com/linuxchixin" target="_blank" rel="noreferrer">GitHub</a><span class="tw-mx-1">•</span></div><div><a href="http://india.linuxchix.org/" target="_blank" rel="noreferrer">Website</a></div></div></div></div>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="contribution">Contribution<a class="hash-link" aria-label="Direct link to Contribution" title="Direct link to Contribution" href="https://www.jaintanya.com/tech/open-source/linux-chix/linux-chix#contribution">​</a></h4>
+<p>I developed the website from the ground up as part of a redesign initiative, optimizing all pages for mobile responsiveness and accessibility.</p>
+<div class="image-display image-80-perc"><p><img decoding="async" loading="lazy" alt="LinuxChix India website UI" src="https://www.jaintanya.com/assets/images/linuxchix-india-cover-a3cff950dc1e552fb54a5e86ccad2dfa.png" width="1555" height="1555" class="img_ev3q"></p></div>]]></content:encoded>
+            <category>Open Source Software</category>
+        </item>
+        <item>
+            <title><![CDATA[pandas-dev]]></title>
+            <link>https://www.jaintanya.com/tech/open-source/pandas/pandas</link>
+            <guid>https://www.jaintanya.com/tech/open-source/pandas/pandas</guid>
+            <pubDate>Wed, 15 May 2024 00:00:00 GMT</pubDate>
+            <description><![CDATA[Pandas]]></description>
+            <content:encoded><![CDATA[<h2 class="anchor anchorWithStickyNavbar_LWe7" id="pandas">Pandas<a class="hash-link" aria-label="Direct link to Pandas" title="Direct link to Pandas" href="https://www.jaintanya.com/tech/open-source/pandas/pandas#pandas">​</a></h2>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="about-the-organisation">About the organisation<a class="hash-link" aria-label="Direct link to About the organisation" title="Direct link to About the organisation" href="https://www.jaintanya.com/tech/open-source/pandas/pandas#about-the-organisation">​</a></h4>
+<div class="sm:tw-flex tw-gap-1 tw-items-center tw-text-sm"><div class="tw-min-w-[125px] tw-w-[125px] tw-text-center tw-pb-3 md:tw-pb-0"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ed/Pandas_logo.svg/1280px-Pandas_logo.svg.png" alt="Pandas" class="tw-max-h-[125px] themedComponent_mlkZ themedComponent--light_NVdE"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ed/Pandas_logo.svg/1280px-Pandas_logo.svg.png" alt="Pandas" class="tw-max-h-[125px] themedComponent_mlkZ themedComponent--dark_xIcU"></div><div class="sm:tw-ml-3 tw-w-full"><p><a href="https://pandas.pydata.org/">Pandas</a> is a software library written for the Python programming language for data manipulation and analysis. It is designed to handle the dirty work of data preparation and transformation that is often required before statistical analysis can be performed.
+<br>
+<!-- -->Used by 1.7M repositories. 42.2K stars.</p><div class="tw-flex -tw-mt-3"><div><a href="https://github.com/pandas-dev" target="_blank" rel="noreferrer">GitHub</a><span class="tw-mx-1">•</span></div><div><a href="https://pandas.pydata.org/" target="_blank" rel="noreferrer">Website</a></div></div></div></div>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="contribution">Contribution<a class="hash-link" aria-label="Direct link to Contribution" title="Direct link to Contribution" href="https://www.jaintanya.com/tech/open-source/pandas/pandas#contribution">​</a></h4>
+<p>I enhanced documentation and conducted data analysis to improve the tool's accessibility for a global developer audience.</p>]]></content:encoded>
+            <category>Open Source Software</category>
+        </item>
+    </channel>
+</rss>
