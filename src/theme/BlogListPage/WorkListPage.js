@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { usePluginData } from '@docusaurus/useGlobalData';
 import { useBlogStyles } from './BlogStylesContext';
 
@@ -40,19 +40,37 @@ function formatDate(dateStr) {
   return new Date(dateStr).toLocaleDateString('en-US', { year: 'numeric', month: 'short' });
 }
 
-// ── RemarkCard ─────────────────────────────────────────────────────────────
-function RemarkCard({ quote, name, role }) {
+// ── RemarksCarousel ────────────────────────────────────────────────────────
+function RemarksCarousel({ remarks }) {
   const styles = useBlogStyles();
+  const [index, setIndex] = useState(0);
+  const [visible, setVisible] = useState(true);
+
+  useEffect(() => {
+    if (remarks.length <= 1) return;
+    const interval = setInterval(() => {
+      setVisible(false);
+      setTimeout(() => {
+        setIndex(i => (i + 1) % remarks.length);
+        setVisible(true);
+      }, 400);
+    }, 4000);
+    return () => clearInterval(interval);
+  }, [remarks.length]);
+
+  const r = remarks[index];
   return (
-    <figure className={styles.remarkCard}>
-      <blockquote className={styles.remarkQuote}>
-        <p>"{quote}"</p>
-      </blockquote>
-      <figcaption className={styles.remarkAttrib}>
-        <span className={styles.remarkName}>{name}</span>
-        {role && <span className={styles.remarkRole}>{role}</span>}
-      </figcaption>
-    </figure>
+    <div className={styles.remarksStrip}>
+      <figure className={`${styles.remarkCard} ${visible ? styles.remarkVisible : styles.remarkHidden}`}>
+        <blockquote className={styles.remarkQuote}>
+          <p>"{r.quote}"</p>
+        </blockquote>
+        <figcaption className={styles.remarkAttrib}>
+          <span className={styles.remarkName}>{r.name}</span>
+          {r.role && <span className={styles.remarkRole}>{r.role}</span>}
+        </figcaption>
+      </figure>
+    </div>
   );
 }
 
@@ -116,13 +134,7 @@ export function WorkSection({ tag, aboutDesc, remarks, articles, projects }) {
         </div>
       )}
 
-      {remarks?.length > 0 && (
-        <div className={styles.remarksStrip}>
-          {remarks.map((r, i) => (
-            <RemarkCard key={i} quote={r.quote} name={r.name} role={r.role} />
-          ))}
-        </div>
-      )}
+      {remarks?.length > 0 && <RemarksCarousel remarks={remarks} />}
     </section>
   );
 }

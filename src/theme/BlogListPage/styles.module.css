@@ -307,9 +307,19 @@
 ───────────────────────────────────────── */
 .remarksStrip {
   margin-top: 2rem;
-  display: flex;
-  flex-direction: column;
-  gap: 1.25rem;
+  min-height: 6rem;
+}
+
+.remarkVisible {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.remarkHidden {
+  opacity: 0;
+  transform: translateY(6px);
+  transition: opacity 0.4s ease, transform 0.4s ease;
 }
 
 .remarkCard {
