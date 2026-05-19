@@ -93,10 +93,6 @@ export default function Home() {
             </div>
           </div>
 
-          {/* Scroll indicator */}
-          <div className={styles.scrollIndicator} aria-hidden="true">
-            <div className={styles.scrollDot} />
-          </div>
         </section>
 
       </main>

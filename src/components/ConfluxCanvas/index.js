@@ -30,7 +30,7 @@ export default function ConfluxCanvas() {
     if (!canvas) return;
 
     const ctx = canvas.getContext('2d');
-    let W, H, cx, cy;
+    let W, H, fH, cx, cy, dotScale;
     let rafId;
     let sceneIndex      = 0;
     let sceneStartTime  = performance.now();
@@ -49,6 +49,8 @@ export default function ConfluxCanvas() {
       ctx.scale(window.devicePixelRatio, window.devicePixelRatio);
       cx = W / 2;
       cy = H / 2;
+      fH = Math.min(H, W * 1.5);
+      dotScale = Math.min(1, W / 520);
     }
 
     // ── Particle pool ─────────────────────────────────────────────────────────
@@ -70,7 +72,7 @@ export default function ConfluxCanvas() {
       resize();
       const scene     = ALL_SCENES[sIdx];
       const palette   = [scene.primaryColor, scene.secondaryColor, scene.accentColor];
-      const positions = scene.module.formation(cx, cy, W, H);
+      const positions = scene.module.formation(cx, cy, W, fH);
 
       for (let i = 0; i < AMBIENT_START; i++) {
         const p   = particles[i];
@@ -105,7 +107,7 @@ export default function ConfluxCanvas() {
         }
 
         p.targetColor = pos.directColor ?? palette[pos.colorIndex ?? 0];
-        p.size        = pos.size ?? 2.5;
+        p.size        = (pos.size ?? 2.5) * dotScale;
         p.alpha       = 0.88;
         if (pos.isPeacock)            p.isPeacock = true;
         if (pos.isNode !== undefined) p.isNode    = pos.isNode;
@@ -166,7 +168,7 @@ export default function ConfluxCanvas() {
         : 1;
       const inAlpha = 1 - outAlpha;
 
-      const sharedCtx = { cx, cy, W, H, time };
+      const sharedCtx = { cx, cy, W, H: fH, time };
       const curScene  = ALL_SCENES[sceneIndex];
       const nxtScene  = ALL_SCENES[nextSceneIndex];
 
@@ -184,7 +186,7 @@ export default function ConfluxCanvas() {
 
       // Tick animated formation targets (optional — only peacock exports this)
       if (curScene.module.tickFormation) {
-        curScene.module.tickFormation(particles, AMBIENT_START, { cx, cy, H, time });
+        curScene.module.tickFormation(particles, AMBIENT_START, { cx, cy, H: fH, time });
       }
 
       // Particle update + draw
