@@ -19,7 +19,6 @@ export default function Home() {
       <Head>
         <title>Tanya Jain</title>
         <meta name="description" content="Senior Software Engineer, Full Stack & GenAI Specialist, Founder, Creative Director." />
-        <meta name="theme-color" content="#0a0a0f" />
       </Head>
 
       {/* Skip link */}

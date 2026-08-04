@@ -89,6 +89,11 @@ const config: Config = {
   ],
   themeConfig: {
     image: 'img/social-card.PNG',
+    metadata: [{name: 'theme-color', content: '#0a0e27'}],
+    colorMode: {
+      defaultMode: 'dark',
+      respectPrefersColorScheme: false,
+    },
     navbar: {
       title: 'Tanya Jain',
       logo: {

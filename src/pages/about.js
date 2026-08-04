@@ -38,7 +38,6 @@ export default function About() {
       <Head>
         <title>About — Tanya Jain</title>
         <meta name="description" content="AI Engineer, Founder, and Creative Director building at the intersection of intelligence and craft." />
-        <meta name="theme-color" content="#0a0a0f" />
       </Head>
 
       <a href="#main-content" className={styles.skipLink}>

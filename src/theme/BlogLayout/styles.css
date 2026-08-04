@@ -21,14 +21,14 @@
    PAGE BACKGROUND & BASE TYPOGRAPHY
 ───────────────────────────────────────── */
 .blog-post-page {
-  background-color: #0a0a0f;
+  background: radial-gradient(ellipse at top, #0e1335 0%, #0a0e27 60%);
   color: #f5f0e8;
 }
 
 .blog-post-page body,
 .blog-post-page .main-wrapper,
 .blog-post-page .container {
-  background-color: #111119;
+  background-color: #10173f;
 }
 
 /* ─────────────────────────────────────────
@@ -87,7 +87,7 @@
 .blog-post-page .markdown h4,
 .blog-post-page .markdown h5 {
     font-family: 'zxcv', serif;
-    color: #a07a13;
+    color: rgb(223 169 20 / 87%);
     margin-top: 2.5em;
     margin-bottom: 0.6em;
 }
@@ -159,7 +159,7 @@
 }
 
 .blog-post-page .markdown pre {
-  background: #1a1a24 !important;
+  background: #161d4f !important;
   border: 1px solid rgba(255, 248, 220, 0.08);
   border-radius: 6px;
 }

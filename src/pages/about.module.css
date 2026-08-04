@@ -23,7 +23,7 @@
   z-index: 9999;
   padding: 0.5rem 1.25rem;
   background: #dfa914;
-  color: #0a0a0f;
+  color: #0a0e27;
   font-family: 'Nunito Sans', sans-serif;
   font-size: 0.85rem;
   font-weight: 700;
@@ -43,7 +43,7 @@
 ───────────────────────────────────────── */
 .page {
   position: relative;        /* anchor for the full-page canvas */
-  background-color: #0a0a0f;
+  background: radial-gradient(ellipse at top, #0e1335 0%, #0a0e27 60%);
   color: #f5f0e8;
   min-height: 100vh;
   font-family: 'Nunito Sans', sans-serif;
