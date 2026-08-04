@@ -86,7 +86,7 @@
 .blog-post-page .markdown h3,
 .blog-post-page .markdown h4,
 .blog-post-page .markdown h5 {
-    font-family: 'zxcv', serif;
+    font-family: 'Libertinus Serif', serif;
     color: rgb(223 169 20 / 87%);
     margin-top: 2.5em;
     margin-bottom: 0.6em;
@@ -117,7 +117,7 @@
 .blog-post-page [class*="blogPostTitle_"],
 .blog-post-page [class*="title_"] h1,
 .blog-post-page [class*="title_"] h2 {
-  font-family: 'zxcv', serif;
+  font-family: 'Libertinus Serif', serif;
   color: #f5f0e8;
 }
 
