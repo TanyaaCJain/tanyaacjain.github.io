@@ -1,9 +1,14 @@
-name: Deploy to GitHub Pages
+name: Rebuild on Content Update
+
+# Fired by repository_dispatch from the content repos
+# (tech-docs, design-docs, writings) via their trigger workflows.
+# Scheduled + manual runs act as a safety net.
 
 on:
-  push:
-    branches:
-      - main
+  repository_dispatch:
+    types: [content-updated]
+  schedule:
+    - cron: '0 3 * * *' # daily 03:00 UTC safety-net rebuild
   workflow_dispatch:
 
 permissions:
@@ -12,8 +17,8 @@ permissions:
   id-token: write
 
 jobs:
-  deploy:
-    name: Build and Deploy
+  build:
+    name: Build and Deploy Website
     runs-on: ubuntu-latest
 
     steps:
@@ -23,7 +28,13 @@ jobs:
           submodules: 'recursive'
           token: ${{ secrets.GH_TOKEN }}
 
-      # Content repos → nested working dirs (work/, design/, writings/)
+      - name: Log dispatch trigger
+        if: ${{ github.event_name == 'repository_dispatch' }}
+        run: |
+          echo "🔔 Dispatch from: ${{ github.event.client_payload.repository }}"
+          echo "📦 Content ref: ${{ github.event.client_payload.ref }}"
+
+      # Content repos at their latest main
       - name: Checkout tech-docs → work/
         uses: actions/checkout@v4
         with:
@@ -64,3 +75,6 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
         run: yarn deploy:with-content
+
+      - name: Notify completion
+        run: echo "✨ Website rebuilt and deployed successfully!"
