@@ -14,7 +14,6 @@
     "write-heading-ids": "docusaurus write-heading-ids",
     "typecheck": "tsc",
     "copy-theme": "copy-theme",
-    "setup-theme": "cp -R node_modules/@sawatdeehaneu/docusaurus-theme/src/theme/* src/theme",
     "setup": "./scripts/setup.sh",
     "init:content": "./scripts/setup-content.sh",
     "sync:content": "./scripts/sync-content.sh",
