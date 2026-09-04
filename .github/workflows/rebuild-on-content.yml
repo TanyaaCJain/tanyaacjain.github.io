@@ -23,10 +23,10 @@ jobs:
 
     steps:
       - name: Checkout site repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           submodules: 'recursive'
-          token: ${{ secrets.GH_TOKEN }}
+          token: ${{ secrets.GH_TOKEN || github.token }}
 
       - name: Log dispatch trigger
         if: ${{ github.event_name == 'repository_dispatch' }}
@@ -36,31 +36,31 @@ jobs:
 
       # Content repos at their latest main
       - name: Checkout tech-docs → work/
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           repository: TanyaaCJain/tech-docs
           ref: main
-          token: ${{ secrets.GH_TOKEN }}
+          token: ${{ secrets.GH_TOKEN || github.token }}
           path: work
 
       - name: Checkout design-docs → design/
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           repository: TanyaaCJain/design-docs
           ref: main
-          token: ${{ secrets.GH_TOKEN }}
+          token: ${{ secrets.GH_TOKEN || github.token }}
           path: design
 
       - name: Checkout writings → writings/
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           repository: TanyaaCJain/writings
           ref: main
-          token: ${{ secrets.GH_TOKEN }}
+          token: ${{ secrets.GH_TOKEN || github.token }}
           path: writings
 
       - name: Setup Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v5
         with:
           node-version: '22'
           cache: 'yarn'
