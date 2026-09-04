@@ -42,9 +42,11 @@ export default function OrganisationBlock(
                 />
             </div>
             <div className="sm:tw-ml-3 tw-w-full">
-                <ReactMarkdown remarkPlugins={[]} className={socials ? '' : 'tw-mt-3'}>
-                    {description}
-                </ReactMarkdown>
+                <div className={socials ? '' : 'tw-mt-3'}>
+                    <ReactMarkdown remarkPlugins={[]}>
+                        {description}
+                    </ReactMarkdown>
+                </div>
                 <div className="tw-flex -tw-mt-3">
                     {socials && socials.map((social: { name: string, link: string }, index: number) => (
                         <div key={social.name}>
