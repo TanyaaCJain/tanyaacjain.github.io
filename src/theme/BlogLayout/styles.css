@@ -21,14 +21,14 @@
    PAGE BACKGROUND & BASE TYPOGRAPHY
 ───────────────────────────────────────── */
 .blog-post-page {
-  background: radial-gradient(ellipse at top, #0e1335 0%, #0a0e27 60%);
+  background: #1d2349;
   color: #f5f0e8;
 }
 
 .blog-post-page body,
 .blog-post-page .main-wrapper,
 .blog-post-page .container {
-  background-color: #10173f;
+  background-color: #1d2349;
 }
 
 /* ─────────────────────────────────────────
@@ -59,67 +59,99 @@
 }
 
 /* ─────────────────────────────────────────
-   BODY TEXT 
+   TYPE SCALE — built on Karla 1.15rem body, 1.8 leading
+   ratio ~1.25 between levels; tuned for dark-bg legibility
 ───────────────────────────────────────── */
 .blog-post-page .markdown {
-  font-family: 'Nunito Sans', sans-serif;
-  font-size: clamp(1.1rem, 1.6vw, 1.25rem);
-  line-height: 1.85;
-  color: rgba(245, 240, 232, 0.9);
+  font-family: 'Karla', sans-serif;
+  font-size: 1.15rem;          /* body base */
+  line-height: 1.8;
+  letter-spacing: 0.05rem;
+  word-spacing: 0.05rem;
+  color: #c5c7db;
+  -webkit-font-smoothing: antialiased;
 }
 
+/* calm veil lives on paragraphs so headings stay full-strength */
 .blog-post-page .markdown p {
-  margin-bottom: 1.6em;
+  margin-bottom: 1.5em;
+  text-shadow: 0 0 0.5px rgb(213 213 213 / 67%);
+  opacity: 0.82;
 }
 
 .blog-post-page .markdown strong,
 .blog-post-page .markdown em {
-  color: #a07a13;
+  color: #d9a422;
 }
 
-/* ─────────────────────────────────────────
-   HEADINGS — zxcv serif
-───────────────────────────────────────── */
-
-.blog-post-page .markdown h1,
-.blog-post-page .markdown h2,
-.blog-post-page .markdown h3,
-.blog-post-page .markdown h4,
-.blog-post-page .markdown h5 {
-    font-family: 'Libertinus Serif', serif;
-    color: rgb(223 169 20 / 87%);
-    margin-top: 2.5em;
-    margin-bottom: 0.6em;
-}
-.blog-post-page {  
-  &h1 {
-    font-size: clamp(2rem, 4vw, 3rem);
-    line-height: 2.75rem;
-  }
-  
-  &h2 {
-    font-size: clamp(1.5rem, 2.5vw, 2rem);
-    line-height: 1.65rem;
-  }
-}
-
-@media (min-width: 768px) {
-  .blog-post-page h1 {
-    line-height: 2.75rem;
-  }
-
-  .blog-post-page .markdown {
-    font-size: clamp(0.8rem, 1.6vw, 1rem);
-  }
-}
-
-/* Post title (article header) */
+/* H1 — article title: Space Grotesk 700, dominates the page */
+.blog-post-page article header h1,
 .blog-post-page [class*="blogPostTitle_"],
 .blog-post-page [class*="title_"] h1,
 .blog-post-page [class*="title_"] h2 {
-  font-family: 'Libertinus Serif', serif;
-  color: #f5f0e8;
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 700;
+  font-size: clamp(2.1rem, 4.5vw, 2.9rem);
+  line-height: 1.12;
+  letter-spacing: -0.02em;
+  color: #cfcfe5;
+  text-shadow: 0 0 0.5px rgb(72 71 210 / 67%);
+  opacity: 0.82;
+  -webkit-font-smoothing: antialiased;
 }
+
+/* H2 — mono section markers (the § layer) */
+.blog-post-page .markdown h2 {
+  font-family: 'IBM Plex Mono', monospace;
+  font-weight: 400;
+  font-size: 1.15rem;
+  line-height: 1.6;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #ddb84e;
+  border-top: 1px solid rgba(223, 169, 20, 0.3);
+  padding-top: 1.2em;
+  margin: 2.6em 0 1.2em;
+}
+
+/* H3–H6 — quiet Nunito caps, stepping down from 1.05rem */
+.blog-post-page .markdown h3,
+.blog-post-page .markdown h4,
+.blog-post-page .markdown h5,
+.blog-post-page .markdown h6 {
+  font-family: 'Nunito Sans', sans-serif;
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #ddb84e;
+}
+
+.blog-post-page .markdown h3 {
+  font-size: 1.35rem;
+  line-height: 1.5;
+  margin: 2.2em 0 0.9em;
+}
+
+.blog-post-page .markdown h4 {
+  font-size: 1.15rem;
+  line-height: 1.5;
+  margin: 2em 0 0.8em;
+}
+
+.blog-post-page .markdown h5 {
+  font-size: 1rem;
+  line-height: 1.5;
+  margin: 1.8em 0 0.7em;
+}
+
+.blog-post-page .markdown h6 {
+  font-size: 0.9rem;
+  line-height: 1.5;
+  margin: 1.8em 0 0.7em;
+}
+
+/* Post title — font/color live in the H1 type-scale block above; this
+   covers the hashed-class fallbacks only. */
 
 /* ─────────────────────────────────────────
    LINKS
@@ -165,16 +197,56 @@
 }
 
 /* ─────────────────────────────────────────
-   BLOG POST HEADER (date, authors)
+   BLOG POST HEADER (date, authors) — Variant 5: mono + hairline rule
+   Targets real Docusaurus classes: header > div.container_x (date/read-time)
+   and .avatar blocks (authors)
 ───────────────────────────────────────── */
-.blog-post-page [class*="blogPostHeader_"],
-.blog-post-page [class*="blogPostInfo_"] {
-  font-family: 'Nunito Sans', sans-serif;
-  font-size: 0.78rem;
-  letter-spacing: 0.08em;
-  color: rgba(245, 240, 232, 0.35);
-  text-transform: uppercase;
+.blog-post-page article header > div[class*="container_"] {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.95rem;
+  letter-spacing: 0.03em;
+  color: rgba(245, 240, 232, 0.6);
   margin-bottom: 3rem;
+}
+
+.blog-post-page article header .avatar {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.95rem;
+  letter-spacing: 0.03em;
+  color: rgba(245, 240, 232, 0.6);
+  margin-bottom: 2.5rem;
+}
+
+.blog-post-page article header .avatar__photo {
+  width: 2.25rem;
+  height: 2.25rem;
+  border-radius: 50%;
+  filter: grayscale(30%);
+}
+
+.blog-post-page .avatar__name,
+.blog-post-page .avatar__name a,
+.blog-post-page .avatar__name span,
+.blog-post-page article header .avatar__name,
+.blog-post-page article header .avatar__name a {
+  font-family: 'IBM Plex Mono', monospace !important;
+  font-size: 1rem !important;
+  letter-spacing: 0.03em !important;
+  color: #e8b53a !important;
+  text-decoration: none !important;
+}
+
+.blog-post-page .avatar__name a:hover,
+.blog-post-page article header .avatar__name a:hover {
+  color: #f0c75e !important;
+  text-decoration: underline !important;
+  text-underline-offset: 3px;
+}
+
+.blog-post-page .avatar__subtitle {
+  font-family: 'IBM Plex Mono', monospace !important;
+  font-size: 0.88rem !important;
+  color: rgba(245, 240, 232, 0.55) !important;
 }
 
 /* ─────────────────────────────────────────
@@ -246,4 +318,138 @@
   color: rgba(223, 169, 20, 0.7);
   text-decoration: none;
 
+}
+/* ─────────────────────────────────────────
+   NEWER / OLDER POST LINKS — Variant 5 chrome:
+   hairline gold rule, mono sublabel, Space Grotesk title
+───────────────────────────────────────── */
+.blog-post-page .pagination-nav {
+  margin-top: 5rem;
+}
+
+.blog-post-page .pagination-nav__link {
+  border: none;
+  border-top: 1px solid rgba(223, 169, 20, 0.3);
+  border-radius: 0;
+  padding: 1.1em 0 0;
+  height: auto;
+  transition: border-color 0.2s ease;
+}
+
+.blog-post-page .pagination-nav__link:hover {
+  border-top-color: rgba(223, 169, 20, 0.85);
+  background: transparent;
+}
+
+.blog-post-page .pagination-nav__sublabel {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.85rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(245, 240, 232, 0.5);
+  margin-bottom: 0.45em;
+}
+
+.blog-post-page .pagination-nav__row {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #c5c7db;
+  transition: color 0.2s ease;
+}
+
+.blog-post-page .pagination-nav__label_modified {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 600;
+  font-size: 1.05rem;
+  letter-spacing: -0.01em;
+  line-height: 1.35;
+}
+
+.blog-post-page .pagination-nav__arrow {
+  font-size: 1.2rem;
+  flex-shrink: 0;
+  transition: transform 0.2s ease;
+}
+
+.blog-post-page .pagination-nav__link:hover .pagination-nav__row {
+  color: #f5f0e8;
+}
+
+.blog-post-page .pagination-nav__link--prev:hover .pagination-nav__arrow {
+  transform: translateX(-4px);
+}
+
+.blog-post-page .pagination-nav__link--next:hover .pagination-nav__arrow {
+  transform: translateX(4px);
+}
+
+/* ─────────────────────────────────────────
+   TAGS — rendered inside the header (Header swizzle),
+   styled as quiet mono chips
+───────────────────────────────────────── */
+
+
+.blog-post-page article footer [class*="tags_"],
+.blog-post-page article footer [class*="tagList"] {
+  padding: 0;
+  gap: 0.5rem;
+}
+
+/* hide the built-in "Tags:" label — the chips speak for themselves */
+.blog-post-page .blog-post-tags-inline b, .blog-post-page article footer b {
+  display: none;
+}
+
+/* tags float above the title, right-aligned, borderless — quiet metadata */
+.blog-post-page .blog-post-tags-inline {
+  display: flex;
+  justify-content: flex-start;
+  margin: 0 0 0.4rem !important;
+  padding: 0 !important;
+  line-height: 1;
+  text-indent: 0;
+}
+
+/* neutralize Infima/theme spacing on the tag list */
+.blog-post-page .blog-post-tags-inline ul[class*="tags_"] {
+  display: inline-flex;
+  margin: 0 !important;
+  padding: 0 !important;
+  gap: 0.4rem;
+  text-indent: 0;
+  list-style: none;
+}
+
+.blog-post-page .blog-post-tags-inline li[class*="tag_"] {
+  display: inline-flex;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.blog-post-page .blog-post-tags-inline li [class*="tag_"] {
+  background: transparent;
+  border: none;
+  padding: 0;
+  border-radius: 0;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.8rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(232, 181, 58, 0.6);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.blog-post-page .blog-post-tags-inline li [class*="tag_"]:hover {
+  color: #e8b53a;
+}
+
+/* Older-post (next) card: right-align its content */
+.blog-post-page .pagination-nav__link--next {
+  text-align: right;
+}
+
+.blog-post-page .pagination-nav__link--next .pagination-nav__row {
+  justify-content: flex-end;
 }

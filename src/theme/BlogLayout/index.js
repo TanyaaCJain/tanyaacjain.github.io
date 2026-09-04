@@ -10,8 +10,20 @@ export default function BlogLayout(props) {
 
   useEffect(() => {
     document.documentElement.classList.add('blog-page');
+    document.documentElement.setAttribute('data-blog', activeLink);
+    // Guarantee the .blog-post-page hook on <html> for article pages,
+    // regardless of what any theme layer does.
+    const segs = window.location.pathname.split('/').filter(Boolean);
+    const isPostPage =
+      segs.length > 1 &&
+      segs[0] === activeLink &&
+      !['tags', 'archive'].includes(segs[1]) &&
+      !/^page\d*$/.test(segs[1]);
+    if (isPostPage) document.documentElement.classList.add('blog-post-page');
     return () => {
       document.documentElement.classList.remove('blog-page');
+      document.documentElement.classList.remove('blog-post-page');
+      document.documentElement.removeAttribute('data-blog');
     };
   }, []);
 

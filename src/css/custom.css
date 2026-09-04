@@ -4,25 +4,68 @@
  * work well for content-centric websites.
  */
 
-@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,300;0,6..12,400;0,6..12,700;0,6..12,800;1,6..12,400;1,6..12,600;1,6..12,800&family=Nunito:wght@300&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,600;0,700;1,700&family=Nunito+Sans:ital,opsz,wght@0,6..12,300;0,6..12,400;0,6..12,700;0,6..12,800;1,6..12,400;1,6..12,600;1,6..12,800&family=Nunito:wght@300&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Tangerine:wght@400;700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@500;600;700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Libertinus+Serif:ital,wght@0,400;0,700;1,400&display=swap');
-
 :root {
   --pb-bg: #0a0e27;
   --pb-bg-surface: #10173f;
   --pb-bg-elevated: #161d4f;
   --ifm-background-color: #0a0e27;
   --ifm-color-scheme: dark;
+  /* Scrollbar — camouflage into Persian-blue bg (overrides Infima) */
+  --ifm-scrollbar-size: 10px;
+  --ifm-scrollbar-track-background-color: transparent;
+  --ifm-scrollbar-thumb-background-color: #1a2150;
+  --ifm-scrollbar-thumb-hover-background-color: #232a58;
 }
 
-html,
-body {
-  background-color: #0a0e27;
-  background-image: radial-gradient(ellipse at top, #0e1335 0%, #0a0e27 60%);
+html {
   color-scheme: dark;
+  background: radial-gradient(ellipse at top, #0e1335 0%, #0a0e27 60%) fixed #0a0e27 !important;
+  background-color: #0a0e27 !important;
+}
+
+body {
+  background: transparent;
+}
+
+/* ─────────────────────────────────────────
+   SCROLLBAR — camouflage into Persian-blue bg
+───────────────────────────────────────── */
+/* Global + Infima's .thin-scrollbar (higher specificity so it wins) */
+html, body, .thin-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: #1a2150 transparent !important;
+}
+
+html ::-webkit-scrollbar,
+thin-scrollbar::-webkit-scrollbar,
+.thin-scrollbar::-webkit-scrollbar {
+  width: 10px !important;
+  height: 10px !important;
+}
+
+html ::-webkit-scrollbar-track,
+thin-scrollbar::-webkit-scrollbar-track,
+.thin-scrollbar::-webkit-scrollbar-track {
+  background: transparent !important;
+}
+
+html ::-webkit-scrollbar-thumb,
+thin-scrollbar::-webkit-scrollbar-thumb,
+.thin-scrollbar::-webkit-scrollbar-thumb {
+  background: #1a2150 !important;
+  border-radius: 8px !important;
+  border: none !important;
+}
+
+html ::-webkit-scrollbar-thumb:hover,
+thin-scrollbar::-webkit-scrollbar-thumb:hover,
+.thin-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: #232a58 !important;
+}
+
+html ::-webkit-scrollbar-corner,
+.thin-scrollbar::-webkit-scrollbar-corner {
+  background: transparent;
 }
 
 @tailwind components;
@@ -30,43 +73,51 @@ body {
 
 @font-face {
   font-family: zxcv;
-  src: url(../assets/fonts/zxcv-Light.woff2)
+  src: url(../assets/fonts/zxcv-Light.woff2);
+  font-display: swap;
 }
 
 @font-face {
   font-family: zxcv;
   font-style: italic;
-  src: url(../assets/fonts/zxcv-LightItalic.woff2)
+  src: url(../assets/fonts/zxcv-LightItalic.woff2);
+  font-display: swap;
 }
 
 @font-face {
   font-family: vnwf-cr;
-  src: url(../assets/fonts/NeueWorld-CondensedRegular.otf)
+  src: url(../assets/fonts/NeueWorld-CondensedRegular.otf);
+  font-display: swap;
 }
 
 @font-face {
   font-family: vnwf-et;
-  src: url(../assets/fonts/NeueWorld-ExtendedThin.otf)
+  src: url(../assets/fonts/NeueWorld-ExtendedThin.otf);
+  font-display: swap;
 }
 
 @font-face {
   font-family: vnwf-scu;
-  src: url(../assets/fonts/NeueWorld-SemiCondensedUltrabold.otf)
+  src: url(../assets/fonts/NeueWorld-SemiCondensedUltrabold.otf);
+  font-display: swap;
 }
 
 @font-face {
   font-family: vnwf-seb;
-  src: url(../assets/fonts/NeueWorld-SemiExtendedBlack.otf)
+  src: url(../assets/fonts/NeueWorld-SemiExtendedBlack.otf);
+  font-display: swap;
 }
 
 @font-face {
   font-family: vnwf-scl;
-  src: url(../assets/fonts/NeueWorld-SuperCondensedLight.otf)
+  src: url(../assets/fonts/NeueWorld-SuperCondensedLight.otf);
+  font-display: swap;
 }
 
 @font-face {
   font-family: bc;
-  src: url(../assets/fonts/bc-med.ttf)
+  src: url(../assets/fonts/bc-med.ttf);
+  font-display: swap;
 }
 
 .tangerine-regular {
@@ -98,4 +149,49 @@ h4 {
 
 .newspaper-cursor {
   cursor: url(../assets/images/cursors/newspaper.png), auto;
+}
+
+/* Post page: scrollbar tuned to the #1d2349 post-page surface */
+html.blog-post-page,
+html.blog-post-page .thin-scrollbar {
+  scrollbar-color: #333d7a #1d2349 !important;
+}
+
+html.blog-post-page ::-webkit-scrollbar-thumb,
+html.blog-post-page .thin-scrollbar::-webkit-scrollbar-thumb {
+  background: #333d7a !important;
+}
+
+html.blog-post-page ::-webkit-scrollbar-thumb:hover,
+html.blog-post-page .thin-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: #45519e !important;
+}
+
+html.blog-post-page ::-webkit-scrollbar-track,
+html.blog-post-page .thin-scrollbar::-webkit-scrollbar-track {
+  background: #1d2349 !important;
+}
+
+/* Post page: cover ALL scrollers (incl. nested blog-main-container) */
+.blog-post-page *,
+.blog-post-page *::before,
+.blog-post-page *::after {
+  scrollbar-color: #333d7a #1d2349 !important;
+}
+
+.blog-post-page *::-webkit-scrollbar {
+  width: 10px !important;
+  height: 10px !important;
+}
+
+.blog-post-page *::-webkit-scrollbar-track {
+  background: #1d2349 !important;
+}
+
+.blog-post-page *::-webkit-scrollbar-thumb {
+  background: #333d7a !important;
+}
+
+.blog-post-page *::-webkit-scrollbar-thumb:hover {
+  background: #45519e !important;
 }

@@ -34,6 +34,30 @@ const config: Config = {
     defaultLocale: 'en',
     locales: ['en'],
   },
+  headTags: [
+    {
+      tagName: 'link',
+      attributes: {
+        rel: 'preconnect',
+        href: 'https://fonts.googleapis.com',
+      },
+    },
+    {
+      tagName: 'link',
+      attributes: {
+        rel: 'preconnect',
+        href: 'https://fonts.gstatic.com',
+        crossorigin: 'anonymous',
+      },
+    },
+    {
+      tagName: 'link',
+      attributes: {
+        rel: 'stylesheet',
+        href: 'https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,300;0,6..12,400;0,6..12,700;0,6..12,800;1,6..12,400;1,6..12,600;1,6..12,800&family=Nunito:wght@300&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,600;0,700;1,700&family=Tangerine:wght@400;700&family=Libre+Franklin:wght@500;600;700&family=Karla:ital,wght@0,400;0,600;1,400&family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap',
+      },
+    },
+  ],
   presets: [
     [
       'classic',
@@ -53,7 +77,6 @@ const config: Config = {
         theme: {
           customCss: [
             './src/css/custom.css',
-            require.resolve('@sawatdeehaneu/docusaurus-theme')
           ]
         },
         gtag: {
