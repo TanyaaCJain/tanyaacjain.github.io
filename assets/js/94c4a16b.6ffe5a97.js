@@ -1,0 +1,1 @@
+"use strict";(globalThis.webpackChunktanyaacjain_github_io=globalThis.webpackChunktanyaacjain_github_io||[]).push([[3143],{9450:a=>{a.exports=JSON.parse('{"metadata":{"permalink":"/design","page":1,"postsPerPage":4,"totalPages":1,"totalCount":4,"blogDescription":"Blog","blogTitle":"Blog"}}')}}]);
