@@ -1,0 +1,1 @@
+"use strict";(globalThis.webpackChunktanyaacjain_github_io=globalThis.webpackChunktanyaacjain_github_io||[]).push([[7849],{8358:a=>{a.exports=JSON.parse('{"tags":[{"label":"Community Centric","permalink":"/design/tags/community","count":4}]}')}}]);
