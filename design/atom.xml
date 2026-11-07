@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <id>https://www.jaintanya.com/design</id>
+    <title>Tanya Jain Blog</title>
+    <updated>2021-01-01T00:00:00.000Z</updated>
+    <generator>https://github.com/jpmonette/feed</generator>
+    <link rel="alternate" href="https://www.jaintanya.com/design"/>
+    <subtitle>Tanya Jain Blog</subtitle>
+    <icon>https://www.jaintanya.com/img/favicon.ico</icon>
+    <entry>
+        <title type="html"><![CDATA[PyCon India 2021]]></title>
+        <id>https://www.jaintanya.com/design/community/pycon-ind-2021</id>
+        <link href="https://www.jaintanya.com/design/community/pycon-ind-2021"/>
+        <updated>2021-01-01T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[Also, published at PyCon website]]></summary>
+        <content type="html"><![CDATA[<p>Also, published at <a href="https://in.pycon.org/share/PyConIndia2021ProgramGuide.pdf" target="_blank" rel="noopener noreferrer">PyCon website</a></p>]]></content>
+        <category label="Community Centric" term="Community Centric"/>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[PyCon India 2020]]></title>
+        <id>https://www.jaintanya.com/design/community/pycon-ind-2020</id>
+        <link href="https://www.jaintanya.com/design/community/pycon-ind-2020"/>
+        <updated>2020-01-01T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[Also, published at PyCon website]]></summary>
+        <content type="html"><![CDATA[<p>Also, published at <a href="https://in.pycon.org/share/PyConIndia2020ProgramGuide.pdf" target="_blank" rel="noopener noreferrer">PyCon website</a></p>]]></content>
+        <category label="Community Centric" term="Community Centric"/>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Amity Business Proposal]]></title>
+        <id>https://www.jaintanya.com/design/community/amity-business-proposal</id>
+        <link href="https://www.jaintanya.com/design/community/amity-business-proposal"/>
+        <updated>2019-01-01T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[Also, published at behance]]></summary>
+        <content type="html"><![CDATA[<p>Also, published at <a href="https://www.behance.net/gallery/141132009/Business-Proposal-Editorial-Design" target="_blank" rel="noopener noreferrer">behance</a></p>]]></content>
+        <category label="Community Centric" term="Community Centric"/>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[PyDelhi Conf 2017]]></title>
+        <id>https://www.jaintanya.com/design/community/pydelhi-conf-2017</id>
+        <link href="https://www.jaintanya.com/design/community/pydelhi-conf-2017"/>
+        <updated>2017-01-01T00:00:00.000Z</updated>
+        <category label="Community Centric" term="Community Centric"/>
+    </entry>
+</feed>
